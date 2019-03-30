@@ -1,0 +1,43 @@
+//
+//  EpisodeCell2.swift
+//  PodcastSeries
+//
+//  Created by Zakir Magdum on 5/31/18.
+//  Copyright © 2018 Zakir Magdum. All rights reserved.
+//
+
+import UIKit
+
+class SeriesCell : UITableViewCell {
+    let dateFormatter = DateFormatter()
+
+    var series: Category! {
+        didSet {
+            seriesNameLabel.text = series.title
+            dateFormatter.dateFormat = "MMM dd, yyyy"
+            //let lastUpdated = dateFormatter.string(from: series.lastUpdated!)
+            var desc = "Total \(series.episodeCount!) "
+            if series.lastUpdated != nil {
+                desc += " Updated " + dateFormatter.string(from: series.lastUpdated!)
+            }
+            descriptionLabel.text = desc
+            speakerNameLabel.text = series.speakers
+            let url = URL(string: series.artwork ?? "")
+            artworkImageView.sd_setImage(with: url, completed: nil)
+        }
+    }
+
+    
+    @IBOutlet weak var seriesNameLabel: UILabel! {
+        didSet {
+            seriesNameLabel.numberOfLines = 2
+        }
+    }
+    @IBOutlet weak var artworkImageView: UIImageView!
+    @IBOutlet weak var speakerNameLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel! {
+        didSet {
+            descriptionLabel.numberOfLines = 2
+        }
+    }
+}
