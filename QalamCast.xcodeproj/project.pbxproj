@@ -31,6 +31,7 @@
 		BDE50D592249B74D005B2605 /* EpisodeCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDE50D572249B74D005B2605 /* EpisodeCell2.xib */; };
 		BDE50D5B2249B831005B2605 /* EpisodesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE50D5A2249B831005B2605 /* EpisodesController.swift */; };
 		BDE50D5D224DB099005B2605 /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE50D5C224DB099005B2605 /* DB.swift */; };
+		BDE50D69225595D7005B2605 /* FavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE50D68225595D7005B2605 /* FavoritesController.swift */; };
 		C58AC33E03884FE673011547 /* Pods_QalamCast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0985D2961478CBDFB3B12987 /* Pods_QalamCast.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		BDE50D572249B74D005B2605 /* EpisodeCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EpisodeCell2.xib; sourceTree = "<group>"; };
 		BDE50D5A2249B831005B2605 /* EpisodesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodesController.swift; sourceTree = "<group>"; };
 		BDE50D5C224DB099005B2605 /* DB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DB.swift; sourceTree = "<group>"; };
+		BDE50D68225595D7005B2605 /* FavoritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesController.swift; sourceTree = "<group>"; };
 		F042BA492FBFDAE2D74A076B /* Pods-QalamCast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QalamCast.release.xcconfig"; path = "Target Support Files/Pods-QalamCast/Pods-QalamCast.release.xcconfig"; sourceTree = "<group>"; };
 		F2BA30E6DCDB8F09FEA49E32 /* Pods-QalamCast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QalamCast.debug.xcconfig"; path = "Target Support Files/Pods-QalamCast/Pods-QalamCast.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -189,6 +191,7 @@
 			children = (
 				BDE50D5A2249B831005B2605 /* EpisodesController.swift */,
 				BDE50D50224816BA005B2605 /* SeriesController.swift */,
+				BDE50D68225595D7005B2605 /* FavoritesController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				BDE50D54224816E5005B2605 /* SeriesCell.swift in Sources */,
 				BDBA6CA12241B660000486CD /* ApiService.swift in Sources */,
 				BDBA6C972241B5E8000486CD /* String.swift in Sources */,
+				BDE50D69225595D7005B2605 /* FavoritesController.swift in Sources */,
 				BDBA6C982241B5E8000486CD /* CMTime.swift in Sources */,
 				BDE50D4822446EDC005B2605 /* PlayerDetailsView.swift in Sources */,
 				BDE50D51224816BA005B2605 /* SeriesController.swift in Sources */,

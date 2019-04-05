@@ -10,6 +10,9 @@ import Foundation
 import FeedKit
 import Squeal
 
+enum PlayStatus : Int {
+    case notPlayed = 0, playing, played
+}
 struct Episode {
     var id: Int?
     var title: String
@@ -21,7 +24,9 @@ struct Episode {
     var categories: [String]?
     var category: String
     var shortTitle: String
-    var played: Bool?
+    var played: PlayStatus?
+    var favorite: Bool?
+    var duration: Double?
 
     init(feedItem: RSSFeedItem) {
         self.streamUrl = feedItem.enclosure?.attributes?.url ?? ""
@@ -37,6 +42,9 @@ struct Episode {
         self.categories = categories
         self.category = "Uncategorized"
         self.shortTitle = self.title
+        self.duration = feedItem.iTunes?.iTunesDuration
+        self.played = .notPlayed
+        self.favorite = false
     }
     
     init(row:Statement) throws {
@@ -49,6 +57,9 @@ struct Episode {
         self.streamUrl = row.stringValue("streamUrl")!
         self.shortTitle = row.stringValue("shortTitle")!
         self.pubDate = Date(timeIntervalSince1970: row.doubleValue("pubDate")!)
+        self.duration = row.doubleValue("duration")
+        self.played = PlayStatus(rawValue: row.intValue("played")!)
+        self.favorite = row.intValue("favorite") ?? 0 == 1
     }
 
 }

@@ -11,6 +11,7 @@ import Alamofire
 import FeedKit
 
 class APIService {
+    let ignoreStartCharacters: [Character] = [" ", "–", ":"]
     // singleton
     static let shared = APIService()
     let speakers = ["Mufti Hussain Kamani","Abdul Nasir Jangda","Abdul Rahman Murphy","Mikaeel Ahmed Smith", "Mikaeel Smith"]
@@ -67,30 +68,54 @@ class APIService {
             //print("Found episodes", episodes)
             var episodes = received
             for ii in 0..<episodes.count {
-                let title = episodes[ii].title.trimmingCharacters(in: .whitespaces)
+                let title = episodes[ii].title.trimmingCharacters(in: .whitespaces).lowercased()
                 var found = false
                 for index in 0..<categories.count {
-                    if title.starts(with: categories[index].title!) {
+                    if title.starts(with: categories[index].title!.lowercased()) {
                         episodes[ii].category = categories[index].title!
+                        episodes[ii].shortTitle = self.shortTitle(title: episodes[ii].title, category: categories[index].title!)
+                        episodes[ii].imageUrl = categories[index].artwork
                         categories[index].episodeCount? += 1
                         let catDate = categories[index].lastUpdated ?? episodes[ii].pubDate
                         categories[index].lastUpdated = max(catDate, episodes[ii].pubDate)
                         for spkr in self.speakers {
                             if (episodes[ii].categories?.contains(spkr))! {
                                 categories[index].speakers = spkr
+                                episodes[ii].author = spkr
                             }
                         }
                         found = true
                         break
                     }
+                    for token in categories[index].tokens ?? [] {
+                        if title.starts(with: token.lowercased()) {
+                            episodes[ii].category = categories[index].title!
+                            episodes[ii].shortTitle = self.shortTitle(title: episodes[ii].title, category: token)
+                            episodes[ii].imageUrl = categories[index].artwork
+                            categories[index].episodeCount? += 1
+                            let catDate = categories[index].lastUpdated ?? episodes[ii].pubDate
+                            categories[index].lastUpdated = max(catDate, episodes[ii].pubDate)
+                            for spkr in self.speakers {
+                                if (episodes[ii].categories?.contains(spkr))! {
+                                    categories[index].speakers = spkr
+                                    episodes[ii].author = spkr
+                                }
+                            }
+                            found = true
+                            break
+                        }
+
+                    }
                 }
                 if !found && uncatId > 0 {
                     categories[uncatId].episodeCount? += 1
                     episodes[ii].category = categories[uncatId].title!
-                    //cat.lastUpdated = max(cat.lastUpdated?, episode.pubDate)
+                    let catDate = categories[uncatId].lastUpdated ?? episodes[ii].pubDate
+                    categories[uncatId].lastUpdated = max(catDate, episodes[ii].pubDate)
                     for spkr in self.speakers {
                         if (episodes[ii].categories?.contains(spkr))! {
                             categories[uncatId].speakers = spkr
+                            episodes[ii].author = spkr
                         }
                     }
                 }
@@ -98,17 +123,25 @@ class APIService {
                     speakersDict[cat] = cat
                 }
             }
-            //            for pk in podcastDict.keys {
-            //                print("found", pk)
-            //            }
-                        for pk in speakersDict.keys {
-                            print("found category", pk)
-                        }
+//                        for pk in speakersDict.keys {
+//                            print("found category", pk)
+//                        }
             completionHandler(categories, episodes)
         }
     }
     
-
+    fileprivate func shortTitle(title: String, category: String) -> String {
+        let shortTitle = title.deletingPrefix(category)
+        var tst = ""
+        var alphaFound = false
+        for ch in shortTitle {
+            if !ignoreStartCharacters.contains(ch) || alphaFound {
+                alphaFound = true
+                tst.append(ch)
+            }
+        }
+        return tst;
+    }
     
     func fetchPodcasts(searchText: String, completionHandler: @escaping ([Category]) -> ()) {
         print("Searching Podcasts")

@@ -15,14 +15,23 @@ class SeriesController : UITableViewController {
     
     var categories = [Category]()
     
-    fileprivate func fetchEpisodes() {
-        APIService.shared.loadCategoriesWithEpisodes() { (categories, episodes) in
-            self.categories = categories
-            self.categories.sort{ $0.title! < $1.title! }
+    func fetchEpisodes() {
+        do {
+            try self.categories = DB.shared.getCategories()
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
+        } catch {
+            print("Could not load categories")
         }
+        
+//        APIService.shared.loadCategoriesWithEpisodes() { (categories, episodes) in
+//            self.categories = categories
+//            self.categories.sort{ $0.title! < $1.title! }
+//            DispatchQueue.main.async {
+//                self.tableView.reloadData()
+//            }
+//        }
     }
 
     override func viewDidLoad() {
@@ -68,5 +77,26 @@ class SeriesController : UITableViewController {
         let episodesController = EpisodesController()
         episodesController.series = self.categories[indexPath.row]
         navigationController?.pushViewController(episodesController, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let play = UIContextualAction(style: .normal, title: "Play") { (action, view, nil) in
+            print("Play Next", indexPath)
+            let series = self.categories[indexPath.row]
+            do {
+                var episodes = try DB.shared.getEpisodesForSeries(series: (series.title)!)
+                if episodes.count > 0 {
+                    episodes.sort{ $0.pubDate < $1.pubDate }
+                    let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController
+                    mainTabBarController?.maximizePlayerDetails(episode: episodes[0])
+                }
+            } catch {
+                print("Error Loading Episodes")
+            }
+            
+        }
+        play.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+        play.image = #imageLiteral(resourceName: "play")
+        return UISwipeActionsConfiguration(actions: [play])
     }
 }

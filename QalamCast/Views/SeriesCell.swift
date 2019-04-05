@@ -16,7 +16,7 @@ class SeriesCell : UITableViewCell {
             seriesNameLabel.text = series.title
             dateFormatter.dateFormat = "MMM dd, yyyy"
             //let lastUpdated = dateFormatter.string(from: series.lastUpdated!)
-            var desc = "Total \(series.episodeCount!) "
+            var desc = "Total \(series.episodeCount ?? 0) "
             if series.lastUpdated != nil {
                 desc += " Updated " + dateFormatter.string(from: series.lastUpdated!)
             }

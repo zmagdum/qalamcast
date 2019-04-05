@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class MainTabBarController: UITabBarController {
-    
+    let seriesController = SeriesController()
     override func viewDidLoad() {
         super.viewDidLoad()
         //UINavigationBar.appearance().prefers
@@ -23,16 +23,25 @@ class MainTabBarController: UITabBarController {
 //                print("Category", cat)
 //            }
 //        }
+//        do {
+//            print("Found Categories ", try DB.shared.getCategories().count)
+//        } catch {
+//            print("Error getting categories \(error)")
+//        }
+
         do {
             try DB.shared.createDatabase()
-       } catch {
-            print("Error creating database")
+            print("Found Categories After ", try DB.shared.getCategories().count)
+        } catch {
+            print("Error creating database \(error)")
         }
         APIService.shared.loadCategoriesWithEpisodes() { (categories, episodes) in
             do {
                 try DB.shared.saveEpisodes(episodes: episodes)
+                try DB.shared.saveCategories(categories: categories)
+                self.seriesController.fetchEpisodes()
             } catch {
-                print("Error Saving episodes")
+                print("Error Saving episodes and categories")
             }
         }
         
@@ -74,8 +83,8 @@ class MainTabBarController: UITabBarController {
 
     fileprivate func setupViewControllers() {
         viewControllers = [
-            generateNavigationCOntroller(with: SeriesController(), title: "Home", image: #imageLiteral(resourceName: "search")),
-            generateNavigationCOntroller(with: ViewController(), title: "Favorites", image: #imageLiteral(resourceName: "favorites")),
+            generateNavigationCOntroller(with: seriesController, title: "Home", image: #imageLiteral(resourceName: "search")),
+            generateNavigationCOntroller(with: FavoritesController(), title: "Favorites", image: #imageLiteral(resourceName: "favorites")),
             generateNavigationCOntroller(with: ViewController(), title: "Downloads", image: #imageLiteral(resourceName: "downloads"))
         ]
     }

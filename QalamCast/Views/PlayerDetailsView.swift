@@ -17,11 +17,11 @@ class PlayerDetailsView: UIView {
     @IBOutlet weak var maxPlayerView: UIStackView!
     var episode: Episode! {
         didSet {
-            miniPlayerTitleLabel.text = episode.title
-            episodeTitle.text = episode.title
+            miniPlayerTitleLabel.text = episode.shortTitle
+            episodeTitle.text = episode.shortTitle
             authorLabel.text = episode.author
             playEpisode()
-            guard let url = URL(string: episode.imageUrl?.toSecureHTTPS() ?? "") else { return }
+            guard let url = URL(string: episode.imageUrl ?? "") else { return }
             playerImageView.sd_setImage(with: url)
             miniPlayerImageView.sd_setImage(with: url)
         }
