@@ -84,7 +84,7 @@ class EpisodesController : UITableViewController {
         let play = UIContextualAction(style: .normal, title: "Played") { (action, view, nil) in
             print("mark listened")
             do {
-                self.episodes[indexPath.row].played = self.episodes[indexPath.row].played! == .notPlayed ? .played : .notPlayed
+                self.episodes[indexPath.row].played = (self.episodes[indexPath.row].played?.isLess(than: self.episodes[indexPath.row].duration!))! ? self.episodes[indexPath.row].duration : 0
                 try DB.shared.updatePlayed(episode: self.episodes[indexPath.row])
                 self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
                 self.refreshView()

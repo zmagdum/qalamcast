@@ -35,7 +35,7 @@ let AppSchema = Schema(identifier:"contacts") { schema in
             contacts.column("description", type:.Text)
             contacts.column("imageUrl", type:.Text)
             contacts.column("author", type:.Text)
-            contacts.column("played", type:.Integer)
+            contacts.column("played", type:.Real)
             contacts.column("favorite", type:.Integer)
             contacts.column("pubDate", type:.Real)
             contacts.column("duration", type:.Real)
@@ -109,7 +109,7 @@ class DB {
                 "pubDate": episode.pubDate.timeIntervalSince1970,
                 "streamUrl": episode.streamUrl,
                 "shortTitle": episode.shortTitle,
-                "played": episode.played?.rawValue,
+                "played": episode.played,
                 "duration": episode.duration
             ]
         )
@@ -173,6 +173,7 @@ class DB {
     }
     
     func updatePlayed(episode: Episode) throws {
-        try self.db.update("episodes", set: ["played": episode.played?.rawValue], whereExpr: "title = '" + episode.title + "'")
+        try self.db.update("episodes", set: ["played": episode.played], whereExpr: "title = '" + episode.title + "'")
     }
+    
 }

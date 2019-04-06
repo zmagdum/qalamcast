@@ -19,7 +19,7 @@ class EpisodeCell2: UITableViewCell {
             pubDateLabel.text = dateFormatter.string(from: episode.pubDate)
             let url = URL(string: episode.imageUrl ?? "")
             episodeImageView.sd_setImage(with: url, completed: nil)
-            if episode.played! == .played {
+            if episode.played! == episode.duration! {
                 titleLabel.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
             }
             if episode.favorite! {

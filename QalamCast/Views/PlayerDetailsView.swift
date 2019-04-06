@@ -47,6 +47,12 @@ class PlayerDetailsView: UIView {
             let durationTime = self?.player.currentItem?.duration
             self?.endTimeLabel.text = durationTime?.toDisplayString()
             self?.updateCurrentTimeSlider()
+            self?.episode.played = CMTimeGetSeconds(time)
+            do {
+                try DB.shared.updatePlayed(episode: (self?.episode!)!)
+            } catch {
+                print("Error updating played \(error)", self?.episode)
+            }
         }
     }
     
