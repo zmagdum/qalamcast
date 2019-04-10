@@ -9,6 +9,8 @@
 import Foundation
 import Squeal
 
+extension String: Error {}
+
 let AppSchema = Schema(identifier:"contacts") { schema in
     // Version 1:
     schema.version(1) { v1 in
@@ -88,7 +90,7 @@ class DB {
 //            "shortTitle TEXT"
 //            ])
         // Migrate to the latest version:
-        try AppSchema.reset(db)
+//        try AppSchema.reset(db)
         let didMigrate = try AppSchema.migrate(db)
         // Get the database version:
         let migratedVersion = try db.queryUserVersionNumber()
@@ -159,6 +161,18 @@ class DB {
         return episodes;
     }
 
+    func getEpisode(id: Int) throws -> Episode {
+        let episodes:[Episode] = try self.db.selectFrom(
+            "episodes",
+            whereExpr:"id = " + String(id),
+            block: Episode.init
+        )
+        if episodes.count > 0 {
+            return episodes[0]
+        }
+        throw "Episode not found for \(id)"
+    }
+    
     func getCategories() throws -> [Category] {
         var categories:[Category] = try self.db.selectFrom(
             "categories",

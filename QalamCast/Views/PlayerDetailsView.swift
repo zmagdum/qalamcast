@@ -15,24 +15,63 @@ class PlayerDetailsView: UIView {
     @IBOutlet weak var miniPlayerView: UIView!
     
     @IBOutlet weak var maxPlayerView: UIStackView!
+    
+    var episodeId: Int! {
+        didSet {
+            self.episode = try! DB.shared.getEpisode(id: episodeId)
+        }
+    }
     var episode: Episode! {
         didSet {
-            miniPlayerTitleLabel.text = episode.shortTitle
-            episodeTitle.text = episode.shortTitle
-            authorLabel.text = episode.author
-            playEpisode()
-            guard let url = URL(string: episode.imageUrl ?? "") else { return }
-            playerImageView.sd_setImage(with: url)
-            miniPlayerImageView.sd_setImage(with: url)
+            if oldValue == nil || oldValue.title != episode.title {
+                miniPlayerTitleLabel.text = episode.shortTitle
+                episodeTitle.text = episode.shortTitle
+                authorLabel.text = episode.author
+                playEpisode()
+                guard let url = URL(string: episode.imageUrl ?? "") else { return }
+                playerImageView.sd_setImage(with: url)
+                miniPlayerImageView.sd_setImage(with: url)
+            }
         }
     }
     
     fileprivate func playEpisode() {
-        //print("Trying to play url", episode.streamUrl)
+        print("Trying to play url", episode.streamUrl, " ", episode.played)
         guard let url = URL(string: episode.streamUrl) else {return }
+        if !playEpisodeUsingFileUrl() {
+            playEpisode(url: url)
+        }
+    }
+    
+    fileprivate func playEpisode(url: URL) {
         let playerItem = AVPlayerItem(url: url)
         player.replaceCurrentItem(with: playerItem)
         player.play()
+        if episode.played! > 0.0 {
+            let seekTime = CMTimeMakeWithSeconds(episode.played!, Int32(NSEC_PER_SEC))
+            player.seek(to: seekTime)
+        }
+    }
+    
+    fileprivate func playEpisodeUsingFileUrl() -> Bool {
+        print("Attempt to play episode with downloaded file")
+        // let's figure out the file name for our episode file url
+        guard let fileURL = URL(string: episode.streamUrl ) else { return false}
+        let fileName = fileURL.lastPathComponent
+        guard var trueLocation = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return false}
+        trueLocation.appendPathComponent(fileName)
+        print("True Location of episode:", trueLocation.absoluteString)
+        if FileManager.default.fileExists(atPath: trueLocation.absoluteString) {
+            let playerItem = AVPlayerItem(url: trueLocation)
+            player.replaceCurrentItem(with: playerItem)
+            player.play()
+            if episode.played! > 0.0 {
+                let seekTime = CMTimeMakeWithSeconds(episode.played!, Int32(NSEC_PER_SEC))
+                player.seek(to: seekTime)
+            }
+            return true
+        }
+        return false
     }
     
     let player: AVPlayer = {

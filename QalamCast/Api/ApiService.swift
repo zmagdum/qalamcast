@@ -10,7 +10,12 @@ import Foundation
 import Alamofire
 import FeedKit
 
+extension Notification.Name {
+    static let downloadProgress = NSNotification.Name("downloadProgress")
+    static let downloadComplete = NSNotification.Name("downloadComplete")
+}
 class APIService {
+    typealias EpisodeDownloadCompleteTuple = (fileUrl: String, episodeTitle: String)
     let ignoreStartCharacters: [Character] = [" ", "–", ":"]
     // singleton
     static let shared = APIService()
@@ -162,7 +167,22 @@ class APIService {
             }
         }
     }
+    
+    func downloadEpisode(episode: Episode) {
+        print("Downloading episode using Alamofire at stream url:", episode.streamUrl)
+        let downloadRequest = DownloadRequest.suggestedDownloadDestination()
+        Alamofire.download(episode.streamUrl, to: downloadRequest).downloadProgress { (progress) in
+            //            print(progress.fractionCompleted)
+            // I want to notify DownloadsController about my download progress somehow?
+            NotificationCenter.default.post(name: .downloadProgress, object: nil, userInfo: ["id": episode.id ?? 0, "progress": progress.fractionCompleted])
+            }.response { (resp) in
+                print(resp.destinationURL?.absoluteString ?? "")
+                NotificationCenter.default.post(name: .downloadComplete, object: nil, userInfo: ["id": episode.id!])
+        }
+    }
 }
+
+
 
 struct SearchResults: Decodable {
     let resultCount: Int
