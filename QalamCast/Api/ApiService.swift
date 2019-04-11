@@ -170,15 +170,42 @@ class APIService {
     
     func downloadEpisode(episode: Episode) {
         print("Downloading episode using Alamofire at stream url:", episode.streamUrl)
+        if getEpisodeLocalUrl(episode: episode) != nil {
+            print("Episode already downloaded")
+        }
         let downloadRequest = DownloadRequest.suggestedDownloadDestination()
+        try! DB.shared.updateDownload(episode: episode, download: true)
         Alamofire.download(episode.streamUrl, to: downloadRequest).downloadProgress { (progress) in
             //            print(progress.fractionCompleted)
             // I want to notify DownloadsController about my download progress somehow?
             NotificationCenter.default.post(name: .downloadProgress, object: nil, userInfo: ["id": episode.id ?? 0, "progress": progress.fractionCompleted])
             }.response { (resp) in
-                print(resp.destinationURL?.absoluteString ?? "")
+                let url = resp.destinationURL?.absoluteString
+                print("download complete episode to", url)
+                if FileManager.default.fileExists(atPath: url!) {
+                    print("File Exists")
+                } else {
+                    print("*** downloaded file does not exist ***")
+                }
                 NotificationCenter.default.post(name: .downloadComplete, object: nil, userInfo: ["id": episode.id!])
         }
+    }
+    
+    func getEpisodeLocalUrl(episode: Episode) -> URL? {
+        // let's figure out the file name for our episode file url
+        guard let fileURL = URL(string: episode.streamUrl ) else { return nil}
+        let fileName = fileURL.lastPathComponent
+        guard var trueLocation = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil}
+        trueLocation.appendPathComponent(fileName)
+        print("Location of episode:", trueLocation.absoluteString)
+        if FileManager.default.fileExists(atPath: trueLocation.path) {
+            return trueLocation
+        }
+        return nil
+    }
+    
+    func deleteEpisode(episode: Episode) {
+        try! DB.shared.updateDownload(episode: episode, download: false)
     }
 }
 

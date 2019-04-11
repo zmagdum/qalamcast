@@ -50,6 +50,15 @@
                             </label>
                         </subviews>
                     </stackView>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhO-W9-4Hm" userLabel="Progress Label">
+                        <rect key="frame" x="40" y="78" width="77" height="34.5"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                        <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <size key="shadowOffset" width="0.0" height="1"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="ktQ-6l-hS7" secondAttribute="trailing" id="9Ci-6X-5IQ"/>
@@ -63,6 +72,7 @@
             <connections>
                 <outlet property="descriptionLabel" destination="8cF-Sg-Xsa" id="PSu-ph-hSd"/>
                 <outlet property="episodeImageView" destination="uLr-kx-CrX" id="Ey8-af-bti"/>
+                <outlet property="progressLabel" destination="zhO-W9-4Hm" id="Von-gh-44R"/>
                 <outlet property="pubDateLabel" destination="79j-qy-139" id="hQu-8B-iTV"/>
                 <outlet property="titleLabel" destination="v6r-EO-tzE" id="VjQ-UO-xd2"/>
             </connections>

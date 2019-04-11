@@ -39,4 +39,5 @@ class EpisodeCell2: UITableViewCell {
             titleLabel.numberOfLines = 2
         }
     }
+    @IBOutlet weak var progressLabel: UILabel!
 }

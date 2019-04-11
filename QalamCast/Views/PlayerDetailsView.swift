@@ -56,13 +56,9 @@ class PlayerDetailsView: UIView {
     fileprivate func playEpisodeUsingFileUrl() -> Bool {
         print("Attempt to play episode with downloaded file")
         // let's figure out the file name for our episode file url
-        guard let fileURL = URL(string: episode.streamUrl ) else { return false}
-        let fileName = fileURL.lastPathComponent
-        guard var trueLocation = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return false}
-        trueLocation.appendPathComponent(fileName)
-        print("True Location of episode:", trueLocation.absoluteString)
-        if FileManager.default.fileExists(atPath: trueLocation.absoluteString) {
-            let playerItem = AVPlayerItem(url: trueLocation)
+        let localUrl = APIService.shared.getEpisodeLocalUrl(episode: self.episode)
+        if localUrl != nil {
+            let playerItem = AVPlayerItem(url: localUrl!)
             player.replaceCurrentItem(with: playerItem)
             player.play()
             if episode.played! > 0.0 {

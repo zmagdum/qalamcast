@@ -99,4 +99,23 @@ class SeriesController : UITableViewController {
         play.image = #imageLiteral(resourceName: "play")
         return UISwipeActionsConfiguration(actions: [play])
     }
+    
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let series = self.categories[indexPath.row]
+        let moveToTop = UIContextualAction(style: .normal, title: "Move to Top") { (action, view, nil) in
+            print("Move to top", indexPath)
+            try! DB.shared.updateCategoryOrder(category: series, order: 1)
+            self.fetchEpisodes()
+        }
+        moveToTop.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+        moveToTop.image = #imageLiteral(resourceName: "double-up-50")
+        let removeFromTop = UIContextualAction(style: .normal, title: "Remove from Top") { (action, view, nil) in
+            print("Remove to top", indexPath)
+            try! DB.shared.updateCategoryOrder(category: series, order: 0)
+            self.fetchEpisodes()
+        }
+        removeFromTop.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        removeFromTop.image = #imageLiteral(resourceName: "multiply-50")
+        return UISwipeActionsConfiguration(actions: [series.order == 0 ? moveToTop : removeFromTop])
+    }
 }

@@ -21,7 +21,8 @@ struct Category: Decodable {
     var episodeCount: Int?
     var lastUpdated: Date?
     var tokens: [String]?
-    
+    var order: Int?
+
     init(row:Statement) throws {
         self.id = row.intValue("id") ?? 0
         self.title = row.stringValue("title")!
@@ -30,6 +31,7 @@ struct Category: Decodable {
         self.artwork = row.stringValue("artwork")!
         self.lastUpdated = Date(timeIntervalSince1970: row.doubleValue("lastUpdated") ?? 0)
         self.tokens = row.stringValue("tokens")?.components(separatedBy: ",")
+        self.order = row.intValue("order") ?? 0
     }
 
 }

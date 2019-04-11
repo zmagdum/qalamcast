@@ -32,6 +32,9 @@
 		BDE50D5B2249B831005B2605 /* EpisodesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE50D5A2249B831005B2605 /* EpisodesController.swift */; };
 		BDE50D5D224DB099005B2605 /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE50D5C224DB099005B2605 /* DB.swift */; };
 		BDE50D69225595D7005B2605 /* FavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE50D68225595D7005B2605 /* FavoritesController.swift */; };
+		BDFA9630225EAE99004D2FC8 /* DownloadsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFA962F225EAE99004D2FC8 /* DownloadsController.swift */; };
+		BDFA9632225FE76A004D2FC8 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFA9631225FE76A004D2FC8 /* SearchController.swift */; };
+		BDFA9634225FE82E004D2FC8 /* PodcastsSearchingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDFA9633225FE82E004D2FC8 /* PodcastsSearchingView.xib */; };
 		C58AC33E03884FE673011547 /* Pods_QalamCast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0985D2961478CBDFB3B12987 /* Pods_QalamCast.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +67,9 @@
 		BDE50D5A2249B831005B2605 /* EpisodesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodesController.swift; sourceTree = "<group>"; };
 		BDE50D5C224DB099005B2605 /* DB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DB.swift; sourceTree = "<group>"; };
 		BDE50D68225595D7005B2605 /* FavoritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesController.swift; sourceTree = "<group>"; };
+		BDFA962F225EAE99004D2FC8 /* DownloadsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadsController.swift; sourceTree = "<group>"; };
+		BDFA9631225FE76A004D2FC8 /* SearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		BDFA9633225FE82E004D2FC8 /* PodcastsSearchingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PodcastsSearchingView.xib; sourceTree = "<group>"; };
 		F042BA492FBFDAE2D74A076B /* Pods-QalamCast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QalamCast.release.xcconfig"; path = "Target Support Files/Pods-QalamCast/Pods-QalamCast.release.xcconfig"; sourceTree = "<group>"; };
 		F2BA30E6DCDB8F09FEA49E32 /* Pods-QalamCast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QalamCast.debug.xcconfig"; path = "Target Support Files/Pods-QalamCast/Pods-QalamCast.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -168,6 +174,7 @@
 		BDE50D4522446EBB005B2605 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BDFA9633225FE82E004D2FC8 /* PodcastsSearchingView.xib */,
 				BDE50D562249B74D005B2605 /* EpisodeCell2.swift */,
 				BDE50D572249B74D005B2605 /* EpisodeCell2.xib */,
 				BDE50D52224816E4005B2605 /* SeriesCell.swift */,
@@ -189,6 +196,8 @@
 		BDE50D4F22481698005B2605 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BDFA9631225FE76A004D2FC8 /* SearchController.swift */,
+				BDFA962F225EAE99004D2FC8 /* DownloadsController.swift */,
 				BDE50D5A2249B831005B2605 /* EpisodesController.swift */,
 				BDE50D50224816BA005B2605 /* SeriesController.swift */,
 				BDE50D68225595D7005B2605 /* FavoritesController.swift */,
@@ -258,6 +267,7 @@
 			files = (
 				BDE50D55224816E5005B2605 /* SeriesCell.xib in Resources */,
 				BDE50D4922446EDC005B2605 /* PlayerDetailsView.xib in Resources */,
+				BDFA9634225FE82E004D2FC8 /* PodcastsSearchingView.xib in Resources */,
 				BDBA6C8C2241B58E000486CD /* LaunchScreen.storyboard in Resources */,
 				BDE50D592249B74D005B2605 /* EpisodeCell2.xib in Resources */,
 				BDBA6C892241B58E000486CD /* Assets.xcassets in Resources */,
@@ -327,6 +337,8 @@
 				BDBA6C9D2241B5FD000486CD /* Podcast.swift in Sources */,
 				BDBA6C812241B58D000486CD /* ViewController.swift in Sources */,
 				BDBA6C7F2241B58D000486CD /* AppDelegate.swift in Sources */,
+				BDFA9630225EAE99004D2FC8 /* DownloadsController.swift in Sources */,
+				BDFA9632225FE76A004D2FC8 /* SearchController.swift in Sources */,
 				BDE50D582249B74D005B2605 /* EpisodeCell2.swift in Sources */,
 				BDE50D54224816E5005B2605 /* SeriesCell.swift in Sources */,
 				BDBA6CA12241B660000486CD /* ApiService.swift in Sources */,

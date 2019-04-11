@@ -24,6 +24,7 @@ struct Episode {
     var played: Double?
     var favorite: Bool?
     var duration: Double?
+    var download: Bool?
 
     init(feedItem: RSSFeedItem) {
         self.streamUrl = feedItem.enclosure?.attributes?.url ?? ""
@@ -42,6 +43,7 @@ struct Episode {
         self.duration = feedItem.iTunes?.iTunesDuration
         self.played = 0.0
         self.favorite = false
+        self.download = false
     }
     
     init(row:Statement) throws {
@@ -57,6 +59,7 @@ struct Episode {
         self.duration = row.doubleValue("duration")
         self.played = row.doubleValue("played")!
         self.favorite = row.intValue("favorite") ?? 0 == 1
+        self.download = row.intValue("download") ?? 0 == 1
     }
 
 }

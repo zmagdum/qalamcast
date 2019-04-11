@@ -22,6 +22,7 @@ let AppSchema = Schema(identifier:"contacts") { schema in
             contacts.column("artwork", type:.Text)
             contacts.column("tokens", type:.Text)
             contacts.column("episodeCount", type:.Integer)
+            contacts.column("order", type:.Integer)
             contacts.column("lastUpdated", type:.Real)
         }
         // Add an index
@@ -39,6 +40,7 @@ let AppSchema = Schema(identifier:"contacts") { schema in
             contacts.column("author", type:.Text)
             contacts.column("played", type:.Real)
             contacts.column("favorite", type:.Integer)
+            contacts.column("download", type:.Integer)
             contacts.column("pubDate", type:.Real)
             contacts.column("duration", type:.Real)
             contacts.column("streamUrl", type:.Text)
@@ -69,26 +71,6 @@ class DB {
             .documentDirectory, .userDomainMask, true
             ).first!
         self.db = try! Database(path: "\(path)/qalamcast.sqllite")
-//        try db.createTable("series", definitions: [
-//            "id INTEGER PRIMARY KEY",
-//            "title TEXT NOT NULL",
-//            "speakers TEXT",
-//            "artwork TEXT",
-//            "episodeCount INT",
-//            "lastUpdated DATE",
-//            "tokens TEXT"
-//            ])
-//        try db.createTable("episodes", definitions: [
-//            "id INTEGER PRIMARY KEY",
-//            "title TEXT NOT NULL UNIQUE",
-//            "category TEXT NOT NULL",
-//            "description TEXT",
-//            "imageUrl TEXT",
-//            "author TEXT",
-//            "pubDate DATE",
-//            "streamUrl TEXT",
-//            "shortTitle TEXT"
-//            ])
         // Migrate to the latest version:
 //        try AppSchema.reset(db)
         let didMigrate = try AppSchema.migrate(db)
@@ -126,6 +108,7 @@ class DB {
                 "speakers": category.speakers,
                 "tokens": category.tokens?.joined(separator: ","),
                 "episodeCount": category.episodeCount,
+                "order": category.order,
                 "lastUpdated": category.lastUpdated?.timeIntervalSince1970
             ]
         )
@@ -153,6 +136,9 @@ class DB {
     }
 
     func getFavoriteEpisodes() throws -> [Episode] {
+        if self.db == nil {
+            return []
+        }
         let episodes:[Episode] = try self.db.selectFrom(
             "episodes",
             whereExpr:"favorite = 1",
@@ -161,6 +147,30 @@ class DB {
         return episodes;
     }
 
+    func search(term: String) throws -> [Episode] {
+        if self.db == nil {
+            return []
+        }
+        let episodes:[Episode] = try self.db.selectFrom(
+            "episodes",
+            whereExpr:"title like '%" + term + "%'",
+            block: Episode.init
+        )
+        return episodes;
+    }
+
+    func getDownloadedEpisodes() throws -> [Episode] {
+        if self.db == nil {
+            return []
+        }
+        let episodes:[Episode] = try self.db.selectFrom(
+            "episodes",
+            whereExpr:"download = 1",
+            block: Episode.init
+        )
+        return episodes;
+    }
+    
     func getEpisode(id: Int) throws -> Episode {
         let episodes:[Episode] = try self.db.selectFrom(
             "episodes",
@@ -178,7 +188,7 @@ class DB {
             "categories",
             block: Category.init
         )
-        categories.sort{ $0.title! < $1.title! }
+        categories.sort{ ($1.order!, $0.title!) < ($0.order!, $1.title!) }
         return categories;
     }
     
@@ -190,4 +200,12 @@ class DB {
         try self.db.update("episodes", set: ["played": episode.played], whereExpr: "title = '" + episode.title + "'")
     }
     
+    func updateDownload(episode: Episode, download: Bool) throws {
+        try self.db.update("episodes", set: ["download": download ? 1 : 0], whereExpr: "title = '" + episode.title + "'")
+    }
+    func updateCategoryOrder(category: Category, order: Int) throws {
+        try self.db.update("categories", set: ["order": 0])
+        try self.db.update("categories", set: ["order": order], whereExpr: "id = \(category.id ?? 0)")
+    }
+
 }

@@ -72,14 +72,8 @@ class EpisodesController : UITableViewController {
         let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController
         let episode = self.episodes[indexPath.row]
         mainTabBarController?.maximizePlayerDetails(episode: episode)
-//
-//        print("Trying to play ", episode.title)
-//        let window = UIApplication.shared.keyWindow
-//        let playerDetailsView = PlayerDetailsView.initFromNib()
-//        playerDetailsView.episode = episode
-//        playerDetailsView.frame = self.view.frame
-//        window?.addSubview(playerDetailsView)
     }
+    
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let play = UIContextualAction(style: .normal, title: "Played") { (action, view, nil) in
             print("mark listened")
@@ -95,7 +89,7 @@ class EpisodesController : UITableViewController {
         play.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
         play.image = #imageLiteral(resourceName: "icons8-checkmark-filled-50")
         let download = UIContextualAction(style: .normal, title: "Download") { (action, view, nil) in
-            print("download")
+            APIService.shared.downloadEpisode(episode: self.episodes[indexPath.row])
         }
         download.backgroundColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
         download.image = #imageLiteral(resourceName: "icons8-download-from-the-cloud-50")
