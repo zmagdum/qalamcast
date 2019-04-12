@@ -206,6 +206,8 @@ class APIService {
     
     func deleteEpisode(episode: Episode) {
         try! DB.shared.updateDownload(episode: episode, download: false)
+        let url = getEpisodeLocalUrl(episode: episode)
+        try! FileManager.default.removeItem(at: url!)
     }
 }
 

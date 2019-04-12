@@ -40,13 +40,19 @@ class SearchController: UITableViewController, UISearchBarDelegate {
     var timer: Timer?
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
         episodes = []
         tableView.reloadData()
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (timer) in
             self.episodes = try! DB.shared.search(term: searchText)
+            self.refreshView()
         })
+    }
+    
+    fileprivate func refreshView() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     fileprivate func setupTableView() {

@@ -148,14 +148,15 @@ class DB {
     }
 
     func search(term: String) throws -> [Episode] {
-        if self.db == nil {
+        if self.db == nil || term.count == 0 {
             return []
         }
-        let episodes:[Episode] = try self.db.selectFrom(
+        var episodes:[Episode] = try self.db.selectFrom(
             "episodes",
-            whereExpr:"title like '%" + term + "%'",
+            whereExpr:"title like '%" + term + "%' or author like '%" + term + "%'" ,
             block: Episode.init
         )
+        episodes.sort{$1.pubDate < $0.pubDate}
         return episodes;
     }
 
