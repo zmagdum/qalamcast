@@ -31,7 +31,8 @@ class DownloadsController: UITableViewController {
         guard let episodeDownloadComplete = notification.object as? APIService.EpisodeDownloadCompleteTuple else { return }
         guard let index = self.episodes.index(where: { $0.title == title }) else { return }
         guard let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? EpisodeCell2 else { return }
-        cell.progressLabel.isHidden = true
+        cell.downloadProgressBar.isHidden = true
+        //cell.progressLabel.isHidden = true
     }
     
     @objc fileprivate func handleDownloadProgress(notification: Notification) {
@@ -46,11 +47,15 @@ class DownloadsController: UITableViewController {
         guard let index = self.episodes.index(where: { $0.id == id }) else { return }
         
         guard let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? EpisodeCell2 else { return }
-        cell.progressLabel.text = "\(Int(progress * 100))%"
-        cell.progressLabel.isHidden = false
-        
+        //cell.progressLabel.text = "\(Int(progress * 100))%"
+        cell.downloadProgressBar.setProgress(Float(progress), animated: true)
+
+        //cell.progressLabel.isHidden = false
+        cell.downloadProgressBar.isHidden = false
+
         if progress == 1 {
-            cell.progressLabel.isHidden = true
+            //cell.progressLabel.isHidden = true
+            cell.downloadProgressBar.isHidden = true
         }
     }
     

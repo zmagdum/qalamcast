@@ -59,18 +59,25 @@
                         <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <size key="shadowOffset" width="0.0" height="1"/>
                     </label>
+                    <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Y5e-n2-Bdk">
+                        <rect key="frame" x="28" y="179" width="373" height="2"/>
+                    </progressView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="ktQ-6l-hS7" secondAttribute="trailing" id="9Ci-6X-5IQ"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Y5e-n2-Bdk" secondAttribute="bottom" id="C5j-CX-lGz"/>
                     <constraint firstItem="ktQ-6l-hS7" firstAttribute="leading" secondItem="uLr-kx-CrX" secondAttribute="trailing" constant="16" id="Smp-4c-NON"/>
                     <constraint firstItem="uLr-kx-CrX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="ZUx-YH-jbI"/>
                     <constraint firstItem="uLr-kx-CrX" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="a6u-Uz-8fo"/>
+                    <constraint firstItem="Y5e-n2-Bdk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="bWO-yH-iqn"/>
                     <constraint firstItem="ktQ-6l-hS7" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="hyc-RV-ztt"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Y5e-n2-Bdk" secondAttribute="trailing" constant="8" id="wxb-UE-o9U"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="descriptionLabel" destination="8cF-Sg-Xsa" id="PSu-ph-hSd"/>
+                <outlet property="downloadProgressBar" destination="Y5e-n2-Bdk" id="LhB-F2-Fwb"/>
                 <outlet property="episodeImageView" destination="uLr-kx-CrX" id="Ey8-af-bti"/>
                 <outlet property="progressLabel" destination="zhO-W9-4Hm" id="Von-gh-44R"/>
                 <outlet property="pubDateLabel" destination="79j-qy-139" id="hQu-8B-iTV"/>

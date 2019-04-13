@@ -105,6 +105,45 @@ class SearchController: UITableViewController, UISearchBarDelegate {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 132
     }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let play = UIContextualAction(style: .normal, title: "Played") { (action, view, nil) in
+            print("mark listened")
+            do {
+                self.episodes[indexPath.row].played = (self.episodes[indexPath.row].played?.isLess(than: self.episodes[indexPath.row].duration!))! ? self.episodes[indexPath.row].duration : 0
+                try DB.shared.updatePlayed(episode: self.episodes[indexPath.row])
+                self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
+                self.refreshView()
+            } catch {
+                print("Error Loading Episodes")
+            }
+        }
+        play.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+        play.image = #imageLiteral(resourceName: "icons8-checkmark-filled-50")
+        let download = UIContextualAction(style: .normal, title: "Download") { (action, view, nil) in
+            APIService.shared.downloadEpisode(episode: self.episodes[indexPath.row])
+        }
+        download.backgroundColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
+        download.image = #imageLiteral(resourceName: "icons8-download-from-the-cloud-50")
+        let favorites = UIContextualAction(style: .normal, title: "Favorites") { (action, view, nil) in
+            print("mark favorites")
+            do {
+                self.episodes[indexPath.row].favorite = !self.episodes[indexPath.row].favorite!
+                try DB.shared.updateFavorite(episode: self.episodes[indexPath.row])
+                self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
+                self.refreshView()
+            } catch {
+                print("Error marking favorite \(error)")
+            }
+        }
+        favorites.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        favorites.image = #imageLiteral(resourceName: "icons8-bookmark-50")
+        let config: UISwipeActionsConfiguration = UISwipeActionsConfiguration(actions: [play, download, favorites])
+        config.performsFirstActionWithFullSwipe = false
+        return config
+    }
+    
+
 }
 
 
