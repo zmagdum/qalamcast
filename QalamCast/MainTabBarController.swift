@@ -18,16 +18,6 @@ class MainTabBarController: UITabBarController {
         view.backgroundColor = .green
         setupViewControllers()
         setupPlayerDetailsView()
-//        APIService.shared.loadCategoriesWithEpisodes() { (categories) in
-//            for cat in categories {
-//                print("Category", cat)
-//            }
-//        }
-//        do {
-//            print("Found Categories ", try DB.shared.getCategories().count)
-//        } catch {
-//            print("Error getting categories \(error)")
-//        }
 
         do {
             try DB.shared.createDatabase()
@@ -44,7 +34,12 @@ class MainTabBarController: UITabBarController {
                 print("Error Saving episodes and categories")
             }
         }
-        
+        DispatchQueue.main.async {
+            let currentEpisode = DB.shared.getCurrentEpisode()
+            if currentEpisode != nil {
+                self.maximizePlayerDetails(episode: currentEpisode)
+            }
+        }
     }
 
     @objc func minimizePlayerDetails() {

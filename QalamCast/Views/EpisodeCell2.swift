@@ -20,15 +20,15 @@ class EpisodeCell2: UITableViewCell {
             let url = URL(string: episode.imageUrl ?? "")
             episodeImageView.sd_setImage(with: url, completed: nil)
             if episode.played! == episode.duration! {
-                titleLabel.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+                let heartImage = UIImage(named: "green_circle_check")
+                let imageView = UIImageView(image: heartImage)
+                episodeImageView.addSubview(imageView)
             }
             if episode.favorite! {
                 let heartImage = UIImage(named: "favorites")
                 let imageView = UIImageView(image: heartImage)
                 episodeImageView.addSubview(imageView)
-                //self.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
             }
-            
         }
     }
     @IBOutlet weak var episodeImageView: UIImageView!

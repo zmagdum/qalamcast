@@ -41,20 +41,13 @@ class DownloadsController: UITableViewController {
         guard let progress = userInfo["progress"] as? Double else { return }
         guard let id = userInfo["id"] as? Int else { return }
         
-        print(progress, id)
-        
-        // lets find the index using title
+        // lets find the index using id
         guard let index = self.episodes.index(where: { $0.id == id }) else { return }
         
         guard let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? EpisodeCell2 else { return }
-        //cell.progressLabel.text = "\(Int(progress * 100))%"
         cell.downloadProgressBar.setProgress(Float(progress), animated: true)
-
-        //cell.progressLabel.isHidden = false
         cell.downloadProgressBar.isHidden = false
-
         if progress == 1 {
-            //cell.progressLabel.isHidden = true
             cell.downloadProgressBar.isHidden = true
         }
     }
@@ -86,7 +79,7 @@ class DownloadsController: UITableViewController {
         let episode = self.episodes[indexPath.row]
         episodes.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
-        APIService.shared.deleteEpisode(episode: episode)
+        DB.shared.deleteEpisode(episode: episode)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

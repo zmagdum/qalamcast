@@ -15,6 +15,8 @@ extension Notification.Name {
     static let downloadComplete = NSNotification.Name("downloadComplete")
 }
 class APIService {
+    static let currentEpisodeId = "currentEpisodeId"
+
     typealias EpisodeDownloadCompleteTuple = (fileUrl: String, episodeTitle: String)
     let ignoreStartCharacters: [Character] = [" ", "–", ":"]
     // singleton
@@ -69,6 +71,7 @@ class APIService {
         }
         
         let feedUrl = "http://feeds.feedburner.com/QalamPodcast"
+//        let feedUrl = "https://podcasts.apple.com/us/podcast/qalam-institute-podcast/id424397634"
         APIService.shared.fetchEpisodes(feedUrl: feedUrl) { (received) in
             //print("Found episodes", episodes)
             var episodes = received
@@ -168,6 +171,14 @@ class APIService {
         }
     }
     
+    func downloadEpisodes(episodes: [Episode]) {
+        for episode in episodes {
+            //try! DB.shared.updateDownload(episode: episode, download: true)
+            //TODO: Limit simultenous downloads 
+            downloadEpisode(episode: episode)
+        }
+    }
+    
     func downloadEpisode(episode: Episode) {
         print("Downloading episode using Alamofire at stream url:", episode.streamUrl)
         if getEpisodeLocalUrl(episode: episode) != nil {
@@ -202,12 +213,6 @@ class APIService {
             return trueLocation
         }
         return nil
-    }
-    
-    func deleteEpisode(episode: Episode) {
-        try! DB.shared.updateDownload(episode: episode, download: false)
-        let url = getEpisodeLocalUrl(episode: episode)
-        try! FileManager.default.removeItem(at: url!)
     }
 }
 

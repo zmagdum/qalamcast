@@ -24,14 +24,6 @@ class SeriesController : UITableViewController {
         } catch {
             print("Could not load categories")
         }
-        
-//        APIService.shared.loadCategoriesWithEpisodes() { (categories, episodes) in
-//            self.categories = categories
-//            self.categories.sort{ $0.title! < $1.title! }
-//            DispatchQueue.main.async {
-//                self.tableView.reloadData()
-//            }
-//        }
     }
 
     override func viewDidLoad() {
@@ -84,11 +76,10 @@ class SeriesController : UITableViewController {
             print("Play Next", indexPath)
             let series = self.categories[indexPath.row]
             do {
-                var episodes = try DB.shared.getEpisodesForSeries(series: (series.title)!)
-                if episodes.count > 0 {
-                    episodes.sort{ $0.pubDate < $1.pubDate }
+                var toPlay = self.getEpisodeToPlay(series: series)
+                if toPlay != nil {
                     let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController
-                    mainTabBarController?.maximizePlayerDetails(episode: episodes[0])
+                    mainTabBarController?.maximizePlayerDetails(episode: toPlay)
                 }
             } catch {
                 print("Error Loading Episodes")
@@ -116,6 +107,37 @@ class SeriesController : UITableViewController {
         }
         removeFromTop.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         removeFromTop.image = #imageLiteral(resourceName: "multiply-50")
-        return UISwipeActionsConfiguration(actions: [series.order == 0 ? moveToTop : removeFromTop])
+        let download = UIContextualAction(style: .normal, title: "Download") { (action, view, nil) in
+            let episodes = try! DB.shared.getEpisodesForSeries(series: self.categories[indexPath.row].title ?? "")
+            APIService.shared.downloadEpisodes(episodes: episodes)
+        }
+        download.backgroundColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
+        download.image = #imageLiteral(resourceName: "icons8-download-from-the-cloud-50")
+        return UISwipeActionsConfiguration(actions: [series.order == 0 ? moveToTop : removeFromTop, download])
+    }
+    
+    func getEpisodeToPlay(series: Category) -> Episode? {
+        do {
+            // see whether current episode belong to this series
+            let currentEpisode = DB.shared.getCurrentEpisode()
+            if currentEpisode?.category == series.title {
+                return currentEpisode
+            }
+            // get all episodes
+            var episodes = try DB.shared.getEpisodesForSeries(series: (series.title)!)
+            // find the playing episodes and return least recent one from that
+            var playingEpisodes = episodes.filter{$0.played! > 0.0 && $0.played! < $0.duration!}
+            if playingEpisodes.count > 0 {
+                playingEpisodes.sort{ $0.pubDate < $1.pubDate }
+                return playingEpisodes[0]
+            }
+            // find the least recent from all episodes
+            if episodes.count > 0 {
+                return episodes[0]
+            }
+        } catch {
+            print("Error Loading Episodes")
+        }
+        return nil
     }
 }

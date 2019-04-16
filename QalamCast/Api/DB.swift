@@ -72,7 +72,7 @@ class DB {
             ).first!
         self.db = try! Database(path: "\(path)/qalamcast.sqllite")
         // Migrate to the latest version:
-//        try AppSchema.reset(db)
+        try AppSchema.reset(db)
         let didMigrate = try AppSchema.migrate(db)
         // Get the database version:
         let migratedVersion = try db.queryUserVersionNumber()
@@ -135,6 +135,15 @@ class DB {
         return episodes;
     }
 
+    func getUnplayedCount(series: String) throws -> Int {
+        let episodes:[Episode] = try self.db.selectFrom(
+            "episodes",
+            whereExpr:"category = '" + series + "' and (duration - played) > 3",
+            block: Episode.init
+        )
+        return episodes.count;
+    }
+    
     func getFavoriteEpisodes() throws -> [Episode] {
         if self.db == nil {
             return []
@@ -208,5 +217,28 @@ class DB {
         try self.db.update("categories", set: ["order": 0])
         try self.db.update("categories", set: ["order": order], whereExpr: "id = \(category.id ?? 0)")
     }
-
+    
+    func deleteEpisode(episode: Episode) {
+        try! DB.shared.updateDownload(episode: episode, download: false)
+        let url = APIService.shared.getEpisodeLocalUrl(episode: episode)
+        try! FileManager.default.removeItem(at: url!)
+    }
+    
+    func saveCurrentEpisode(episode: Episode) {
+        let defaults = UserDefaults.standard
+        defaults.set(episode.id, forKey: APIService.currentEpisodeId)
+    }
+    
+    func getCurrentEpisode() -> Episode? {
+        let defaults = UserDefaults.standard
+        let id = defaults.integer(forKey: APIService.currentEpisodeId)
+        if id > 0 {
+            do {
+                return try getEpisode(id: id)
+            } catch {
+                return nil
+            }
+        }
+        return nil
+    }
 }
