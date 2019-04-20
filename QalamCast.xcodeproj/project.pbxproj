@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD39566E2266A7A80044277C /* PlayerDetailsView+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD39566D2266A7A80044277C /* PlayerDetailsView+Gestures.swift */; };
+		BD3956702266A8380044277C /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD39566F2266A8380044277C /* UIApplication.swift */; };
 		BDBA6C7F2241B58D000486CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBA6C7E2241B58D000486CD /* AppDelegate.swift */; };
 		BDBA6C812241B58D000486CD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBA6C802241B58D000486CD /* ViewController.swift */; };
 		BDBA6C842241B58D000486CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDBA6C822241B58D000486CD /* Main.storyboard */; };
@@ -40,6 +42,8 @@
 
 /* Begin PBXFileReference section */
 		0985D2961478CBDFB3B12987 /* Pods_QalamCast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QalamCast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD39566D2266A7A80044277C /* PlayerDetailsView+Gestures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PlayerDetailsView+Gestures.swift"; sourceTree = "<group>"; };
+		BD39566F2266A8380044277C /* UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		BDBA6C7B2241B58D000486CD /* QalamCast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QalamCast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDBA6C7E2241B58D000486CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BDBA6C802241B58D000486CD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +152,7 @@
 				BDBA6C942241B5E8000486CD /* String.swift */,
 				BDBA6C952241B5E8000486CD /* CMTime.swift */,
 				BDBA6C962241B5E8000486CD /* RSSFeed.swift */,
+				BD39566F2266A8380044277C /* UIApplication.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -179,6 +184,7 @@
 				BDE50D572249B74D005B2605 /* EpisodeCell2.xib */,
 				BDE50D52224816E4005B2605 /* SeriesCell.swift */,
 				BDE50D53224816E4005B2605 /* SeriesCell.xib */,
+				BD39566D2266A7A80044277C /* PlayerDetailsView+Gestures.swift */,
 				BDE50D4622446EDC005B2605 /* PlayerDetailsView.swift */,
 				BDE50D4722446EDC005B2605 /* PlayerDetailsView.xib */,
 			);
@@ -339,6 +345,7 @@
 				BDBA6C9E2241B5FD000486CD /* Episode.swift in Sources */,
 				BDBA6CA32241B68E000486CD /* MainTabBarController.swift in Sources */,
 				BDE50D5B2249B831005B2605 /* EpisodesController.swift in Sources */,
+				BD39566E2266A7A80044277C /* PlayerDetailsView+Gestures.swift in Sources */,
 				BDBA6C9D2241B5FD000486CD /* Podcast.swift in Sources */,
 				BDBA6C812241B58D000486CD /* ViewController.swift in Sources */,
 				BDBA6C7F2241B58D000486CD /* AppDelegate.swift in Sources */,
@@ -348,6 +355,7 @@
 				BDE50D54224816E5005B2605 /* SeriesCell.swift in Sources */,
 				BDBA6CA12241B660000486CD /* ApiService.swift in Sources */,
 				BDBA6C972241B5E8000486CD /* String.swift in Sources */,
+				BD3956702266A8380044277C /* UIApplication.swift in Sources */,
 				BDE50D69225595D7005B2605 /* FavoritesController.swift in Sources */,
 				BDBA6C982241B5E8000486CD /* CMTime.swift in Sources */,
 				BDE50D4822446EDC005B2605 /* PlayerDetailsView.swift in Sources */,
@@ -508,7 +516,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jannaconsulting.QalamCast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -527,7 +535,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jannaconsulting.QalamCast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
