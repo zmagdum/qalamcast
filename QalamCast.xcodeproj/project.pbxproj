@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		BD39566E2266A7A80044277C /* PlayerDetailsView+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD39566D2266A7A80044277C /* PlayerDetailsView+Gestures.swift */; };
 		BD3956702266A8380044277C /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD39566F2266A8380044277C /* UIApplication.swift */; };
+		BD553636226B75F300D97360 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BD553635226B75F300D97360 /* Settings.bundle */; };
+		BD553638226B79B100D97360 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD553637226B79B100D97360 /* SettingsController.swift */; };
+		BD55363A226B7E0500D97360 /* SettingsBundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD553639226B7E0500D97360 /* SettingsBundleHelper.swift */; };
 		BDBA6C7F2241B58D000486CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBA6C7E2241B58D000486CD /* AppDelegate.swift */; };
 		BDBA6C812241B58D000486CD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBA6C802241B58D000486CD /* ViewController.swift */; };
 		BDBA6C842241B58D000486CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDBA6C822241B58D000486CD /* Main.storyboard */; };
@@ -44,6 +47,9 @@
 		0985D2961478CBDFB3B12987 /* Pods_QalamCast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QalamCast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD39566D2266A7A80044277C /* PlayerDetailsView+Gestures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PlayerDetailsView+Gestures.swift"; sourceTree = "<group>"; };
 		BD39566F2266A8380044277C /* UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		BD553635226B75F300D97360 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		BD553637226B79B100D97360 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		BD553639226B7E0500D97360 /* SettingsBundleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleHelper.swift; sourceTree = "<group>"; };
 		BDBA6C7B2241B58D000486CD /* QalamCast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QalamCast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDBA6C7E2241B58D000486CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BDBA6C802241B58D000486CD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +146,7 @@
 				BDBA6C882241B58E000486CD /* Assets.xcassets */,
 				BDBA6C8A2241B58E000486CD /* LaunchScreen.storyboard */,
 				BDBA6C8D2241B58E000486CD /* Info.plist */,
+				BD553635226B75F300D97360 /* Settings.bundle */,
 				BDBA6CA22241B68E000486CD /* MainTabBarController.swift */,
 				BDBA6C852241B58D000486CD /* QalamCast.xcdatamodeld */,
 			);
@@ -172,6 +179,7 @@
 			children = (
 				BDBA6CA02241B660000486CD /* ApiService.swift */,
 				BDE50D5C224DB099005B2605 /* DB.swift */,
+				BD553639226B7E0500D97360 /* SettingsBundleHelper.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -207,6 +215,7 @@
 				BDE50D5A2249B831005B2605 /* EpisodesController.swift */,
 				BDE50D50224816BA005B2605 /* SeriesController.swift */,
 				BDE50D68225595D7005B2605 /* FavoritesController.swift */,
+				BD553637226B79B100D97360 /* SettingsController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -283,6 +292,7 @@
 				BDE50D592249B74D005B2605 /* EpisodeCell2.xib in Resources */,
 				BDBA6C892241B58E000486CD /* Assets.xcassets in Resources */,
 				BDE50D4C22469B7C005B2605 /* categories.json in Resources */,
+				BD553636226B75F300D97360 /* Settings.bundle in Resources */,
 				BDBA6C842241B58D000486CD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -357,10 +367,12 @@
 				BDBA6C972241B5E8000486CD /* String.swift in Sources */,
 				BD3956702266A8380044277C /* UIApplication.swift in Sources */,
 				BDE50D69225595D7005B2605 /* FavoritesController.swift in Sources */,
+				BD55363A226B7E0500D97360 /* SettingsBundleHelper.swift in Sources */,
 				BDBA6C982241B5E8000486CD /* CMTime.swift in Sources */,
 				BDE50D4822446EDC005B2605 /* PlayerDetailsView.swift in Sources */,
 				BDE50D51224816BA005B2605 /* SeriesController.swift in Sources */,
 				BDBA6C872241B58D000486CD /* QalamCast.xcdatamodeld in Sources */,
+				BD553638226B79B100D97360 /* SettingsController.swift in Sources */,
 				BDE50D4E22469BFB005B2605 /* Category.swift in Sources */,
 				BDE50D5D224DB099005B2605 /* DB.swift in Sources */,
 			);

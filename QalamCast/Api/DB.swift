@@ -72,7 +72,7 @@ class DB {
             ).first!
         self.db = try! Database(path: "\(path)/qalamcast.sqllite")
         // Migrate to the latest version:
-        try AppSchema.reset(db)
+        //try AppSchema.reset(db)
         let didMigrate = try AppSchema.migrate(db)
         // Get the database version:
         let migratedVersion = try db.queryUserVersionNumber()

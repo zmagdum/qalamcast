@@ -1,6 +1,6 @@
 //
 //  MainTabBarController.swift
-//  PodcastSeries
+//  QalamCast
 //
 //  Created by Zakir Magdum on 5/26/18.
 //  Copyright © 2018 Zakir Magdum. All rights reserved.
@@ -81,6 +81,8 @@ class MainTabBarController: UITabBarController {
             generateNavigationCOntroller(with: SearchController(), title: "Search", image: #imageLiteral(resourceName: "search")),
             generateNavigationCOntroller(with: FavoritesController(), title: "Favorites", image: #imageLiteral(resourceName: "heart-outline-50")),
             generateNavigationCOntroller(with: DownloadsController(), title: "Downloads", image: #imageLiteral(resourceName: "downloads"))
+//            ,generateNavigationCOntroller(with: SettingsController(), title: "Settings", image: #imageLiteral(resourceName: "settings"))
+
         ]
     }
 

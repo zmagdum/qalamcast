@@ -1,6 +1,5 @@
 //
-//  EpisodesController.swift
-//  PodcastSeries
+//  SeriesController.swift
 //
 //  Created by Zakir Magdum on 5/28/18.
 //  Copyright © 2018 Zakir Magdum. All rights reserved.
@@ -42,7 +41,7 @@ class SeriesController : UITableViewController {
     
     //MARK:- UITableView
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        let activityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
         activityIndicatorView.color = .darkGray
         activityIndicatorView.startAnimating()
         return activityIndicatorView

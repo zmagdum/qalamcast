@@ -1,6 +1,6 @@
 //
 //  Podcast.swift
-//  PodcastSeries
+//  QalamCast
 //
 //  Created by Zakir Magdum on 5/26/18.
 //  Copyright © 2018 Zakir Magdum. All rights reserved.

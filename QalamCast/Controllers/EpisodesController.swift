@@ -44,7 +44,7 @@ class EpisodesController : UITableViewController {
     }
     //MARK:- UITableView
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        let activityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
         activityIndicatorView.color = .darkGray
         activityIndicatorView.startAnimating()
         return activityIndicatorView
@@ -80,7 +80,7 @@ class EpisodesController : UITableViewController {
             do {
                 self.episodes[indexPath.row].played = (self.episodes[indexPath.row].played?.isLess(than: self.episodes[indexPath.row].duration!))! ? self.episodes[indexPath.row].duration : 0
                 try DB.shared.updatePlayed(episode: self.episodes[indexPath.row])
-                self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
+                self.tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.none)
                 self.refreshView()
             } catch {
                 print("Error Loading Episodes")
@@ -98,7 +98,7 @@ class EpisodesController : UITableViewController {
             do {
                 self.episodes[indexPath.row].favorite = !self.episodes[indexPath.row].favorite!
                 try DB.shared.updateFavorite(episode: self.episodes[indexPath.row])
-                self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
+                self.tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.none)
                 self.refreshView()
             } catch {
                 print("Error marking favorite \(error)")

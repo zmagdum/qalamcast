@@ -1,9 +1,9 @@
 //
-//  PodcastsSearchController.swift
-//  PodcastsCourseLBTA
+//  SearchController.swift
+//  QalamCast
 //
-//  Created by Brian Voong on 2/14/18.
-//  Copyright © 2018 Brian Voong. All rights reserved.
+//  Created by Zakir Magdum on 5/28/18.
+//  Copyright © 2018 Zakir Magdum. All rights reserved.
 //
 
 import UIKit
@@ -112,7 +112,7 @@ class SearchController: UITableViewController, UISearchBarDelegate {
             do {
                 self.episodes[indexPath.row].played = (self.episodes[indexPath.row].played?.isLess(than: self.episodes[indexPath.row].duration!))! ? self.episodes[indexPath.row].duration : 0
                 try DB.shared.updatePlayed(episode: self.episodes[indexPath.row])
-                self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
+                self.tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.none)
                 self.refreshView()
             } catch {
                 print("Error Loading Episodes")
@@ -130,7 +130,7 @@ class SearchController: UITableViewController, UISearchBarDelegate {
             do {
                 self.episodes[indexPath.row].favorite = !self.episodes[indexPath.row].favorite!
                 try DB.shared.updateFavorite(episode: self.episodes[indexPath.row])
-                self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
+                self.tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.none)
                 self.refreshView()
             } catch {
                 print("Error marking favorite \(error)")

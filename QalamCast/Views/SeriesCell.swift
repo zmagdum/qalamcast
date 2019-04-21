@@ -1,6 +1,6 @@
 //
 //  EpisodeCell2.swift
-//  PodcastSeries
+//  QalamCast
 //
 //  Created by Zakir Magdum on 5/31/18.
 //  Copyright © 2018 Zakir Magdum. All rights reserved.
@@ -17,9 +17,9 @@ class SeriesCell : UITableViewCell {
             dateFormatter.dateFormat = "MMM dd, yyyy"
             //let lastUpdated = dateFormatter.string(from: series.lastUpdated!)
             let unplayed = try! DB.shared.getUnplayedCount(series: series.title ?? "")
-            var desc = "Total \(series.episodeCount ?? 0) Remaining \(unplayed)"
+            var desc = "Episodes \(series.episodeCount ?? 0) / \(unplayed)"
             if series.lastUpdated != nil {
-                desc += " Updated " + dateFormatter.string(from: series.lastUpdated!)
+                desc += " " + dateFormatter.string(from: series.lastUpdated!)
             }
             descriptionLabel.text = desc
             speakerNameLabel.text = series.speakers

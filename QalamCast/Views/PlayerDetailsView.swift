@@ -1,6 +1,6 @@
 //
 //  PlayerDetailsView.swift
-//  PodcastSeries
+//  QalamCast
 //
 //  Created by Zakir Magdum on 6/2/18.
 //  Copyright © 2018 Zakir Magdum. All rights reserved.
@@ -29,6 +29,9 @@ class PlayerDetailsView: UIView {
                 miniPlayerTitleLabel.text = episode.shortTitle
                 episodeTitle.text = episode.shortTitle
                 authorLabel.text = episode.author
+                if episode.duration! - episode.played! < 2 {
+                    episode.played = 0
+                }
                 setupNowPlayingInfo()
                 setupAudioSession()
                 playEpisode()
@@ -42,8 +45,6 @@ class PlayerDetailsView: UIView {
     fileprivate func playEpisode() {
         print("Trying to play url", episode.streamUrl, " ", episode.played)
         guard let url = URL(string: episode.streamUrl) else {return }
-        //try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-        //try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [])
         if !playEpisodeUsingFileUrl() {
             playEpisode(url: url)
         }
@@ -55,7 +56,7 @@ class PlayerDetailsView: UIView {
         player.replaceCurrentItem(with: playerItem)
         player.play()
         if episode.played! > 0.0 {
-            let seekTime = CMTimeMakeWithSeconds(episode.played!, Int32(NSEC_PER_SEC))
+            let seekTime = CMTimeMakeWithSeconds(episode.played!, preferredTimescale: Int32(NSEC_PER_SEC))
             player.seek(to: seekTime)
         }
     }
@@ -69,7 +70,7 @@ class PlayerDetailsView: UIView {
             player.replaceCurrentItem(with: playerItem)
             player.play()
             if episode.played! > 0.0 {
-                let seekTime = CMTimeMakeWithSeconds(episode.played!, Int32(NSEC_PER_SEC))
+                let seekTime = CMTimeMakeWithSeconds(episode.played!, preferredTimescale: Int32(NSEC_PER_SEC))
                 player.seek(to: seekTime)
             }
             return true
@@ -93,7 +94,7 @@ class PlayerDetailsView: UIView {
             do {
                 try DB.shared.updatePlayed(episode: (self?.episode!)!)
             } catch {
-                print("Error updating played \(error)", self?.episode)
+                print("Error updating played \(error)", self?.episode as Any)
             }
         }
     }
@@ -150,50 +151,32 @@ class PlayerDetailsView: UIView {
         commandCenter.previousTrackCommand.addTarget(self, action: #selector(handlePrevTrack))
     }
 
-    var playlistEpisodes = [Episode]()
+    //var playlistEpisodes = [Episode]()
     
     @objc fileprivate func handlePrevTrack() {
-        // 1. check if playlistEpisodes.count == 0 then return
-        // 2. find out current episode index
-        // 3. if episode index is 0, wrap to end of list somehow..
-        // otherwise play episode index - 1
-        if playlistEpisodes.isEmpty {
-            return
-        }
-        
-        let currentEpisodeIndex = playlistEpisodes.index { (ep) -> Bool in
-            return self.episode.title == ep.title && self.episode.author == ep.author
+        let seriesEpisodes = try! DB.shared.getEpisodesForSeries(series: episode.category)
+
+        let currentEpisodeIndex = seriesEpisodes.index { (ep) -> Bool in
+            return self.episode.title == ep.title
         }
         guard let index = currentEpisodeIndex else { return }
-        let prevEpisode: Episode
-        if index == 0 {
-            let count = playlistEpisodes.count
-            prevEpisode = playlistEpisodes[count - 1]
-        } else {
-            prevEpisode = playlistEpisodes[index - 1]
+        if index < seriesEpisodes.count {
+            self.episode = seriesEpisodes[index + 1]
         }
-        self.episode = prevEpisode
     }
     
     @objc fileprivate func handleNextTrack() {
-        if playlistEpisodes.count == 0 {
+        let seriesEpisodes = try! DB.shared.getEpisodesForSeries(series: episode.category)
+        if seriesEpisodes.count == 0 {
             return
         }
-        
-        let currentEpisodeIndex = playlistEpisodes.index { (ep) -> Bool in
-            return self.episode.title == ep.title && self.episode.author == ep.author
+        let currentEpisodeIndex = seriesEpisodes.index { (ep) -> Bool in
+            return self.episode.title == ep.title
         }
-        
         guard let index = currentEpisodeIndex else { return }
-        
-        let nextEpisode: Episode
-        if index == playlistEpisodes.count - 1 {
-            nextEpisode = playlistEpisodes[0]
-        } else {
-            nextEpisode = playlistEpisodes[index + 1]
+        if index > 0 {
+            self.episode = seriesEpisodes[index - 1]
         }
-        
-        self.episode = nextEpisode
     }
 
     fileprivate func setupElapsedTime(playbackRate: Float) {
@@ -202,63 +185,108 @@ class PlayerDetailsView: UIView {
         MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPNowPlayingInfoPropertyPlaybackRate] = playbackRate
     }
     
+    fileprivate func observeBoundaryTime() {
+        let time = CMTimeMake(value: 1, timescale: 3)
+        let times = [NSValue(time: time)]
+        
+        // player has a reference to self
+        // self has a reference to player
+        player.addBoundaryTimeObserver(forTimes: times, queue: .main) { [weak self] in
+            print("Episode started playing")
+            self?.enlargeEpisodeImageView()
+            self?.setupLockscreenDuration()
+        }
+    }
+    
+    fileprivate func setupLockscreenDuration() {
+        guard let duration = player.currentItem?.duration else { return }
+        let durationSeconds = CMTimeGetSeconds(duration)
+        MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPMediaItemPropertyPlaybackDuration] = durationSeconds
+    }
+    
+    fileprivate func observePlayerCurrentTime() {
+        let interval = CMTimeMake(value: 1, timescale: 2)
+        player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { [weak self] (time) in
+            self?.startTimeLabel.text = time.toDisplayString()
+            let durationTime = self?.player.currentItem?.duration
+            self?.endTimeLabel.text = durationTime?.toDisplayString()
+            
+            self?.updateCurrentTimeSlider()
+        }
+    }
+    
     fileprivate func updateCurrentTimeSlider() {
         let currentTimeSeconds = CMTimeGetSeconds(player.currentTime())
-        let durationSeconds = CMTimeGetSeconds(player.currentItem?.duration ?? CMTimeMake(1,1))
+        let durationSeconds = CMTimeGetSeconds(player.currentItem?.duration ?? CMTimeMake(value: 1,timescale: 1))
         let percentage = currentTimeSeconds / durationSeconds
         self.currentTimeSlider.value = Float(percentage)
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        setupRemoteControl()
+        setupGestures()
+        setupInterruptionObserver()
+        observePlayerCurrentTime()
+        observeBoundaryTime()
+
+        
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapMaximize)))
         addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePan)))
 
-        let time = CMTimeMake(1, 3)
+        let time = CMTimeMake(value: 1, timescale: 3)
         let times = [NSValue(time: time)]
-        let interval = CMTimeMake(1, 2)
+        let interval = CMTimeMake(value: 1, timescale: 2)
         oberverPlayerCurrentTime(interval)
         player.addBoundaryTimeObserver(forTimes: times, queue: .main) { [weak self] in
             self?.enlargeEpisodeImageView()
         }
     }
    
-    @objc func handlePan(gesture: UIPanGestureRecognizer) {
-        //        print("Panning")
-        if gesture.state == .began {
-            print("Began")
-        } else if gesture.state == .changed {
-            
-            let translation = gesture.translation(in: self.superview)
-            self.transform = CGAffineTransform(translationX: 0, y: translation.y)
-            
-            self.miniPlayerView.alpha = 1 + translation.y / 200
-            self.maxPlayerView.alpha = -translation.y / 200
-            
-            print(translation.y)
-            
+    var panGesture: UIPanGestureRecognizer!
+    
+    fileprivate func setupGestures() {
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapMaximize)))
+        panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
+        miniPlayerView.addGestureRecognizer(panGesture)
+        
+        maxPlayerView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleDismissalPan)))
+    }
+    
+    @objc func handleDismissalPan(gesture: UIPanGestureRecognizer) {
+        print("maximizedStackView dismissal")
+        
+        if gesture.state == .changed {
+            let translation = gesture.translation(in: superview)
+            maxPlayerView.transform = CGAffineTransform(translationX: 0, y: translation.y)
         } else if gesture.state == .ended {
+            let translation = gesture.translation(in: superview)
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                self.maxPlayerView.transform = .identity
                 
-                self.transform = .identity
-                self.miniPlayerView.alpha = 1
-                self.maxPlayerView.alpha = 0
+                if translation.y > 50 {
+                    let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController
+                    mainTabBarController?.minimizePlayerDetails()
+                }
                 
             })
         }
     }
-
-    @objc func handleTapMaximize() {
-        let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController
-        mainTabBarController?.maximizePlayerDetails(episode: nil)
-    }
+    
     
     static func initFromNib() -> PlayerDetailsView {
         return Bundle.main.loadNibNamed("PlayerDetailsView", owner: self, options: nil)?.first as! PlayerDetailsView
     }
     
+    fileprivate func setupInterruptionObserver() {
+        // don't forget to remove self on deinit
+        NotificationCenter.default.addObserver(self, selector: #selector(handleInterruption), name: AVAudioSession.interruptionNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleDonePlaying), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
+    }
+    
     deinit {
-        print("PlayerDetailsView memory being reclaimed...")
+        NotificationCenter.default.removeObserver(self, name: AVAudioSession.interruptionNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
     }
     
     @objc fileprivate func handleInterruption(notification: Notification) {
@@ -286,7 +314,10 @@ class PlayerDetailsView: UIView {
             
         }
     }
-
+    @objc fileprivate func handleDonePlaying(notification: Notification) {
+        print("player ended up playing", episode)
+        handleNextTrack()
+    }
     //MARK:- Outlets and IBAction
     
     @IBOutlet weak var miniPlayerImageView: UIImageView!
@@ -360,8 +391,14 @@ class PlayerDetailsView: UIView {
         seekTimeToDelta(delta: -15)
     }
     
+    @IBAction func handleMoveToNext(_ sender: Any) {
+        handleNextTrack()
+    }
+    @IBAction func handleMoveToPrev(_ sender: Any) {
+        handlePrevTrack()
+    }
     fileprivate func seekTimeToDelta(delta: Float64) {
-        let fifteenSeconds = CMTimeMakeWithSeconds(delta, 1)
+        let fifteenSeconds = CMTimeMakeWithSeconds(delta, preferredTimescale: 1)
         let seekTime = CMTimeAdd(player.currentTime(), fifteenSeconds)
         player.seek(to: seekTime)
     }
@@ -370,7 +407,7 @@ class PlayerDetailsView: UIView {
         guard let duration = player.currentItem?.duration else {return}
         let durationInSeconds = CMTimeGetSeconds(duration)
         let seekTimeInSeconds = Float64(percentage) * durationInSeconds
-        let seekTime = CMTimeMakeWithSeconds(seekTimeInSeconds, Int32(NSEC_PER_SEC))
+        let seekTime = CMTimeMakeWithSeconds(seekTimeInSeconds, preferredTimescale: Int32(NSEC_PER_SEC))
         player.seek(to: seekTime)
     }
     
