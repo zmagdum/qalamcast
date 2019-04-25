@@ -214,6 +214,27 @@ class APIService {
         }
         return nil
     }
+    
+    func getEpisodesSortOrderPref() -> Bool {
+        return UserDefaults.standard.bool(forKey: "sort_preference")
+    }
+    
+    func getShowPlayedPref() -> Bool {
+        return UserDefaults.standard.bool(forKey: "show_played_preference")
+    }
+    
+    func sortFilterWithPreferences(_ episodes: inout [Episode]) {
+        if APIService.shared.getEpisodesSortOrderPref() {
+            episodes.sort{$1.pubDate < $0.pubDate}
+        } else {
+            episodes.sort{$0.pubDate < $1.pubDate}
+        }
+        if !APIService.shared.getShowPlayedPref() {
+            episodes = episodes.filter{($0.duration! - $0.played!) > 2}
+        }
+    }
+    
+
 }
 
 

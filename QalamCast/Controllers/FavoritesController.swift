@@ -17,7 +17,9 @@ class FavoritesController : UITableViewController {
     
     fileprivate func fetchEpisodes() {
         do {
-            self.episodes = try DB.shared.getFavoriteEpisodes()
+            var fetched = try DB.shared.getFavoriteEpisodes()
+            APIService.shared.sortFilterWithPreferences(&fetched)
+            self.episodes = fetched
         } catch {
             print("Error Loading Episodes")
         }

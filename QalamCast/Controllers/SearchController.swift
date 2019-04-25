@@ -44,7 +44,9 @@ class SearchController: UITableViewController, UISearchBarDelegate {
         tableView.reloadData()
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (timer) in
-            self.episodes = try! DB.shared.search(term: searchText)
+            var fetched = try! DB.shared.search(term: searchText)
+            APIService.shared.sortFilterWithPreferences(&fetched)
+            self.episodes = fetched
             self.refreshView()
         })
     }

@@ -12,7 +12,7 @@ class DownloadsController: UITableViewController {
     
     fileprivate let cellId = "cellId"
     
-    var episodes = try! DB.shared.getDownloadedEpisodes()
+    var episodes = [Episode]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,9 +21,25 @@ class DownloadsController: UITableViewController {
         setupObservers()
     }
     
+    fileprivate func fetchEpisodes() {
+        do {
+            var fetched = try DB.shared.getDownloadedEpisodes()
+            APIService.shared.sortFilterWithPreferences(&fetched)
+            self.episodes = fetched
+        } catch {
+            print("Error Loading Downloaded Episodes")
+        }
+    }
+    
     fileprivate func setupObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(handleDownloadProgress), name: .downloadProgress, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleDownloadComplete), name: .downloadComplete, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(defaultsChanged), name: UserDefaults.didChangeNotification, object: nil)
+    }
+    
+    @objc func defaultsChanged() {
+        fetchEpisodes()
+        refreshView()
     }
     
     @objc fileprivate func handleDownloadComplete(notification: Notification) {
@@ -54,7 +70,7 @@ class DownloadsController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        episodes = try! DB.shared.getDownloadedEpisodes()
+        fetchEpisodes()
         tableView.reloadData()
     }
     
@@ -94,5 +110,15 @@ class DownloadsController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 134
+    }
+    
+    fileprivate func refreshView() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }

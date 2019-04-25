@@ -24,7 +24,9 @@ class EpisodesController : UITableViewController {
     
     fileprivate func fetchEpisodes() {
         do {
-            self.episodes = try DB.shared.getEpisodesForSeries(series: (series?.title)!)
+            var fetched = try DB.shared.getEpisodesForSeries(series: (series?.title)!)
+            APIService.shared.sortFilterWithPreferences(&fetched)
+            self.episodes = fetched
         } catch {
             print("Error Loading Episodes")
         }
@@ -34,8 +36,13 @@ class EpisodesController : UITableViewController {
         super.viewDidLoad()
         //navigationItem.title = "Episodes"
         setupTableView()
+        NotificationCenter.default.addObserver(self, selector: #selector(defaultsChanged), name: UserDefaults.didChangeNotification, object: nil)
     }
     
+    @objc func defaultsChanged() {
+        fetchEpisodes()
+        refreshView()
+    }
     //MARK:- Setup
     fileprivate func setupTableView() {
         let nib = UINib(nibName: "EpisodeCell2", bundle: nil)
@@ -115,6 +122,10 @@ class EpisodesController : UITableViewController {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
 }

@@ -19,6 +19,9 @@ class EpisodeCell2: UITableViewCell {
             pubDateLabel.text = dateFormatter.string(from: episode.pubDate)
             let url = URL(string: episode.imageUrl ?? "")
             episodeImageView.sd_setImage(with: url, completed: nil)
+            for subView in self.episodeImageView.subviews {
+                subView.removeFromSuperview()
+            }
             if episode.played! == episode.duration! {
                 let heartImage = UIImage(named: "green_circle_check")
                 let imageView = UIImageView(image: heartImage)
