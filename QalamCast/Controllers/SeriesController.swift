@@ -30,9 +30,28 @@ class SeriesController : UITableViewController {
         //navigationItem.title = "Episodes"
         setupTableView()
         fetchEpisodes()
+        setupObservers()
     }
     
     //MARK:- Setup
+    fileprivate func setupObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleCatalogStart), name: .catalogStart, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleCatalogProgress), name: .catalogProgress, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleCatalogComplete), name: .catalogComplete, object: nil)
+    }
+
+    @objc fileprivate func handleCatalogStart(notification: Notification) {
+        
+    }
+
+    @objc fileprivate func handleCatalogProgress(notification: Notification) {
+        
+    }
+    
+    @objc fileprivate func handleCatalogComplete(notification: Notification) {
+        fetchEpisodes()
+    }
+    
     fileprivate func setupTableView() {
         let nib = UINib(nibName: "SeriesCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: cellId)

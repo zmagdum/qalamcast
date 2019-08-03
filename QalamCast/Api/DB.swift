@@ -18,6 +18,7 @@ let AppSchema = Schema(identifier:"contacts") { schema in
         v1.createTable("categories") { contacts in
             contacts.primaryKey("id")
             contacts.column("title", type:.Text, constraints:["NOT NULL", "UNIQUE"])
+            contacts.column("feedUrl", type:.Text)
             contacts.column("speakers", type:.Text)
             contacts.column("artwork", type:.Text)
             contacts.column("tokens", type:.Text)
@@ -63,9 +64,11 @@ let AppSchema = Schema(identifier:"contacts") { schema in
 
 
 class DB {
+    private let syncQueue = DispatchQueue(label: "db.sync.queue")
     static let shared = DB()
     var db: Database!
-    
+    let taskGroup = DispatchGroup()
+
     func createDatabase() throws {
         let path = NSSearchPathForDirectoriesInDomains(
             .documentDirectory, .userDomainMask, true
@@ -81,6 +84,83 @@ class DB {
         print("Migrated database version \(didMigrate)  \(migratedVersion)")
     }
     
+    func resetDatabase() throws {
+        let path = NSSearchPathForDirectoriesInDomains(
+            .documentDirectory, .userDomainMask, true
+            ).first!
+        self.db = try! Database(path: "\(path)/qalamcast.sqllite")
+        // Migrate to the latest version:
+        print("Resetting database")
+        try AppSchema.reset(db)
+        let didMigrate = try AppSchema.migrate(db)
+        // Get the database version:
+        let migratedVersion = try db.queryUserVersionNumber()
+        //        try db.execute("DELETE FROM categories")
+        //        try db.execute("DELETE FROM episodes")
+        print("Migrated database version \(didMigrate)  \(migratedVersion)")
+    }
+    
+    func fetchEpisodesFromSeries() {
+        let series = try! getCategories()
+        if series.count == 0 {
+            var updateEpisodes = [Episode]()
+            var updatedCategories = [Category]()
+            let categories = APIService.shared.loadCategories() ?? []
+            NotificationCenter.default.post(name: .catalogStart, object: nil, userInfo: ["count": categories.count])
+            //DB.shared.saveCategories(categories: categories)
+            var loaded = 0
+            var requested = 0
+            for cat in categories {
+                if cat.feedUrl == nil || cat.feedUrl?.count == 0 {
+                    continue
+                }
+                taskGroup.enter()
+                requested += 1
+                print("Loading podcasts from " + cat.feedUrl! + " \(requested)")
+                APIService.shared.loadCategoryEpisodes(cat: cat) { (category, episodes) in
+                        //self.syncQueue.sync {
+                    loaded += 1
+                    print("found epsidoes \(requested) \(loaded) \(cat.feedUrl!)  \(episodes.count) \(categories.count)")
+                            updateEpisodes.append(contentsOf: episodes)
+                            updatedCategories.append(category)
+                            //DB.shared.saveEpisodes(episodes: episodes)
+                            //try! DB.shared.saveCategory(category: category)
+                            NotificationCenter.default.post(name: .catalogProgress, object: nil, userInfo: ["count": loaded])
+                            self.taskGroup.leave()
+                            //print("appended episodes \(cat.feedUrl!)  \(updateEpisodes.count) \(updatedCategories.count)")
+                    //}
+                }
+            }
+            taskGroup.notify(queue: .main) {
+                print("Saving episodes \(updateEpisodes.count) \(updatedCategories.count)")
+                DB.shared.saveEpisodes(episodes: updateEpisodes)
+                DB.shared.saveCategories(categories: updatedCategories)
+                DB.shared.fetchEpisodesFromMainUrl()
+            }
+            //4. Notify when all task completed
+//            taskGroup.notify(queue: DispatchQueue.main, work: DispatchWorkItem(block: {
+//                print("Saving episodes \(updateEpisodes.count) \(updatedCategories.count)")
+//                DB.shared.saveEpisodes(episodes: updateEpisodes)
+//                DB.shared.saveCategories(categories: updatedCategories)
+//                DB.shared.fetchEpisodesFromMainUrl()
+//            }))
+        } else {
+            print("Episodes already loaded from series")
+            DB.shared.fetchEpisodesFromMainUrl()
+        }
+        print("Started fetching episodes RSS")
+    }
+    
+    func fetchEpisodesFromMainUrl() {
+        APIService.shared.loadCategoriesWithEpisodes(feedUrl: APIService.qalamFeedUrl) { (categories, episodes) in
+            DB.shared.saveEpisodes(episodes: episodes)
+            DB.shared.saveCategories(categories: categories)
+            NotificationCenter.default.post(name: .catalogComplete, object: nil, userInfo: ["count": categories.count])
+            print("Loaded episodes and categories from main url")
+        }
+
+    }
+
     func saveEpisode(episode: Episode) throws {
         try self.db.insertInto(
             "episodes",
@@ -100,29 +180,39 @@ class DB {
     }
 
     func saveCategory(category: Category) throws {
-        try self.db.insertInto(
-            "categories",
-            values: [
-                "title": category.title,
-                "artwork": category.artwork,
-                "speakers": category.speakers,
-                "tokens": category.tokens?.joined(separator: ","),
-                "episodeCount": category.episodeCount,
-                "order": category.order,
-                "lastUpdated": category.lastUpdated?.timeIntervalSince1970
-            ]
-        )
-    }
-    
-    func saveCategories(categories: [Category]) throws {
-        for category in categories {
-            try saveCategory(category: category)
+        do {
+            try self.db.insertInto(
+                "categories",
+                values: [
+                    "title": category.title,
+                    "artwork": category.artwork,
+                    "speakers": category.speakers,
+                    "tokens": category.tokens?.joined(separator: ","),
+                    "episodeCount": category.episodeCount,
+                    "order": category.order,
+                    "lastUpdated": category.lastUpdated?.timeIntervalSince1970
+                ]
+            )
+        } catch {
+            try self.db.update("categories", set: ["artwork": category.artwork,
+                                                   "speakers": category.speakers,
+                                                   "tokens": category.tokens?.joined(separator: ","),
+                                                   "episodeCount": category.episodeCount,
+                                                   "order": category.order,
+                                                   "lastUpdated" : category.lastUpdated?.timeIntervalSince1970], whereExpr: "title = '\(category.title)'")
+
         }
     }
     
-    func saveEpisodes(episodes: [Episode]) throws {
+    func saveCategories(categories: [Category]) {
+        for category in categories {
+            try? saveCategory(category: category)
+        }
+    }
+    
+    func saveEpisodes(episodes: [Episode]) {
         for episode in episodes {
-            try saveEpisode(episode: episode)
+            try? saveEpisode(episode: episode)
         }
     }
     

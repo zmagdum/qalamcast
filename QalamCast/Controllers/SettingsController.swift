@@ -7,29 +7,54 @@
 //
 
 import UIKit
+import QuickTableViewController
 
-class SettingsController : UIViewController {
+class SettingsController : QuickTableViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        registerSettingsBundle()
-        NotificationCenter.default.addObserver(self, selector: #selector(SettingsController.defaultsChanged), name: UserDefaults.didChangeNotification, object: nil)
-        defaultsChanged()
-    }
-    func registerSettingsBundle(){
-        let appDefaults = [String:AnyObject]()
-        UserDefaults.standard.register(defaults: appDefaults)
-    }
-    @objc func defaultsChanged(){
-        if UserDefaults.standard.bool(forKey: "RedThemeKey") {
-            self.view.backgroundColor = UIColor.red
+        tableContents = [
+            Section(title: "Options", rows: [
+                SwitchRow(text: "Sort Latest -> Oldest", switchValue: APIService.shared.getEpisodesSortOrderPref(), action: didToggleSwitch()),
+                SwitchRow(text: "Show Played", switchValue: APIService.shared.getShowPlayedPref(), action: { [weak self] in self?.preferenceChanged($0) })
+                ]),
             
-        }
-        else {
-            self.view.backgroundColor = UIColor.green
-        }
+            Section(title: "Reset Data", rows: [
+                TapActionRow(text: "Reset Database", action: { [weak self] in self?.resetDatabase($0) })
+                ])
+        ]
     }
     
-    deinit { //Not needed for iOS9 and above. ARC deals with the observer in higher versions.
-        NotificationCenter.default.removeObserver(self)
+    // MARK: - Actions
+    private func resetDatabase(_ sender: Row) {
+        // ...
+        try! DB.shared.resetDatabase()
+        DB.shared.fetchEpisodesFromSeries()
+        //DB.shared.fetchEpisodesFromMainUrl();
+    }
+    
+    private func didToggleSwitch() -> (Row) -> Void {
+        return { [weak self] in
+            if let row = $0 as? SwitchRowCompatible {
+                let state = "\(row.text) = \(row.switchValue)"
+                if row.text.starts(with: "Sort") {
+                    UserDefaults.standard.set(row.switchValue, forKey: "sort_preference")
+                } else if row.text.starts(with: "Show") {
+                    UserDefaults.standard.set(row.switchValue, forKey: "show_played_preference")
+                }
+                print ("Changed \(state)")
+            }
+        }
+    }
+
+    private func preferenceChanged(_ sender: Row) {
+        //UserDefaults.standard.set(sender.text, forKey: "show_played_preference")
+        print("Preference changed \(sender)")
+    }
+    
+    private func didToggleSelection() -> (Row) -> Void {
+        return { [weak self] row in
+            // ...
+        }
     }
 }

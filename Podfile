@@ -11,4 +11,5 @@ target 'QalamCast' do
   pod 'FeedKit', '7.1.0'
   pod 'SQLite.swift', '~> 0.11.5'
   pod 'Squeal'
+  pod 'QuickTableViewController'
 end

@@ -22,7 +22,7 @@ class EpisodeCell2: UITableViewCell {
             for subView in self.episodeImageView.subviews {
                 subView.removeFromSuperview()
             }
-            if episode.played! == episode.duration! {
+            if episode.played ?? 0 == episode.duration ?? 100 {
                 let heartImage = UIImage(named: "green_circle_check")
                 let imageView = UIImageView(image: heartImage)
                 episodeImageView.addSubview(imageView)

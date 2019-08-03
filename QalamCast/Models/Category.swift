@@ -16,6 +16,7 @@ struct ResponseData: Decodable {
 struct Category: Decodable {
     var id: Int?
     var title: String?
+    var feedUrl: String?
     var speakers: String?
     var artwork: String?
     var episodeCount: Int?
@@ -26,6 +27,7 @@ struct Category: Decodable {
     init(row:Statement) throws {
         self.id = row.intValue("id") ?? 0
         self.title = row.stringValue("title")!
+        self.feedUrl = row.stringValue("feedUrl") ?? ""
         self.speakers = row.stringValue("speakers")!
         self.episodeCount = row.intValue("episodeCount") ?? 0
         self.artwork = row.stringValue("artwork")!

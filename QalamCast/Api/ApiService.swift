@@ -13,9 +13,35 @@ import FeedKit
 extension Notification.Name {
     static let downloadProgress = NSNotification.Name("downloadProgress")
     static let downloadComplete = NSNotification.Name("downloadComplete")
+    static let catalogStart = NSNotification.Name("catalogStart")
+    static let catalogProgress = NSNotification.Name("catalogProgress")
+    static let catalogComplete = NSNotification.Name("catalogComplete")
+
 }
 class APIService {
     static let currentEpisodeId = "currentEpisodeId"
+    static let qalamFeedUrl = "http://feeds.feedburner.com/QalamPodcast"
+    static let seriesFeedUrls = ["http://feeds.feedburner.com/Qalam40Ahadith",
+        "http://feeds.feedburner.com/QalamBeginningOfGuidance",
+        "http://feeds.feedburner.com/QalamDivineParables",
+        "http://feeds.feedburner.com/QalamHeartwork",
+        "http://feeds.feedburner.com/QalamKhutbahs",
+        "http://feeds.feedburner.com/QalamLegacies",
+        "http://feeds.feedburner.com/QalamLivesOfTheProphets",
+        "http://feeds.feedburner.com/QalamPurificationOfTheHeart",
+        "http://feeds.feedburner.com/QalamQiyam",
+        "http://feeds.feedburner.com/QalamQuranicReflections",
+        "http://feeds.feedburner.com/QalamRamadanReflections",
+        "http://feeds.feedburner.com/QalamReadyForRamadan",
+        "http://feeds.feedburner.com/QalamCompanionship",
+        "http://feeds.feedburner.com/QalamSeerah",
+        "http://feeds.feedburner.com/QalamShamail",
+        "http://feeds.feedburner.com/QalamSufficientAnswer",
+        "http://feeds.feedburner.com/QalamSuhbahRetreat",
+        "http://feeds.feedburner.com/QalamTarawehGems",
+        "http://feeds.feedburner.com/QalamHangout",
+        "http://feeds.feedburner.com/QalamPursuitOfKnowledge",
+        "http://feeds.feedburner.com/QalamDivine"]
 
     typealias EpisodeDownloadCompleteTuple = (fileUrl: String, episodeTitle: String)
     let ignoreStartCharacters: [Character] = [" ", "–", ":"]
@@ -57,7 +83,7 @@ class APIService {
         return nil
     }
     
-    func loadCategoriesWithEpisodes(completionHandler: @escaping ([Category], [Episode]) -> ()) {
+    func loadCategoriesWithEpisodes(feedUrl: String, completionHandler: @escaping ([Category], [Episode]) -> ()) {
         var categories = APIService.shared.loadCategories() ?? []
         var podcastDict: [String: Category] = [:]
         var speakersDict: [String: String] = [:]
@@ -70,7 +96,7 @@ class APIService {
             }
         }
         
-        let feedUrl = "http://feeds.feedburner.com/QalamPodcast"
+//        let feedUrl = "http://feeds.feedburner.com/QalamPodcast"
 //        let feedUrl = "https://podcasts.apple.com/us/podcast/qalam-institute-podcast/id424397634"
         APIService.shared.fetchEpisodes(feedUrl: feedUrl) { (received) in
             //print("Found episodes", episodes)
@@ -88,7 +114,11 @@ class APIService {
                         categories[index].lastUpdated = max(catDate, episodes[ii].pubDate)
                         for spkr in self.speakers {
                             if (episodes[ii].categories?.contains(spkr))! {
-                                categories[index].speakers = spkr
+                                if categories[index].speakers == nil || categories[index].speakers?.count == 0 {
+                                    categories[index].speakers = spkr
+                                } else if categories[index].speakers != spkr {
+                                    categories[index].speakers = "Qalam Instructors"
+                                }
                                 episodes[ii].author = spkr
                             }
                         }
@@ -134,10 +164,50 @@ class APIService {
 //                        for pk in speakersDict.keys {
 //                            print("found category", pk)
 //                        }
-            completionHandler(categories, episodes)
+            completionHandler(categories.filter { $0.episodeCount ?? 0 > 0 }, episodes)
         }
     }
     
+ 
+    func loadCategoryEpisodes(cat: Category, completionHandler: @escaping (Category, [Episode]) -> ()) {
+        if cat.feedUrl == nil || cat.feedUrl?.count == 0 {
+            return
+        }
+        var category = cat
+        category.episodeCount = 0
+        APIService.shared.fetchEpisodes(feedUrl: category.feedUrl!) { (received) in
+            //print("Found episodes", episodes)
+            var episodes = received
+            for ii in 0..<episodes.count {
+                let title = episodes[ii].title.trimmingCharacters(in: .whitespaces).lowercased()
+                episodes[ii].category = category.title!
+                episodes[ii].shortTitle = self.shortTitle(title: episodes[ii].title, category: category.title!)
+                episodes[ii].imageUrl = category.artwork
+                category.episodeCount? += 1
+                let catDate = category.lastUpdated ?? episodes[ii].pubDate
+                category.lastUpdated = max(catDate, episodes[ii].pubDate)
+                for spkr in self.speakers {
+                    if (episodes[ii].categories?.contains(spkr))! {
+                        if category.speakers == nil || category.speakers?.count == 0 {
+                            category.speakers = spkr
+                        } else if category.speakers != spkr {
+                            category.speakers = "Qalam Instructors"
+                        }
+                        episodes[ii].author = spkr
+                    }
+                }
+                if !title.starts(with: category.title!.lowercased()) {
+                    for token in category.tokens ?? [] {
+                        if title.starts(with: token.lowercased()) {
+                            episodes[ii].shortTitle = self.shortTitle(title: episodes[ii].title, category: token)
+                        }
+                    }
+                }
+            }
+            completionHandler(category, episodes)
+        }
+    }
+
     fileprivate func shortTitle(title: String, category: String) -> String {
         let shortTitle = title.deletingPrefix(category)
         var tst = ""
@@ -230,7 +300,7 @@ class APIService {
             episodes.sort{$0.pubDate < $1.pubDate}
         }
         if !APIService.shared.getShowPlayedPref() {
-            episodes = episodes.filter{($0.duration! - $0.played!) > 2}
+            episodes = episodes.filter{($0.duration ?? 0.0 - $0.played! ) > 2}
         }
     }
     

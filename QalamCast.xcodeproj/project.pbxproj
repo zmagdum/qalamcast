@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD041B2722F397B200957DDE /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD041B2622F397B200957DDE /* SettingsView.xib */; };
+		BD041B2922F3982800957DDE /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD041B2822F3982800957DDE /* SettingsView.swift */; };
 		BD39566E2266A7A80044277C /* PlayerDetailsView+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD39566D2266A7A80044277C /* PlayerDetailsView+Gestures.swift */; };
 		BD3956702266A8380044277C /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD39566F2266A8380044277C /* UIApplication.swift */; };
 		BD553636226B75F300D97360 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BD553635226B75F300D97360 /* Settings.bundle */; };
@@ -45,6 +47,8 @@
 
 /* Begin PBXFileReference section */
 		0985D2961478CBDFB3B12987 /* Pods_QalamCast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QalamCast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD041B2622F397B200957DDE /* SettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
+		BD041B2822F3982800957DDE /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		BD39566D2266A7A80044277C /* PlayerDetailsView+Gestures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PlayerDetailsView+Gestures.swift"; sourceTree = "<group>"; };
 		BD39566F2266A8380044277C /* UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		BD553635226B75F300D97360 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -193,8 +197,9 @@
 				BDE50D52224816E4005B2605 /* SeriesCell.swift */,
 				BDE50D53224816E4005B2605 /* SeriesCell.xib */,
 				BD39566D2266A7A80044277C /* PlayerDetailsView+Gestures.swift */,
-				BDE50D4622446EDC005B2605 /* PlayerDetailsView.swift */,
 				BDE50D4722446EDC005B2605 /* PlayerDetailsView.xib */,
+				BD041B2622F397B200957DDE /* SettingsView.xib */,
+				BD041B2822F3982800957DDE /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -210,10 +215,11 @@
 		BDE50D4F22481698005B2605 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BDFA9631225FE76A004D2FC8 /* SearchController.swift */,
 				BDFA962F225EAE99004D2FC8 /* DownloadsController.swift */,
 				BDE50D5A2249B831005B2605 /* EpisodesController.swift */,
+				BDFA9631225FE76A004D2FC8 /* SearchController.swift */,
 				BDE50D50224816BA005B2605 /* SeriesController.swift */,
+				BDE50D4622446EDC005B2605 /* PlayerDetailsView.swift */,
 				BDE50D68225595D7005B2605 /* FavoritesController.swift */,
 				BD553637226B79B100D97360 /* SettingsController.swift */,
 			);
@@ -286,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDE50D55224816E5005B2605 /* SeriesCell.xib in Resources */,
+				BD041B2722F397B200957DDE /* SettingsView.xib in Resources */,
 				BDE50D4922446EDC005B2605 /* PlayerDetailsView.xib in Resources */,
 				BDFA9634225FE82E004D2FC8 /* PodcastsSearchingView.xib in Resources */,
 				BDBA6C8C2241B58E000486CD /* LaunchScreen.storyboard in Resources */,
@@ -327,6 +334,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-QalamCast/Pods-QalamCast-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/FeedKit/FeedKit.framework",
+				"${BUILT_PRODUCTS_DIR}/QuickTableViewController/QuickTableViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/Squeal/Squeal.framework",
@@ -335,6 +343,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FeedKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QuickTableViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Squeal.framework",
@@ -366,6 +375,7 @@
 				BDBA6CA12241B660000486CD /* ApiService.swift in Sources */,
 				BDBA6C972241B5E8000486CD /* String.swift in Sources */,
 				BD3956702266A8380044277C /* UIApplication.swift in Sources */,
+				BD041B2922F3982800957DDE /* SettingsView.swift in Sources */,
 				BDE50D69225595D7005B2605 /* FavoritesController.swift in Sources */,
 				BD55363A226B7E0500D97360 /* SettingsBundleHelper.swift in Sources */,
 				BDBA6C982241B5E8000486CD /* CMTime.swift in Sources */,

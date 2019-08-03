@@ -20,20 +20,24 @@ class MainTabBarController: UITabBarController {
         setupPlayerDetailsView()
 
         do {
+            //try DB.shared.resetDatabase()
             try DB.shared.createDatabase()
+            DB.shared.fetchEpisodesFromSeries()
+            //DB.shared.fetchEpisodesFromMainUrl()
             print("Found Categories After ", try DB.shared.getCategories().count)
         } catch {
             print("Error creating database \(error)")
         }
-        APIService.shared.loadCategoriesWithEpisodes() { (categories, episodes) in
-            do {
-                try DB.shared.saveEpisodes(episodes: episodes)
-                try DB.shared.saveCategories(categories: categories)
-                self.seriesController.fetchEpisodes()
-            } catch {
-                print("Error Saving episodes and categories")
-            }
-        }
+        // fetch episodes from main URL
+//        APIService.shared.loadCategoriesWithEpisodes(feedUrl: APIService.qalamFeedUrl) { (categories, episodes) in
+//            do {
+////                try DB.shared.saveEpisodes(episodes: episodes)
+////                try DB.shared.saveCategories(categories: categories)
+////                self.seriesController.fetchEpisodes()
+//            } catch {
+//                print("Error Saving episodes and categories")
+//            }
+//        }
         DispatchQueue.main.async {
             let currentEpisode = DB.shared.getCurrentEpisode()
             if currentEpisode != nil {
@@ -81,7 +85,7 @@ class MainTabBarController: UITabBarController {
             generateNavigationCOntroller(with: SearchController(), title: "Search", image: #imageLiteral(resourceName: "search")),
             generateNavigationCOntroller(with: FavoritesController(), title: "Favorites", image: #imageLiteral(resourceName: "heart-outline-50")),
             generateNavigationCOntroller(with: DownloadsController(), title: "Downloads", image: #imageLiteral(resourceName: "downloads"))
-//            ,generateNavigationCOntroller(with: SettingsController(), title: "Settings", image: #imageLiteral(resourceName: "settings"))
+            ,generateNavigationCOntroller(with: SettingsController(), title: "Settings", image: #imageLiteral(resourceName: "settings"))
 
         ]
     }

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QalamCast/Api/ApiService.swift"
-            timestampString = "577840963.968345"
+            timestampString = "586557481.264707"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "loadCategories()"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QalamCast/Api/ApiService.swift"
-            timestampString = "577840963.9684041"
+            timestampString = "586557481.264788"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
-            landmarkName = "loadCategoriesWithEpisodes(completionHandler:)"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "loadCategoriesWithEpisodes(feedUrl:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QalamCast/Api/ApiService.swift"
-            timestampString = "577840963.968444"
+            timestampString = "586557481.264853"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "loadCategoriesWithEpisodes(completionHandler:)"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "loadCategoriesWithEpisodes(feedUrl:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -58,12 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QalamCast/Api/ApiService.swift"
-            timestampString = "577840963.9684809"
+            timestampString = "586557481.264918"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "loadCategoriesWithEpisodes(completionHandler:)"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "loadCategoriesWithEpisodes(feedUrl:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -74,12 +74,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QalamCast/Api/ApiService.swift"
-            timestampString = "577840963.968516"
+            timestampString = "586557481.264979"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "loadCategoriesWithEpisodes(completionHandler:)"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "loadCategoriesWithEpisodes(feedUrl:completionHandler:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -122,12 +122,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QalamCast/Api/ApiService.swift"
-            timestampString = "577840963.96855"
+            timestampString = "586557481.265038"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
-            landmarkName = "loadCategoriesWithEpisodes(completionHandler:)"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "loadCategoriesWithEpisodes(feedUrl:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QalamCast/Views/SeriesCell.swift"
-            timestampString = "577470718.84674"
+            timestampString = "586351737.47537"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "38"
@@ -216,7 +216,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QalamCast/Views/SeriesCell.swift"
-            timestampString = "577470718.8469599"
+            timestampString = "586351737.475432"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
@@ -232,7 +232,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QalamCast/Views/SeriesCell.swift"
-            timestampString = "577470718.847029"
+            timestampString = "586351737.475487"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "26"
@@ -248,71 +248,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QalamCast/MainTabBarController.swift"
-            timestampString = "577470718.847086"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "QalamCast.MainTabBarController.viewDidLoad() -&gt; ()"
-                  moduleName = "QalamCast"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zakirmagdum/MacSecondHD/development/QalamCast/QalamCast/MainTabBarController.swift"
-                  timestampString = "575724254.41372"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
-                  offsetFromSymbolStart = "1693">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Array&lt;QalamCast.Category&gt;, Swift.Array&lt;QalamCast.Episode&gt;) -&gt; () in QalamCast.MainTabBarController.viewDidLoad() -&gt; ()"
-                  moduleName = "QalamCast"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zakirmagdum/MacSecondHD/development/QalamCast/QalamCast/MainTabBarController.swift"
-                  timestampString = "575724254.415978"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "35"
-                  endingLineNumber = "35"
-                  offsetFromSymbolStart = "28">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QalamCast/MainTabBarController.swift"
-            timestampString = "577470718.847584"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QalamCast/MainTabBarController.swift"
-            timestampString = "577470718.847857"
+            timestampString = "586557481.265146"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "23"
@@ -328,11 +264,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QalamCast/Models/Category.swift"
-            timestampString = "576721074.515226"
+            timestampString = "586557481.265201"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
             landmarkName = "init(row:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -344,13 +280,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QalamCast/Api/DB.swift"
-            timestampString = "577840963.9686919"
+            timestampString = "586557481.265245"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
-            landmarkName = "DB"
-            landmarkType = "3">
+            startingLineNumber = "287"
+            endingLineNumber = "287"
+            landmarkName = "getCategories()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -376,11 +312,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QalamCast/Api/DB.swift"
-            timestampString = "577840963.968753"
+            timestampString = "586557481.265336"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "createDatabase()"
             landmarkType = "7">
          </BreakpointContent>
@@ -392,11 +328,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QalamCast/Api/DB.swift"
-            timestampString = "577840963.968824"
+            timestampString = "586557481.265407"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
             landmarkName = "saveCategory(category:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -408,11 +344,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QalamCast/Api/DB.swift"
-            timestampString = "577840963.968874"
+            timestampString = "586557481.265473"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
             landmarkName = "saveCategories(categories:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -424,11 +360,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QalamCast/Api/DB.swift"
-            timestampString = "577840963.968907"
+            timestampString = "586557481.2655391"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
             landmarkName = "saveEpisodes(episodes:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -440,11 +376,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QalamCast/Api/ApiService.swift"
-            timestampString = "577840963.968941"
+            timestampString = "586557481.265606"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
             landmarkName = "shortTitle(title:category:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -456,44 +392,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QalamCast/Api/ApiService.swift"
-            timestampString = "577840963.968974"
+            timestampString = "586557481.265663"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
             landmarkName = "shortTitle(title:category:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QalamCast/Api/ApiService.swift"
-            timestampString = "577840963.969007"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
-            landmarkName = "shortTitle(title:category:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QalamCast/MainTabBarController.swift"
-            timestampString = "577470718.848593"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -504,7 +408,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QalamCast/Controllers/EpisodesController.swift"
-            timestampString = "577840963.969058"
+            timestampString = "578072165.149298"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "122"
@@ -552,7 +456,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QalamCast/Controllers/EpisodesController.swift"
-            timestampString = "577840963.969094"
+            timestampString = "578072165.14934"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "88"
@@ -568,7 +472,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QalamCast/Views/EpisodeCell2.swift"
-            timestampString = "577840963.969128"
+            timestampString = "586391598.46822"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
@@ -584,11 +488,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QalamCast/Controllers/FavoritesController.swift"
-            timestampString = "577454290.2254781"
+            timestampString = "578072165.149436"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -664,7 +568,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QalamCast/Models/Episode.swift"
-            timestampString = "577470718.8494821"
+            timestampString = "586351339.911894"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
@@ -680,13 +584,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QalamCast/Api/DB.swift"
-            timestampString = "577840963.9695311"
+            timestampString = "586557481.2658041"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
-            landmarkName = "DB"
-            landmarkType = "3">
+            startingLineNumber = "241"
+            endingLineNumber = "241"
+            landmarkName = "getFavoriteEpisodes()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -696,12 +600,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QalamCast/Api/DB.swift"
-            timestampString = "577840963.96957"
+            timestampString = "586557481.2658761"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
-            landmarkName = "deleteEpisode(episode:)"
+            startingLineNumber = "304"
+            endingLineNumber = "304"
+            landmarkName = "updateDownload(episode:download:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -744,11 +648,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QalamCast/Api/DB.swift"
-            timestampString = "577840963.969632"
+            timestampString = "586557481.265972"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
             landmarkName = "search(term:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -760,28 +664,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QalamCast/Controllers/DownloadsController.swift"
-            timestampString = "577470718.849934"
+            timestampString = "586537208.5518349"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "DownloadsController"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QalamCast/Controllers/DownloadsController.swift"
-            timestampString = "577470718.8501461"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "handleDownloadProgress(notification:)"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "tableView(_:commit:forRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -792,12 +680,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QalamCast/Controllers/DownloadsController.swift"
-            timestampString = "577470718.850221"
+            timestampString = "586537208.55187"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "setupTableView()"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QalamCast/Controllers/DownloadsController.swift"
+            timestampString = "586537208.5519021"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "tableView(_:commit:forRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -813,8 +717,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "319"
             endingLineNumber = "319"
-            landmarkName = "PlayerDetailsView"
-            landmarkType = "3">
+            landmarkName = "handleDonePlaying(notification:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -824,12 +728,188 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QalamCast/Api/SettingsBundleHelper.swift"
-            timestampString = "577470718.850351"
+            timestampString = "586485218.494352"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "29"
             endingLineNumber = "29"
             landmarkName = "setVersionAndBuildNumber()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QalamCast/Api/ApiService.swift"
+            timestampString = "586557481.266101"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "loadCategoriesWithEpisodes(feedUrl:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QalamCast/Api/DB.swift"
+            timestampString = "586557481.266166"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "fetchEpisodesFromSeries()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QalamCast/Api/DB.swift"
+            timestampString = "586557481.2662261"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "fetchEpisodesFromSeries()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QalamCast/Api/DB.swift"
+            timestampString = "586557481.266282"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "fetchEpisodesFromSeries()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QalamCast/Api/ApiService.swift"
+            timestampString = "586557481.266337"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
+            landmarkName = "loadCategoryEpisodes(cat:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QalamCast/Api/ApiService.swift"
+            timestampString = "586557481.266379"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
+            landmarkName = "loadCategoryEpisodes(cat:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QalamCast/Api/DB.swift"
+            timestampString = "586557481.26642"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "fetchEpisodesFromSeries()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QalamCast/Api/DB.swift"
+            timestampString = "586557481.2664649"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "fetchEpisodesFromMainUrl()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "QalamCast.DB.fetchEpisodesFromMainUrl() -&gt; ()"
+                  moduleName = "QalamCast"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zakirmagdum/MacSecondHD/development/QalamCast/QalamCast/Api/DB.swift"
+                  timestampString = "586522739.707449"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "155"
+                  endingLineNumber = "155"
+                  offsetFromSymbolStart = "27">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;QalamCast.Category&gt;, Swift.Array&lt;QalamCast.Episode&gt;) -&gt; () in QalamCast.DB.fetchEpisodesFromMainUrl() -&gt; ()"
+                  moduleName = "QalamCast"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zakirmagdum/MacSecondHD/development/QalamCast/QalamCast/Api/DB.swift"
+                  timestampString = "586522739.710073"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "156"
+                  endingLineNumber = "156"
+                  offsetFromSymbolStart = "38">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QalamCast/Controllers/SettingsController.swift"
+            timestampString = "586557481.266512"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "preferenceChanged(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
