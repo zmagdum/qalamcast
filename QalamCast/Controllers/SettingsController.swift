@@ -10,7 +10,9 @@ import UIKit
 import QuickTableViewController
 
 class SettingsController : QuickTableViewController {
-    
+    let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+    let build = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableContents = [
@@ -21,7 +23,10 @@ class SettingsController : QuickTableViewController {
             
             Section(title: "Reset Data", rows: [
                 TapActionRow(text: "Reset Database", action: { [weak self] in self?.resetDatabase($0) })
-                ])
+                ]),
+            Section(title: "Info", rows: [
+                NavigationRow(text: "Version v\(Bundle.main.versionNumber).\(Bundle.main.buildNumber)", detailText: .subtitle(""))
+                ]),
         ]
     }
     
