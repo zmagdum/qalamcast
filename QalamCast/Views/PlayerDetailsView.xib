@@ -145,12 +145,23 @@
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="JdX-7f-x6R">
                             <rect key="frame" x="0.0" y="497" width="327" height="179"/>
                             <subviews>
+                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zac-2N-EiJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="44" height="179"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="44" id="PRJ-sS-hZ2"/>
+                                    </constraints>
+                                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <state key="normal" image="prev-track-1"/>
+                                    <connections>
+                                        <action selector="handleRewindButton:" destination="0Sr-if-K5Y" eventType="touchUpInside" id="4lA-FL-AuE"/>
+                                    </connections>
+                                </button>
                                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="77Z-HC-lDN">
-                                    <rect key="frame" x="0.0" y="0.0" width="48.666666666666664" height="179"/>
+                                    <rect key="frame" x="44" y="0.0" width="26.666666666666671" height="179"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
-                                <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qy-wK-IbP">
-                                    <rect key="frame" x="48.666666666666671" y="0.0" width="44" height="179"/>
+                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qy-wK-IbP">
+                                    <rect key="frame" x="70.666666666666671" y="0.0" width="44" height="179"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="44" id="OZ7-i0-ES3"/>
                                     </constraints>
@@ -161,10 +172,10 @@
                                     </connections>
                                 </button>
                                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eIG-OF-iHi">
-                                    <rect key="frame" x="92.666666666666671" y="0.0" width="49.000000000000014" height="179"/>
+                                    <rect key="frame" x="114.66666666666666" y="0.0" width="27" height="179"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
-                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zbv-a1-bTl">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zbv-a1-bTl">
                                     <rect key="frame" x="141.66666666666666" y="0.0" width="54" height="179"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="54" id="J4Q-L2-ayn"/>
@@ -173,11 +184,11 @@
                                     <state key="normal" image="pause"/>
                                 </button>
                                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jpT-5Z-EI9">
-                                    <rect key="frame" x="195.66666666666666" y="0.0" width="38.666666666666657" height="179"/>
+                                    <rect key="frame" x="195.66666666666666" y="0.0" width="16.666666666666657" height="179"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
-                                <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Tt-JV-G3O">
-                                    <rect key="frame" x="234.33333333333331" y="0.0" width="44" height="179"/>
+                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Tt-JV-G3O">
+                                    <rect key="frame" x="212.33333333333334" y="0.0" width="44.000000000000028" height="179"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="44" id="Ilw-No-hhM"/>
                                     </constraints>
@@ -188,9 +199,20 @@
                                     </connections>
                                 </button>
                                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VP0-6J-PDO">
-                                    <rect key="frame" x="278.33333333333331" y="0.0" width="48.666666666666686" height="179"/>
+                                    <rect key="frame" x="256.33333333333331" y="0.0" width="26.666666666666686" height="179"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
+                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Npr-ka-lRS">
+                                    <rect key="frame" x="283" y="0.0" width="44" height="179"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="44" id="CMC-qo-Nxs"/>
+                                    </constraints>
+                                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <state key="normal" image="next-track-1"/>
+                                    <connections>
+                                        <action selector="handleRewindButton:" destination="0Sr-if-K5Y" eventType="touchUpInside" id="XAr-zc-SHP"/>
+                                    </connections>
+                                </button>
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LZi-YV-hvF">
@@ -260,6 +282,8 @@
         <image name="appicon" width="90" height="90"/>
         <image name="max_volume" width="32.5" height="32.5"/>
         <image name="muted_volume" width="32.5" height="32.5"/>
+        <image name="next-track-1" width="43.5" height="43.5"/>
         <image name="pause" width="43.5" height="43.5"/>
+        <image name="prev-track-1" width="43.5" height="43.5"/>
     </resources>
 </document>
