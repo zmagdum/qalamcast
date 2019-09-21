@@ -16,8 +16,8 @@ class SeriesCell : UITableViewCell {
             seriesNameLabel.text = series.title
             dateFormatter.dateFormat = "MMM dd, yyyy"
             //let lastUpdated = dateFormatter.string(from: series.lastUpdated!)
-            let unplayed = try! DB.shared.getUnplayedCount(series: series.title ?? "")
-            var desc = "Episodes \(series.episodeCount ?? 0) / \(unplayed)"
+//            let unplayed = try! DB.shared.getUnplayedCount(series: series.title ?? "")
+            var desc = "Episodes \(series.episodeCount ?? 0)"
             if series.lastUpdated != nil {
                 desc += " " + dateFormatter.string(from: series.lastUpdated!)
             }

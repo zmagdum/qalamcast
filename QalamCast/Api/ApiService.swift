@@ -176,13 +176,16 @@ class APIService {
         var category = cat
         category.episodeCount = 0
         APIService.shared.fetchEpisodes(feedUrl: category.feedUrl!) { (received) in
-            //print("Found episodes", episodes)
             var episodes = received
+            print("Found episodes ", category.feedUrl!, " ", episodes.count)
             for ii in 0..<episodes.count {
                 let title = episodes[ii].title.trimmingCharacters(in: .whitespaces).lowercased()
                 episodes[ii].category = category.title!
                 episodes[ii].shortTitle = self.shortTitle(title: episodes[ii].title, category: category.title!)
                 episodes[ii].imageUrl = category.artwork
+                if episodes[ii].duration == nil {
+                    episodes[ii].duration = 3600 // assume duration one hour if not specified
+                }
                 category.episodeCount? += 1
                 let catDate = category.lastUpdated ?? episodes[ii].pubDate
                 category.lastUpdated = max(catDate, episodes[ii].pubDate)

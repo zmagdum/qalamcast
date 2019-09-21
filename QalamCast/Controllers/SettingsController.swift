@@ -25,7 +25,7 @@ class SettingsController : QuickTableViewController {
                 TapActionRow(text: "Reset Database", action: { [weak self] in self?.resetDatabase($0) })
                 ]),
             Section(title: "Info", rows: [
-                NavigationRow(text: "Version v\(Bundle.main.versionNumber).\(Bundle.main.buildNumber)", detailText: .subtitle(""))
+                NavigationRow(text: "Version v\(Bundle.main.versionNumber).\(Bundle.main.buildNumber)", detailText: .subtitle("Copyright © 2019 Qalam Institute. All rights reserved"))
                 ]),
         ]
     }

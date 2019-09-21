@@ -94,7 +94,7 @@ class EpisodesController : UITableViewController {
             }
         }
         play.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
-        play.image = #imageLiteral(resourceName: "play")
+        play.image = #imageLiteral(resourceName: "icons8-checkmark-filled-50")
         let download = UIContextualAction(style: .normal, title: "Download") { (action, view, nil) in
             APIService.shared.downloadEpisode(episode: self.episodes[indexPath.row])
         }

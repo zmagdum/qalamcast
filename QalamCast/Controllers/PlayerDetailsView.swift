@@ -18,6 +18,8 @@ class PlayerDetailsView: UIView {
     
     @IBOutlet weak var maxPlayerView: UIStackView!
     
+    var playerSpeed: Float = 1.0
+    
     var episodeId: Int! {
         didSet {
             self.episode = try! DB.shared.getEpisode(id: episodeId)
@@ -29,7 +31,7 @@ class PlayerDetailsView: UIView {
                 miniPlayerTitleLabel.text = episode.shortTitle
                 episodeTitle.text = episode.shortTitle
                 authorLabel.text = episode.author
-                if episode.duration! - episode.played! < 2 {
+                if (episode.duration ?? 0) - (episode.played ?? 0.0) < 2 {
                     episode.played = 0
                 }
                 setupNowPlayingInfo()
@@ -38,12 +40,22 @@ class PlayerDetailsView: UIView {
                 guard let url = URL(string: episode.imageUrl ?? "") else { return }
                 playerImageView.sd_setImage(with: url)
                 miniPlayerImageView.sd_setImage(with: url)
+                playerSpeed = UserDefaults.standard.float(forKey: "player_speed")
+                if playerSpeed == 0 {
+                    playerSpeed = 1.0
+                }
+                setPlayerSpeedText()
             }
         }
     }
     
+    fileprivate func setPlayerSpeedText() {
+        playerSpeedButton.setTitle("\(playerSpeed)x", for: .normal)
+        player.rate = playerSpeed
+    }
+    
     fileprivate func playEpisode() {
-        print("Trying to play url", episode.streamUrl, " ", episode.played)
+        print("Trying to play url", episode.streamUrl, " ", episode.played!)
         guard let url = URL(string: episode.streamUrl) else {return }
         if !playEpisodeUsingFileUrl() {
             playEpisode(url: url)
@@ -59,6 +71,8 @@ class PlayerDetailsView: UIView {
             let seekTime = CMTimeMakeWithSeconds(episode.played!, preferredTimescale: Int32(NSEC_PER_SEC))
             player.seek(to: seekTime)
         }
+        playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+        miniPlayerPlayPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
     }
     
     fileprivate func playEpisodeUsingFileUrl() -> Bool {
@@ -160,7 +174,7 @@ class PlayerDetailsView: UIView {
             return self.episode.title == ep.title
         }
         guard let index = currentEpisodeIndex else { return }
-        if index < seriesEpisodes.count {
+        if index < (seriesEpisodes.count - 1) {
             self.episode = seriesEpisodes[index + 1]
         }
     }
@@ -212,6 +226,10 @@ class PlayerDetailsView: UIView {
             self?.endTimeLabel.text = durationTime?.toDisplayString()
             
             self?.updateCurrentTimeSlider()
+//            if (self?.playPauseButton.currentImage!.isEqual(UIImage(named: "play")))! {
+//                self?.playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+//                self?.miniPlayerPlayPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+//            }
         }
     }
     
@@ -389,6 +407,29 @@ class PlayerDetailsView: UIView {
     }
     @IBAction func handleRewindButton(_ sender: Any) {
         seekTimeToDelta(delta: -15)
+    }
+    
+    @IBOutlet weak var playerSpeedButton: UIButton!
+    @IBAction func handleSpeedChange(_ sender: Any) {
+        switch(playerSpeed) {
+        case 1:
+            playerSpeed = 1.25
+        case 1.25:
+            playerSpeed = 1.5
+        case 1.5:
+            playerSpeed = 2
+        case 0.5:
+            playerSpeed = 1
+        case 2:
+            playerSpeed = 0.5
+        default:
+            playerSpeed = 1
+        }
+        player.rate = playerSpeed
+        UserDefaults.standard.set(playerSpeed, forKey: "player_speed")
+        playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+        miniPlayerPlayPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+        setPlayerSpeedText()
     }
     
     @IBAction func handleMoveToNext(_ sender: Any) {
