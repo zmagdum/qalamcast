@@ -23,8 +23,13 @@ class SeriesCell : UITableViewCell {
             }
             descriptionLabel.text = desc
             speakerNameLabel.text = series.speakers
-            let url = URL(string: series.artwork ?? "")
-            artworkImageView.sd_setImage(with: url, completed: nil)
+            let imageUrl = series.artwork ?? ""
+            if (imageUrl.starts(with: "http")) {
+                let url = URL(string: imageUrl)
+                artworkImageView.sd_setImage(with: url, completed: nil)
+            } else {
+                artworkImageView.image = UIImage(named: imageUrl)
+            }
         }
     }
 

@@ -37,9 +37,15 @@ class PlayerDetailsView: UIView {
                 setupNowPlayingInfo()
                 setupAudioSession()
                 playEpisode()
-                guard let url = URL(string: episode.imageUrl ?? "") else { return }
-                playerImageView.sd_setImage(with: url)
-                miniPlayerImageView.sd_setImage(with: url)
+                let imageUrl = episode.imageUrl  ?? ""
+                if (imageUrl.starts(with: "http")) {
+                    guard let url = URL(string: episode.imageUrl ?? "") else { return }
+                    playerImageView.sd_setImage(with: url)
+                    miniPlayerImageView.sd_setImage(with: url)
+                } else {
+                    playerImageView.image = UIImage(named: imageUrl)
+                    miniPlayerImageView.image = UIImage(named: imageUrl)
+                }
                 playerSpeed = UserDefaults.standard.float(forKey: "player_speed")
                 if playerSpeed == 0 {
                     playerSpeed = 1.0
@@ -161,8 +167,35 @@ class PlayerDetailsView: UIView {
             return .success
         }
         
-        commandCenter.nextTrackCommand.addTarget(self, action: #selector(handleNextTrack))
-        commandCenter.previousTrackCommand.addTarget(self, action: #selector(handlePrevTrack))
+//        commandCenter.nextTrackCommand.addTarget(self, action: #selector(handleNextTrack))
+//        commandCenter.previousTrackCommand.addTarget(self, action: #selector(handlePrevTrack))
+        commandCenter.nextTrackCommand.addTarget { [unowned self] event in
+            let seriesEpisodes = try! DB.shared.getEpisodesForSeries(series: self.episode.category)
+            let currentEpisodeIndex = seriesEpisodes.index { (ep) -> Bool in
+                return self.episode.title == ep.title
+            }
+            guard let index = currentEpisodeIndex else { return .success}
+            if index < (seriesEpisodes.count - 1) {
+                self.episode = seriesEpisodes[index + 1]
+                return .success
+            }
+            return .commandFailed
+        }
+
+        // Add handler for Pause Command
+        commandCenter.previousTrackCommand.addTarget { [unowned self] event in
+            let seriesEpisodes = try! DB.shared.getEpisodesForSeries(series: self.episode.category)
+            let currentEpisodeIndex = seriesEpisodes.index { (ep) -> Bool in
+                return self.episode.title == ep.title
+            }
+            guard let index = currentEpisodeIndex else { return .success}
+            if index > 0 {
+                self.episode = seriesEpisodes[index - 1]
+                return .success
+            }
+            return .commandFailed
+        }
+        
     }
 
     //var playlistEpisodes = [Episode]()

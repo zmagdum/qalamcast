@@ -36,8 +36,16 @@ class EpisodesController : UITableViewController {
         super.viewDidLoad()
         //navigationItem.title = "Episodes"
         setupTableView()
+        setupObservers()
+    }
+
+    fileprivate func setupObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleDownloadProgress), name: .downloadProgress, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleDownloadComplete), name: .downloadComplete, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(defaultsChanged), name: UserDefaults.didChangeNotification, object: nil)
     }
+    
+
     
     @objc func defaultsChanged() {
         fetchEpisodes()
@@ -121,6 +129,32 @@ class EpisodesController : UITableViewController {
     fileprivate func refreshView() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
+        }
+    }
+ 
+    @objc fileprivate func handleDownloadComplete(notification: Notification) {
+        print("Downloaded ", notification.name, notification.object)
+        guard let episodeDownloadComplete = notification.object as? APIService.EpisodeDownloadCompleteTuple else { return }
+        guard let index = self.episodes.index(where: { $0.title == title }) else { return }
+        guard let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? EpisodeCell2 else { return }
+        cell.downloadProgressBar.isHidden = true
+        //cell.progressLabel.isHidden = true
+    }
+    
+    @objc fileprivate func handleDownloadProgress(notification: Notification) {
+        guard let userInfo = notification.userInfo as? [String: Any] else { return }
+        
+        guard let progress = userInfo["progress"] as? Double else { return }
+        guard let id = userInfo["id"] as? Int else { return }
+        
+        // lets find the index using id
+        guard let index = self.episodes.index(where: { $0.id == id }) else { return }
+        
+        guard let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? EpisodeCell2 else { return }
+        cell.downloadProgressBar.setProgress(Float(progress), animated: true)
+        cell.downloadProgressBar.isHidden = false
+        if progress == 1 {
+            cell.downloadProgressBar.isHidden = true
         }
     }
     

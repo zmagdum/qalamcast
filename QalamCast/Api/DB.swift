@@ -156,7 +156,7 @@ class DB {
             DB.shared.saveEpisodes(episodes: episodes)
             DB.shared.saveCategories(categories: categories)
             NotificationCenter.default.post(name: .catalogComplete, object: nil, userInfo: ["count": categories.count])
-            print("Loaded episodes and categories from main url")
+            print("Loaded episodes \(episodes.count) and categories \(categories.count) from main url ")
         }
 
     }
@@ -194,12 +194,14 @@ class DB {
                 ]
             )
         } catch {
+            let episodesCount:Int = self.getEpisodeCount(series: category.title!)
             try self.db.update("categories", set: ["artwork": category.artwork,
                                                    "speakers": category.speakers,
                                                    "tokens": category.tokens?.joined(separator: ","),
-                                                   "episodeCount": category.episodeCount,
+                                                   "episodeCount": episodesCount,
                                                    "order": category.order,
-                                                   "lastUpdated" : category.lastUpdated?.timeIntervalSince1970], whereExpr: "title = '\(category.title)'")
+                                                   "lastUpdated" : category.lastUpdated?.timeIntervalSince1970], whereExpr: "title = '\(category.title!)'")
+            print("Updated series \(category.title!) \(episodesCount)")
 
         }
     }
@@ -225,6 +227,19 @@ class DB {
         return episodes;
     }
 
+    func getEpisodeCount(series: String) -> Int {
+        do {
+            let episodes:[Episode] = try self.db.selectFrom(
+                "episodes",
+                whereExpr:"category = '" + series + "'",
+                block: Episode.init
+            )
+            return episodes.count;
+        } catch {
+            return 0
+        }
+    }
+    
     func getUnplayedCount(series: String) throws -> Int {
         let episodes:[Episode] = try self.db.selectFrom(
             "episodes",
@@ -289,6 +304,7 @@ class DB {
             block: Category.init
         )
         categories.sort{ ($1.order!, $0.title!) < ($0.order!, $1.title!) }
+        print("Fetched series")
         return categories;
     }
     

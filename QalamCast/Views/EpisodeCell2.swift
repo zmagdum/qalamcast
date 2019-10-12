@@ -17,21 +17,34 @@ class EpisodeCell2: UITableViewCell {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MMM dd, yyyy"
             pubDateLabel.text = dateFormatter.string(from: episode.pubDate)
-            let url = URL(string: episode.imageUrl ?? "")
-            episodeImageView.sd_setImage(with: url, completed: nil)
+            let imageUrl = episode.imageUrl  ?? ""
+            if (imageUrl.starts(with: "http")) {
+                let url = URL(string: episode.imageUrl ?? "")
+                episodeImageView.sd_setImage(with: url, completed: nil)
+            } else {
+                episodeImageView.image = UIImage(named: imageUrl)
+            }
             for subView in self.episodeImageView.subviews {
                 subView.removeFromSuperview()
             }
             if episode.played ?? 0 == episode.duration ?? 100 {
-                let heartImage = UIImage(named: "green_circle_check")
-                let imageView = UIImageView(image: heartImage)
+                let image = UIImage(named: "green_circle_check")
+                let imageView = UIImageView(image: image)
                 episodeImageView.addSubview(imageView)
             }
             if episode.favorite! {
-                let heartImage = UIImage(named: "favorites")
-                let imageView = UIImageView(image: heartImage)
+                let image = UIImage(named: "favorites")
+                let imageView = UIImageView(image: image)
+                imageView.frame = CGRect(x: episodeImageView.frame.width - imageView.frame.width, y: 0, width: imageView.frame.width, height: imageView.frame.height)
                 episodeImageView.addSubview(imageView)
             }
+            if episode.download! {
+                let image = UIImage(named: "downloaded")
+                let imageView = UIImageView(image: image)
+                imageView.frame = CGRect(x: 0, y: episodeImageView.frame.height - imageView.frame.height, width: imageView.frame.width, height: imageView.frame.height)
+                episodeImageView.addSubview(imageView)
+            }
+
         }
     }
     @IBOutlet weak var episodeImageView: UIImageView!

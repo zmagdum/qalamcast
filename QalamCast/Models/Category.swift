@@ -29,7 +29,7 @@ struct Category: Decodable {
         self.title = row.stringValue("title")!
         self.feedUrl = row.stringValue("feedUrl") ?? ""
         self.speakers = row.stringValue("speakers")!
-        self.episodeCount = row.intValue("episodeCount") ?? 0
+        self.episodeCount = row.intValue("episodeCount")
         self.artwork = row.stringValue("artwork")!
         self.lastUpdated = Date(timeIntervalSince1970: row.doubleValue("lastUpdated") ?? 0)
         self.tokens = row.stringValue("tokens")?.components(separatedBy: ",")

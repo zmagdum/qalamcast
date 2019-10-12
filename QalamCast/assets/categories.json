@@ -7,19 +7,31 @@
   },
   {
   "title": "40 Ahadith of Imam Nawawi",
-  "artwork": "http://www.qalaminstitute.org/wp-content/uploads/40hadithnawawi-200x200.jpg",
+  "artwork": "40hadith",
+  "speakers": "",
+  "feedUrl": "http://feeds.feedburner.com/Qalam40Ahadith"
+  },
+  {
+  "title": "The Chosen One",
+  "artwork": "chosen_one",
+  "speakers": "",
+  "feedUrl": "http://feeds.feedburner.com/Qalam40Ahadith"
+  },
+  {
+  "title": "The Paths to Paradise",
+  "artwork": "paths_paradise",
   "speakers": "",
   "feedUrl": "http://feeds.feedburner.com/Qalam40Ahadith"
   },
   {
   "title": "Purification of the Heart",
-  "artwork": "http://www.qalaminstitute.org/wp-content/uploads/pofalbumart-200x200.jpg",
+  "artwork": "purification_heart",
   "speakers": "",
   "feedUrl": "http://feeds.feedburner.com/QalamPurificationOfTheHeart"
   },
   {
   "title": "Shama’il – The Prophetic Personality",
-  "artwork": "http://www.qalaminstitute.org/wp-content/uploads/shamaail_updated-200x200.jpg",
+  "artwork": "shamaail_updated",
   "tokens": [
              "Shamail Muhammadiyah"
              ],
@@ -28,37 +40,37 @@
   },
   {
   "title": "Divine",
-  "artwork": "http://www.qalaminstitute.org/wp-content/uploads/powerpress/Qalam-pod-02.png",
+  "artwork": "divine",
   "speakers": "",
   "feedUrl": "http://feeds.feedburner.com/QalamDivine"
   },
   {
   "title": "Heartwork",
-  "artwork": "http://www.qalaminstitute.org/wp-content/uploads/bfi_thumb/heartwork_master-819x1024-nyu8d4nxjzn6fg8rylvvsy4f1b6vhcf8smbedcjx6g.jpg",
+  "artwork": "heartwork",
   "speakers": "",
   "feedUrl": "http://feeds.feedburner.com/QalamHeartwork"
   },
   {
   "title": "Sufficient Answer",
-  "artwork": "http://www.qalaminstitute.org/wp-content/uploads/bfi_thumb/The-Sufficient-Answer_Podcast-Cover-1024x1024-nwpjk3onxtk3kqcn2njqkx7scx1zs3vhqlx0g7nkjc.png",
+  "artwork": "sufficient_answer",
   "speakers": "",
   "feedUrl": "http://feeds.feedburner.com/QalamSufficientAnswer"
   },
   {
   "title": "Quranic Reflections",
-  "artwork": "http://www.qalaminstitute.org/wp-content/uploads/quran-reflections-2-200x200.jpg",
+  "artwork": "quranic_reflections",
   "speakers": "",
   "feedUrl": "http://feeds.feedburner.com/QalamQuranicReflections"
   },
   {
   "title": "Lives of The Prophets",
-  "artwork": "http://www.qalaminstitute.org/wp-content/uploads/Virtues_updated-200x200.jpg",
+  "artwork": "lives_prophets",
   "speakers": "",
   "feedUrl": "http://feeds.feedburner.com/QalamLivesOfTheProphets"
   },
   {
   "title": "Khutbah",
-  "artwork": "http://www.qalaminstitute.org/wp-content/uploads/khutbahs-200x200.jpg",
+  "artwork": "khutbahs",
   "speakers": "",
   "tokens": [
              "Khutba"
@@ -67,13 +79,13 @@
   },
   {
   "title": "Companionship",
-  "artwork": "http://www.qalaminstitute.org/wp-content/uploads/Rights-of-Companionship-200x200.jpg",
+  "artwork": "rights_companionship",
   "speakers": "",
   "feedUrl": "http://feeds.feedburner.com/QalamCompanionship"
   },
   {
   "title": "Seerah – Life of the Prophet",
-  "artwork": "http://www.qalaminstitute.org/wp-content/uploads/Seerah-Album-Art-1-200x200.jpg",
+  "artwork": "seerah_jangda",
   "speakers": "",
   "feedUrl": "http://feeds.feedburner.com/QalamSeerah"
   },
@@ -85,13 +97,13 @@
   },
   {
   "title": "Tarawih Gems",
-  "artwork": "http://www.qalaminstitute.org/wp-content/uploads/tarawihgems_updated-200x200.jpg",
+  "artwork": "tarawihgems",
   "speakers": "",
   "feedUrl": "http://feeds.feedburner.com/QalamTarawehGems"
   },
   {
   "title": "The Beginning of Guidance",
-  "artwork": "http://www.qalaminstitute.org/wp-content/uploads/beginingofguidance_updated-200x200.jpg",
+  "artwork": "begining_guidance",
   "speakers": "",
   "feedUrl": "http://feeds.feedburner.com/QalamBeginningOfGuidance"
   },
@@ -120,7 +132,7 @@
   },
   {
       "title": "Legacies",
-      "artwork": "http://www.qalaminstitute.org/wp-content/uploads/powerpress/Qalam-pod-02.png",
+      "artwork": "legacies",
       "speakers": "",
       "feedUrl" : "http://feeds.feedburner.com/QalamLegacies"
   },
