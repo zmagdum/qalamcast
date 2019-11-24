@@ -50,6 +50,7 @@ class EpisodesController : UITableViewController {
     @objc func defaultsChanged() {
         fetchEpisodes()
         refreshView()
+        print("defaults changed refreshingh episodes")
     }
     //MARK:- Setup
     fileprivate func setupTableView() {

@@ -31,12 +31,13 @@ class PlayerDetailsView: UIView {
                 miniPlayerTitleLabel.text = episode.shortTitle
                 episodeTitle.text = episode.shortTitle
                 authorLabel.text = episode.author
-                if (episode.duration ?? 0) - (episode.played ?? 0.0) < 2 {
-                    episode.played = 0
-                }
+                print("playing \(episode.title)  \(episode.duration ?? -1) \(episode.played ?? -2)")
+//                if (episode.duration ?? 0) - (episode.played ?? 0.0) < 2 {
+//                    episode.played = 0
+//                }
                 setupNowPlayingInfo()
                 setupAudioSession()
-                playEpisode()
+                playEpisode(episode: episode)
                 let imageUrl = episode.imageUrl  ?? ""
                 if (imageUrl.starts(with: "http")) {
                     guard let url = URL(string: episode.imageUrl ?? "") else { return }
@@ -60,11 +61,15 @@ class PlayerDetailsView: UIView {
         player.rate = playerSpeed
     }
     
-    fileprivate func playEpisode() {
-        print("Trying to play url", episode.streamUrl, " ", episode.played!)
+    fileprivate func playEpisode(episode: Episode) {
+        print("Trying to play url", episode.id as Any, " ", episode.played!)
         guard let url = URL(string: episode.streamUrl) else {return }
         if !playEpisodeUsingFileUrl() {
             playEpisode(url: url)
+        }
+        if episode.played! > 0.0 {
+            let seekTime = CMTimeMakeWithSeconds(episode.played!, preferredTimescale: Int32(NSEC_PER_SEC))
+            player.seek(to: seekTime)
         }
         DB.shared.saveCurrentEpisode(episode: episode)
     }
@@ -73,10 +78,6 @@ class PlayerDetailsView: UIView {
         let playerItem = AVPlayerItem(url: url)
         player.replaceCurrentItem(with: playerItem)
         player.play()
-        if episode.played! > 0.0 {
-            let seekTime = CMTimeMakeWithSeconds(episode.played!, preferredTimescale: Int32(NSEC_PER_SEC))
-            player.seek(to: seekTime)
-        }
         playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
         miniPlayerPlayPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
     }
@@ -89,10 +90,10 @@ class PlayerDetailsView: UIView {
             let playerItem = AVPlayerItem(url: localUrl!)
             player.replaceCurrentItem(with: playerItem)
             player.play()
-            if episode.played! > 0.0 {
-                let seekTime = CMTimeMakeWithSeconds(episode.played!, preferredTimescale: Int32(NSEC_PER_SEC))
-                player.seek(to: seekTime)
-            }
+//            if episode.played! > 0.0 {
+//                let seekTime = CMTimeMakeWithSeconds(episode.played!, preferredTimescale: Int32(NSEC_PER_SEC))
+//                player.seek(to: seekTime)
+//            }
             return true
         }
         return false
@@ -110,12 +111,8 @@ class PlayerDetailsView: UIView {
             let durationTime = self?.player.currentItem?.duration
             self?.endTimeLabel.text = durationTime?.toDisplayString()
             self?.updateCurrentTimeSlider()
-            self?.episode.played = CMTimeGetSeconds(time)
-            do {
-                try DB.shared.updatePlayed(episode: (self?.episode!)!)
-            } catch {
-                print("Error updating played \(error)", self?.episode as Any)
-            }
+            //self?.episode.played = CMTimeGetSeconds(time)
+            DB.shared.updatePlayed(id: (self?.episodeId)!, played: CMTimeGetSeconds(time))
         }
     }
     
@@ -259,10 +256,7 @@ class PlayerDetailsView: UIView {
             self?.endTimeLabel.text = durationTime?.toDisplayString()
             
             self?.updateCurrentTimeSlider()
-//            if (self?.playPauseButton.currentImage!.isEqual(UIImage(named: "play")))! {
-//                self?.playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
-//                self?.miniPlayerPlayPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
-//            }
+            DB.shared.updatePlayed(id: self!.episodeId, played: CMTimeGetSeconds(time))
         }
     }
     
@@ -280,7 +274,7 @@ class PlayerDetailsView: UIView {
         setupInterruptionObserver()
         observePlayerCurrentTime()
         observeBoundaryTime()
-
+        //addBorderToMiniPlayerView()
         
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapMaximize)))
         addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePan)))
@@ -292,6 +286,8 @@ class PlayerDetailsView: UIView {
         player.addBoundaryTimeObserver(forTimes: times, queue: .main) { [weak self] in
             self?.enlargeEpisodeImageView()
         }
+        episodeTitle.textColor = .black
+        miniPlayerTitleLabel.textColor = .black
     }
    
     var panGesture: UIPanGestureRecognizer!
@@ -302,6 +298,14 @@ class PlayerDetailsView: UIView {
         miniPlayerView.addGestureRecognizer(panGesture)
         
         maxPlayerView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleDismissalPan)))
+    }
+    
+    fileprivate func addBorderToMiniPlayerView() {
+        let thickness: CGFloat = 1.0
+        let topBorder = CALayer()
+        topBorder.frame = CGRect(x: 0.0, y: 0.0, width: 1.2 * self.miniPlayerView.frame.size.width, height: thickness)
+        topBorder.backgroundColor = UIColor.lightGray.cgColor
+        miniPlayerView.layer.addSublayer(topBorder)
     }
     
     @objc func handleDismissalPan(gesture: UIPanGestureRecognizer) {
@@ -367,6 +371,7 @@ class PlayerDetailsView: UIView {
     }
     @objc fileprivate func handleDonePlaying(notification: Notification) {
         print("player ended up playing", episode)
+        DB.shared.updateDonePlaying(id: self.episodeId)
         handleNextTrack()
     }
     //MARK:- Outlets and IBAction
@@ -483,6 +488,7 @@ class PlayerDetailsView: UIView {
         let seekTimeInSeconds = Float64(percentage) * durationInSeconds
         let seekTime = CMTimeMakeWithSeconds(seekTimeInSeconds, preferredTimescale: Int32(NSEC_PER_SEC))
         player.seek(to: seekTime)
+        DB.shared.updatePlayed(id: self.episodeId, played: seekTimeInSeconds)
     }
     
     @objc func handlePlayPause() {

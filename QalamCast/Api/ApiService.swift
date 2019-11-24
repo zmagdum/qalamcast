@@ -20,6 +20,7 @@ extension Notification.Name {
 }
 class APIService {
     static let currentEpisodeId = "currentEpisodeId"
+    static let episodePlayedKey = "episodePlayed"
     static let qalamFeedUrl = "http://feeds.feedburner.com/QalamPodcast"
     static let seriesFeedUrls = ["http://feeds.feedburner.com/Qalam40Ahadith",
         "http://feeds.feedburner.com/QalamBeginningOfGuidance",
@@ -177,7 +178,7 @@ class APIService {
         category.episodeCount = 0
         APIService.shared.fetchEpisodes(feedUrl: category.feedUrl!) { (received) in
             var episodes = received
-            print("Found episodes ", category.feedUrl!, " ", episodes.count)
+            print("Fetched episodes ", category.feedUrl!, " ", episodes.count)
             for ii in 0..<episodes.count {
                 let title = episodes[ii].title.trimmingCharacters(in: .whitespaces).lowercased()
                 episodes[ii].category = category.title!
@@ -221,7 +222,28 @@ class APIService {
                 tst.append(ch)
             }
         }
-        return tst;
+        if let ep = tst.range(of: "EP") {
+            tst = String(tst.suffix(from: ep.upperBound))
+//            for (id, char) in tst.enumerated() {
+//                if char == "–" {
+//                    let index = tst.index(tst.startIndex, offsetBy: id+1)
+//                    tst = String(tst.suffix(from: index))
+//                }
+//            }
+            if let index = tst.firstIndex(of: "–") {
+                tst = String(tst.suffix(from: tst.index(after: index)))
+            }
+            tst = tst.trimmingCharacters(in: .whitespaces)
+        }
+        alphaFound = false
+        var result = ""
+        for ch in tst {
+            if !ignoreStartCharacters.contains(ch) || alphaFound {
+                alphaFound = true
+                result.append(ch)
+            }
+        }
+        return result;
     }
     
     func fetchPodcasts(searchText: String, completionHandler: @escaping ([Category]) -> ()) {
@@ -303,7 +325,7 @@ class APIService {
             episodes.sort{$0.pubDate < $1.pubDate}
         }
         if !APIService.shared.getShowPlayedPref() {
-            episodes = episodes.filter{($0.duration ?? 0.0 - $0.played! ) > 2}
+            episodes = episodes.filter{($0.duration ?? 30.0 - $0.played! ) > 2}
         }
     }
     

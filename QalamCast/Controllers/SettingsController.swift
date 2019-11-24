@@ -15,10 +15,11 @@ class SettingsController : QuickTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let currentEpisode = DB.shared.getCurrentEpisode()
         tableContents = [
             Section(title: "Options", rows: [
                 SwitchRow(text: "Sort Latest -> Oldest", switchValue: APIService.shared.getEpisodesSortOrderPref(), action: didToggleSwitch()),
-                SwitchRow(text: "Show Played", switchValue: APIService.shared.getShowPlayedPref(), action: { [weak self] in self?.preferenceChanged($0) })
+                SwitchRow(text: "Show Played", switchValue: APIService.shared.getShowPlayedPref(), action: didToggleSwitch())
                 ]),
             
             Section(title: "Reset Data", rows: [
@@ -26,6 +27,9 @@ class SettingsController : QuickTableViewController {
                 ]),
             Section(title: "Info", rows: [
                 NavigationRow(text: "Version v\(Bundle.main.versionNumber).\(Bundle.main.buildNumber)", detailText: .subtitle("Copyright © 2019 Qalam Institute. All rights reserved"))
+                ]),
+            Section(title: "Currently Playing", rows: [
+                NavigationRow(text: currentEpisode?.title ?? "", detailText: .subtitle("\(currentEpisode?.played ?? 0)"))
                 ]),
         ]
     }

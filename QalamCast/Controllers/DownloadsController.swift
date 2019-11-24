@@ -40,6 +40,7 @@ class DownloadsController: UITableViewController {
     @objc func defaultsChanged() {
         fetchEpisodes()
         refreshView()
+        print("Download defaults changed")
     }
     
     @objc fileprivate func handleDownloadComplete(notification: Notification) {

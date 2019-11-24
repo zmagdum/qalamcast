@@ -40,7 +40,7 @@ struct Episode {
         self.categories = categories
         self.category = "Uncategorized"
         self.shortTitle = self.title
-        self.duration = feedItem.iTunes?.iTunesDuration
+        self.duration = feedItem.iTunes?.iTunesDuration ?? 3600 // assume 1 hour if we can not find duration
         self.played = 0.0
         self.favorite = false
         self.download = false

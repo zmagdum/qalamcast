@@ -120,7 +120,7 @@ class DB {
                 APIService.shared.loadCategoryEpisodes(cat: cat) { (category, episodes) in
                         //self.syncQueue.sync {
                     loaded += 1
-                    print("found epsidoes \(requested) \(loaded) \(cat.feedUrl!)  \(episodes.count) \(categories.count)")
+                    print("found episodes \(requested) \(loaded) \(cat.feedUrl!)  \(episodes.count) \(categories.count)")
                             updateEpisodes.append(contentsOf: episodes)
                             updatedCategories.append(category)
                             //DB.shared.saveEpisodes(episodes: episodes)
@@ -154,7 +154,7 @@ class DB {
     func fetchEpisodesFromMainUrl() {
         APIService.shared.loadCategoriesWithEpisodes(feedUrl: APIService.qalamFeedUrl) { (categories, episodes) in
             DB.shared.saveEpisodes(episodes: episodes)
-            DB.shared.saveCategories(categories: categories)
+            DB.shared.saveCategoriesSync(categories: categories)
             NotificationCenter.default.post(name: .catalogComplete, object: nil, userInfo: ["count": categories.count])
             print("Loaded episodes \(episodes.count) and categories \(categories.count) from main url ")
         }
@@ -205,9 +205,39 @@ class DB {
 
         }
     }
-    
+
+    func updateCategory(category: Category) throws {
+        let episodesCount:Int = self.getEpisodeCount(series: category.title!)
+        try self.db.update("categories", set: ["artwork": category.artwork,
+                                               "speakers": category.speakers,
+                                               "tokens": category.tokens?.joined(separator: ","),
+                                               "episodeCount": episodesCount,
+                                               "order": category.order,
+                                               "lastUpdated" : category.lastUpdated?.timeIntervalSince1970], whereExpr: "title = '\(category.title!)'")
+        print("Updated series \(category.title!) \(episodesCount)")
+    }
+
     func saveCategories(categories: [Category]) {
         for category in categories {
+            try? saveCategory(category: category)
+        }
+    }
+    
+    func saveCategoriesSync(categories: [Category]) {
+        let existing = try! getCategories()
+        var seriesDict: [String: Category] = [:]
+        for category in categories {
+            seriesDict[category.title!] = category
+        }
+        for var ex in existing {
+            if let val = seriesDict[ex.title!] {
+                ex.lastUpdated = val.lastUpdated
+                try! updateCategory(category: ex)
+                seriesDict.removeValue(forKey: ex.title!)
+            }
+        }
+        
+        for (_, category) in seriesDict {
             try? saveCategory(category: category)
         }
     }
@@ -224,6 +254,9 @@ class DB {
             whereExpr:"category = '" + series + "'",
             block: Episode.init
         )
+//        for var episode in episodes {
+//            episode.played = getEpisodePlayed(title: episode.shortTitle)
+//        }
         return episodes;
     }
 
@@ -293,7 +326,9 @@ class DB {
             block: Episode.init
         )
         if episodes.count > 0 {
-            return episodes[0]
+            let episode = episodes[0]
+            //episode.played = getEpisodePlayed(title: episode.shortTitle)
+            return episode
         }
         throw "Episode not found for \(id)"
     }
@@ -310,6 +345,21 @@ class DB {
     
     func updateFavorite(episode: Episode) throws {
         try self.db.update("episodes", set: ["favorite": episode.favorite! ? 1 : 0], whereExpr: "title = '" + episode.title + "'")
+    }
+    
+    func updatePlayed(id: Int, played: Double) {
+        try! self.db.update("episodes", set: ["played": played], whereExpr: "id = " + String(id))
+        //let episode = try! getEpisode(id: id)
+        //print("Updating played", id, " ", played, " saved ", episode.played!)
+    }
+    
+    func updateDonePlaying(id: Int) {
+        var episode = try! getEpisode(id: id)
+        if episode.duration == nil {
+            episode.duration = episode.played
+        }
+        try! self.db.update("episodes", set: ["duration": episode.duration], whereExpr: "id = " + String(id))
+        try! self.db.update("episodes", set: ["played": episode.played], whereExpr: "id = " + String(id))
     }
     
     func updatePlayed(episode: Episode) throws {
@@ -340,11 +390,25 @@ class DB {
         let id = defaults.integer(forKey: APIService.currentEpisodeId)
         if id > 0 {
             do {
-                return try getEpisode(id: id)
+                let episode = try getEpisode(id: id)
+                //episode.played = getEpisodePlayed(title: episode.shortTitle)
+                return episode
             } catch {
                 return nil
             }
         }
         return nil
     }
+    
+    func getEpisodePlayed(title: String) -> Double {
+        let defaults = UserDefaults.standard
+        return defaults.double(forKey: APIService.episodePlayedKey + title)
+    }
+    
+    func updatePlayed(title: String, played: Double) {
+        let defaults = UserDefaults.standard
+        defaults.set(played, forKey: APIService.episodePlayedKey + title)
+    }
+    
+
 }

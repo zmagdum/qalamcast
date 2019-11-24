@@ -67,7 +67,7 @@ class MainTabBarController: UITabBarController {
         }
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.view.layoutIfNeeded()
-            self.tabBar.transform = CGAffineTransform(translationX: 0, y: 100)
+            //self.tabBar.transform = CGAffineTransform(translationX: 0, y: 50)
             self.playerDetailsView.miniPlayerView.alpha = 0
             self.playerDetailsView.maxPlayerView.alpha = 1
         })

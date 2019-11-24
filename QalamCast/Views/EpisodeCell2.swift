@@ -27,7 +27,8 @@ class EpisodeCell2: UITableViewCell {
             for subView in self.episodeImageView.subviews {
                 subView.removeFromSuperview()
             }
-            if episode.played ?? 0 == episode.duration ?? 100 {
+            print("Epsiode Title \(episode.shortTitle) \(episode.duration ?? 3600) \(episode.played ?? 0)")
+            if ((episode.duration ?? 3600) - (episode.played ?? 0)) < 2 {
                 let image = UIImage(named: "green_circle_check")
                 let imageView = UIImageView(image: image)
                 episodeImageView.addSubview(imageView)
