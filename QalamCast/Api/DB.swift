@@ -152,13 +152,20 @@ class DB {
     }
     
     func fetchEpisodesFromMainUrl() {
-        APIService.shared.loadCategoriesWithEpisodes(feedUrl: APIService.qalamFeedUrl) { (categories, episodes) in
+        APIService.shared.loadCategoriesWithEpisodes(feedUrl: APIService.qalamFeedUrl) { ( categories, episodes) in
             DB.shared.saveEpisodes(episodes: episodes)
             DB.shared.saveCategoriesSync(categories: categories)
             NotificationCenter.default.post(name: .catalogComplete, object: nil, userInfo: ["count": categories.count])
             print("Loaded episodes \(episodes.count) and categories \(categories.count) from main url ")
+            // run uncategoried to see whether they can be categorized now
+            var epi = try! DB.shared.getEpisodesForSeries(series: "Uncategorized")
+            var cat = APIService.shared.loadCategories() ?? []
+            APIService.shared.buildCategoriesAndEpisodes(&epi, categories: &cat)
+            for episode in epi {
+                try! DB.shared.updateEpisodeCategory(episode)
+            }
+            DB.shared.saveCategoriesSync(categories: cat)
         }
-
     }
 
     func saveEpisode(episode: Episode) throws {
@@ -206,6 +213,14 @@ class DB {
         }
     }
 
+    func updateEpisodeCategory(_ episode: Episode) throws {
+        try self.db.update("episodes", set: ["shortTitle": episode.shortTitle,
+"category": episode.category], whereExpr: "title = '\(episode.title)'")
+        print("Updated episode \(episode.title) \(episode.category)")
+    }
+
+
+
     func updateCategory(category: Category) throws {
         let episodesCount:Int = self.getEpisodeCount(series: category.title!)
         try self.db.update("categories", set: ["artwork": category.artwork,
@@ -232,6 +247,7 @@ class DB {
         for var ex in existing {
             if let val = seriesDict[ex.title!] {
                 ex.lastUpdated = val.lastUpdated
+                ex.tokens = val.tokens
                 try! updateCategory(category: ex)
                 seriesDict.removeValue(forKey: ex.title!)
             }
@@ -254,9 +270,9 @@ class DB {
             whereExpr:"category = '" + series + "'",
             block: Episode.init
         )
-//        for var episode in episodes {
-//            episode.played = getEpisodePlayed(title: episode.shortTitle)
-//        }
+        for var episode in episodes {
+            episode.played = PrefDB.shared.getEpisodePlayed(title: episode.shortTitle)
+        }
         return episodes;
     }
 
@@ -326,8 +342,8 @@ class DB {
             block: Episode.init
         )
         if episodes.count > 0 {
-            let episode = episodes[0]
-            //episode.played = getEpisodePlayed(title: episode.shortTitle)
+            var episode = episodes[0]
+            episode.played = PrefDB.shared.getEpisodePlayed(title: episode.shortTitle)
             return episode
         }
         throw "Episode not found for \(id)"
@@ -349,7 +365,8 @@ class DB {
     
     func updatePlayed(id: Int, played: Double) {
         try! self.db.update("episodes", set: ["played": played], whereExpr: "id = " + String(id))
-        //let episode = try! getEpisode(id: id)
+        let episode = try! getEpisode(id: id)
+        PrefDB.shared.updateStats(title: episode.shortTitle, played: episode.played!)
         //print("Updating played", id, " ", played, " saved ", episode.played!)
     }
     
@@ -363,7 +380,9 @@ class DB {
     }
     
     func updatePlayed(episode: Episode) throws {
+        print("Updating played \(episode.title)")
         try self.db.update("episodes", set: ["played": episode.played], whereExpr: "title = '" + episode.title + "'")
+        PrefDB.shared.updateStats(title: episode.shortTitle, played: episode.played!)
     }
     
     func updateDownload(episode: Episode, download: Bool) throws {
@@ -390,8 +409,8 @@ class DB {
         let id = defaults.integer(forKey: APIService.currentEpisodeId)
         if id > 0 {
             do {
-                let episode = try getEpisode(id: id)
-                //episode.played = getEpisodePlayed(title: episode.shortTitle)
+                var episode = try getEpisode(id: id)
+                episode.played = PrefDB.shared.getEpisodePlayed(title: episode.shortTitle)
                 return episode
             } catch {
                 return nil
@@ -400,14 +419,15 @@ class DB {
         return nil
     }
     
-    func getEpisodePlayed(title: String) -> Double {
-        let defaults = UserDefaults.standard
-        return defaults.double(forKey: APIService.episodePlayedKey + title)
-    }
+//    func getEpisodePlayed(title: String) -> Double {
+//        let defaults = UserDefaults.standard
+//        return defaults.double(forKey: APIService.episodePlayedKey + title)
+//    }
     
     func updatePlayed(title: String, played: Double) {
-        let defaults = UserDefaults.standard
-        defaults.set(played, forKey: APIService.episodePlayedKey + title)
+//        let defaults = UserDefaults.standard
+//        defaults.set(played, forKey: APIService.episodePlayedKey + title)
+        PrefDB.shared.updateStats(title: title, played: played)
     }
     
 

@@ -84,8 +84,7 @@ class APIService {
         return nil
     }
     
-    func loadCategoriesWithEpisodes(feedUrl: String, completionHandler: @escaping ([Category], [Episode]) -> ()) {
-        var categories = APIService.shared.loadCategories() ?? []
+    func buildCategoriesAndEpisodes(_ episodes: inout [Episode], categories: inout [Category]) {
         var podcastDict: [String: Category] = [:]
         var speakersDict: [String: String] = [:]
         var uncatId = -1
@@ -96,72 +95,77 @@ class APIService {
                 uncatId = index
             }
         }
+        for ii in 0..<episodes.count {
+            let title = episodes[ii].title.trimmingCharacters(in: .whitespaces).lowercased()
+            var found = false
+            print("processing", episodes[ii].title)
+            for index in 0..<categories.count {
+                if title.starts(with: categories[index].title!.lowercased()) {
+                    episodes[ii].category = categories[index].title!
+                    episodes[ii].shortTitle = self.shortTitle(title: episodes[ii].title, category: categories[index].title!)
+                    episodes[ii].imageUrl = categories[index].artwork
+                    categories[index].episodeCount? += 1
+                    let catDate = categories[index].lastUpdated ?? episodes[ii].pubDate
+                    categories[index].lastUpdated = max(catDate, episodes[ii].pubDate)
+                    for spkr in self.speakers {
+                        if ((episodes[ii].categories ?? []).contains(spkr)) {
+                            if categories[index].speakers == nil || categories[index].speakers?.count == 0 {
+                                categories[index].speakers = spkr
+                            } else if categories[index].speakers != spkr {
+                                categories[index].speakers = "Qalam Instructors"
+                            }
+                            episodes[ii].author = spkr
+                        }
+                    }
+                    found = true
+                    break
+                }
+                for token in categories[index].tokens ?? [] {
+                    if title.starts(with: token.lowercased()) {
+                        episodes[ii].category = categories[index].title!
+                        episodes[ii].shortTitle = self.shortTitle(title: episodes[ii].title, category: token)
+                        episodes[ii].imageUrl = categories[index].artwork
+                        categories[index].episodeCount? += 1
+                        let catDate = categories[index].lastUpdated ?? episodes[ii].pubDate
+                        categories[index].lastUpdated = max(catDate, episodes[ii].pubDate)
+                        for spkr in self.speakers {
+                            if ((episodes[ii].categories ?? []).contains(spkr)) {
+                                categories[index].speakers = spkr
+                                episodes[ii].author = spkr
+                            }
+                        }
+                        found = true
+                        break
+                    }                    
+                }
+            }
+            if !found && uncatId > 0 {
+                categories[uncatId].episodeCount? += 1
+                episodes[ii].category = categories[uncatId].title!
+                let catDate = categories[uncatId].lastUpdated ?? episodes[ii].pubDate
+                categories[uncatId].lastUpdated = max(catDate, episodes[ii].pubDate)
+                for spkr in self.speakers {
+                    if ((episodes[ii].categories ?? []).contains(spkr)) {
+                        categories[uncatId].speakers = spkr
+                        episodes[ii].author = spkr
+                    }
+                }
+            }
+            for cat in episodes[ii].categories ?? [] {
+                speakersDict[cat] = cat
+            }
+        }
+    }
+    
+    func loadCategoriesWithEpisodes(feedUrl: String, completionHandler: @escaping ([Category], [Episode]) -> ()) {
+        var categories = APIService.shared.loadCategories() ?? []
         
 //        let feedUrl = "http://feeds.feedburner.com/QalamPodcast"
 //        let feedUrl = "https://podcasts.apple.com/us/podcast/qalam-institute-podcast/id424397634"
         APIService.shared.fetchEpisodes(feedUrl: feedUrl) { (received) in
             //print("Found episodes", episodes)
             var episodes = received
-            for ii in 0..<episodes.count {
-                let title = episodes[ii].title.trimmingCharacters(in: .whitespaces).lowercased()
-                var found = false
-                for index in 0..<categories.count {
-                    if title.starts(with: categories[index].title!.lowercased()) {
-                        episodes[ii].category = categories[index].title!
-                        episodes[ii].shortTitle = self.shortTitle(title: episodes[ii].title, category: categories[index].title!)
-                        episodes[ii].imageUrl = categories[index].artwork
-                        categories[index].episodeCount? += 1
-                        let catDate = categories[index].lastUpdated ?? episodes[ii].pubDate
-                        categories[index].lastUpdated = max(catDate, episodes[ii].pubDate)
-                        for spkr in self.speakers {
-                            if (episodes[ii].categories?.contains(spkr))! {
-                                if categories[index].speakers == nil || categories[index].speakers?.count == 0 {
-                                    categories[index].speakers = spkr
-                                } else if categories[index].speakers != spkr {
-                                    categories[index].speakers = "Qalam Instructors"
-                                }
-                                episodes[ii].author = spkr
-                            }
-                        }
-                        found = true
-                        break
-                    }
-                    for token in categories[index].tokens ?? [] {
-                        if title.starts(with: token.lowercased()) {
-                            episodes[ii].category = categories[index].title!
-                            episodes[ii].shortTitle = self.shortTitle(title: episodes[ii].title, category: token)
-                            episodes[ii].imageUrl = categories[index].artwork
-                            categories[index].episodeCount? += 1
-                            let catDate = categories[index].lastUpdated ?? episodes[ii].pubDate
-                            categories[index].lastUpdated = max(catDate, episodes[ii].pubDate)
-                            for spkr in self.speakers {
-                                if (episodes[ii].categories?.contains(spkr))! {
-                                    categories[index].speakers = spkr
-                                    episodes[ii].author = spkr
-                                }
-                            }
-                            found = true
-                            break
-                        }
-
-                    }
-                }
-                if !found && uncatId > 0 {
-                    categories[uncatId].episodeCount? += 1
-                    episodes[ii].category = categories[uncatId].title!
-                    let catDate = categories[uncatId].lastUpdated ?? episodes[ii].pubDate
-                    categories[uncatId].lastUpdated = max(catDate, episodes[ii].pubDate)
-                    for spkr in self.speakers {
-                        if (episodes[ii].categories?.contains(spkr))! {
-                            categories[uncatId].speakers = spkr
-                            episodes[ii].author = spkr
-                        }
-                    }
-                }
-                for cat in episodes[ii].categories ?? [] {
-                    speakersDict[cat] = cat
-                }
-            }
+            self.buildCategoriesAndEpisodes(&episodes, categories: &categories)
 //                        for pk in speakersDict.keys {
 //                            print("found category", pk)
 //                        }
@@ -222,28 +226,22 @@ class APIService {
                 tst.append(ch)
             }
         }
-        if let ep = tst.range(of: "EP") {
-            tst = String(tst.suffix(from: ep.upperBound))
-//            for (id, char) in tst.enumerated() {
-//                if char == "–" {
-//                    let index = tst.index(tst.startIndex, offsetBy: id+1)
-//                    tst = String(tst.suffix(from: index))
-//                }
+//        if let ep = tst.range(of: "EP") {
+//            tst = String(tst.suffix(from: ep.upperBound))
+//            if let index = tst.firstIndex(of: "–") {
+//                tst = String(tst.suffix(from: tst.index(after: index)))
 //            }
-            if let index = tst.firstIndex(of: "–") {
-                tst = String(tst.suffix(from: tst.index(after: index)))
-            }
-            tst = tst.trimmingCharacters(in: .whitespaces)
-        }
-        alphaFound = false
-        var result = ""
-        for ch in tst {
-            if !ignoreStartCharacters.contains(ch) || alphaFound {
-                alphaFound = true
-                result.append(ch)
-            }
-        }
-        return result;
+//            tst = tst.trimmingCharacters(in: .whitespaces)
+//        }
+//        alphaFound = false
+//        var result = ""
+//        for ch in tst {
+//            if !ignoreStartCharacters.contains(ch) || alphaFound {
+//                alphaFound = true
+//                result.append(ch)
+//            }
+//        }
+        return tst;
     }
     
     func fetchPodcasts(searchText: String, completionHandler: @escaping ([Category]) -> ()) {
@@ -316,6 +314,10 @@ class APIService {
     
     func getShowPlayedPref() -> Bool {
         return UserDefaults.standard.bool(forKey: "show_played_preference")
+    }
+    
+    func getAutoStartPlay() -> Bool {
+        return UserDefaults.standard.optionalBool(forKey: "auto_start_play_preference") ?? true
     }
     
     func sortFilterWithPreferences(_ episodes: inout [Episode]) {

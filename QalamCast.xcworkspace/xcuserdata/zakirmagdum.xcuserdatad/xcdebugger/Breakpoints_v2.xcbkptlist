@@ -51,7 +51,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "88"
             endingLineNumber = "88"
-            landmarkName = "loadCategoriesWithEpisodes(feedUrl:completionHandler:)"
+            landmarkName = "buildCategoriesAndEpisodes(_:categories:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -66,77 +66,9 @@
             timestampString = "589635467.060648"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "loadCategoriesWithEpisodes(feedUrl:completionHandler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "024C627A-BD56-4AC7-9E7E-C6BD185CFC8B"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QalamCast/Api/ApiService.swift"
-            timestampString = "589635467.0608979"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "loadCategoriesWithEpisodes(feedUrl:completionHandler:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "024C627A-BD56-4AC7-9E7E-C6BD185CFC8B - e9a3cdba0ee5622"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "QalamCast.APIService.loadCategoriesWithEpisodes(completionHandler: (Swift.Array&lt;QalamCast.Category&gt;, Swift.Array&lt;QalamCast.Episode&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "QalamCast"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zakirmagdum/MacSecondHD/development/QalamCast/QalamCast/Api/ApiService.swift"
-                  timestampString = "577063412.8664221"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75"
-                  offsetFromSymbolStart = "2462">
-               </Location>
-               <Location
-                  uuid = "024C627A-BD56-4AC7-9E7E-C6BD185CFC8B - 77bd327e2ceea027"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Array&lt;QalamCast.Episode&gt;) -&gt; () in QalamCast.APIService.loadCategoriesWithEpisodes(completionHandler: (Swift.Array&lt;QalamCast.Category&gt;, Swift.Array&lt;QalamCast.Episode&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "QalamCast"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zakirmagdum/MacSecondHD/development/QalamCast/QalamCast/Api/ApiService.swift"
-                  timestampString = "577063412.868691"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "61"
-                  endingLineNumber = "61"
-                  offsetFromSymbolStart = "976">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "20821ECE-74AF-4A84-8A25-136A4A9DE5A5"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QalamCast/Api/ApiService.swift"
-            timestampString = "589635467.061148"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
-            landmarkName = "loadCategoriesWithEpisodes(feedUrl:completionHandler:)"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "buildCategoriesAndEpisodes(_:categories:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -287,8 +219,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "28"
             endingLineNumber = "28"
-            landmarkName = "init(row:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -302,8 +234,8 @@
             timestampString = "589633958.7288589"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "305"
-            endingLineNumber = "305"
+            startingLineNumber = "317"
+            endingLineNumber = "317"
             landmarkName = "search(term:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -353,10 +285,10 @@
             timestampString = "589633958.728967"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
-            landmarkName = "saveCategory(category:)"
-            landmarkType = "7">
+            startingLineNumber = "188"
+            endingLineNumber = "188"
+            landmarkName = "DB"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -370,9 +302,9 @@
             timestampString = "589633958.7290061"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
-            landmarkName = "updateCategory(category:)"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
+            landmarkName = "saveCategory(category:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -387,8 +319,8 @@
             timestampString = "589633958.729044"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
             landmarkName = "updateCategory(category:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -406,7 +338,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "216"
             endingLineNumber = "216"
-            landmarkName = "shortTitle(title:category:)"
+            landmarkName = "loadCategoryEpisodes(cat:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -423,7 +355,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "217"
             endingLineNumber = "217"
-            landmarkName = "shortTitle(title:category:)"
+            landmarkName = "loadCategoryEpisodes(cat:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -625,8 +557,8 @@
             timestampString = "589633958.7297339"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "256"
-            endingLineNumber = "256"
+            startingLineNumber = "268"
+            endingLineNumber = "268"
             landmarkName = "getEpisodesForSeries(series:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -642,9 +574,9 @@
             timestampString = "589633958.729777"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323"
-            landmarkName = "getEpisode(id:)"
+            startingLineNumber = "335"
+            endingLineNumber = "335"
+            landmarkName = "getDownloadedEpisodes()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -693,8 +625,8 @@
             timestampString = "589633958.729846"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "268"
-            endingLineNumber = "268"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
             landmarkName = "getEpisodeCount(series:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -781,23 +713,6 @@
             startingLineNumber = "29"
             endingLineNumber = "29"
             landmarkName = "setVersionAndBuildNumber()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0B6CD085-405A-4815-9D51-4756DA26C15D"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QalamCast/Api/ApiService.swift"
-            timestampString = "589635467.062368"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
-            landmarkName = "loadCategoriesWithEpisodes(feedUrl:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -920,15 +835,14 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "8C0B6FCE-E41A-4122-A35D-11BE64F70D06 - 80a548f75ae6cfd0"
+                  uuid = "8C0B6FCE-E41A-4122-A35D-11BE64F70D06 - 5adbdeacf559ecf2"
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "QalamCast.DB.fetchEpisodesFromMainUrl() -&gt; ()"
-                  moduleName = "QalamCast"
+                  symbolName = "Qalam.DB.fetchEpisodesFromMainUrl() -&gt; ()"
+                  moduleName = "Qalam"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zakirmagdum/MacSecondHD/development/QalamCast/QalamCast/Api/DB.swift"
-                  timestampString = "586522739.707449"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "155"
@@ -936,20 +850,19 @@
                   offsetFromSymbolStart = "27">
                </Location>
                <Location
-                  uuid = "8C0B6FCE-E41A-4122-A35D-11BE64F70D06 - dca4b77b7f0cc354"
+                  uuid = "8C0B6FCE-E41A-4122-A35D-11BE64F70D06 - 7dff7ca2f5d82071"
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Array&lt;QalamCast.Category&gt;, Swift.Array&lt;QalamCast.Episode&gt;) -&gt; () in QalamCast.DB.fetchEpisodesFromMainUrl() -&gt; ()"
-                  moduleName = "QalamCast"
+                  symbolName = "closure #1 (Swift.Array&lt;Qalam.Category&gt;, Swift.Array&lt;Qalam.Episode&gt;) -&gt; () in Qalam.DB.fetchEpisodesFromMainUrl() -&gt; ()"
+                  moduleName = "Qalam"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zakirmagdum/MacSecondHD/development/QalamCast/QalamCast/Api/DB.swift"
-                  timestampString = "586522739.710073"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "156"
                   endingLineNumber = "156"
-                  offsetFromSymbolStart = "38">
+                  offsetFromSymbolStart = "254">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -967,8 +880,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "61"
             endingLineNumber = "61"
-            landmarkName = "preferenceChanged(_:)"
-            landmarkType = "7">
+            landmarkName = "SettingsController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -998,8 +911,8 @@
             filePath = "QalamCast/Controllers/PlayerDetailsView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "272"
-            endingLineNumber = "272"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
             landmarkName = "awakeFromNib()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1046,9 +959,9 @@
             filePath = "QalamCast/Api/DB.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "311"
-            endingLineNumber = "311"
-            landmarkName = "getDownloadedEpisodes()"
+            startingLineNumber = "323"
+            endingLineNumber = "323"
+            landmarkName = "search(term:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1062,8 +975,8 @@
             filePath = "QalamCast/Api/DB.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "198"
-            endingLineNumber = "198"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
             landmarkName = "saveCategory(category:)"
             landmarkType = "7">
             <Locations>
@@ -1110,8 +1023,8 @@
             filePath = "QalamCast/Api/DB.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "237"
-            endingLineNumber = "237"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
             landmarkName = "saveCategoriesSync(categories:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1142,10 +1055,10 @@
             filePath = "QalamCast/Api/DB.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "222"
-            endingLineNumber = "222"
-            landmarkName = "saveCategories(categories:)"
-            landmarkType = "7">
+            startingLineNumber = "233"
+            endingLineNumber = "233"
+            landmarkName = "DB"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1247,22 +1160,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8E27B300-1952-4C10-BE44-6A488C10606F"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QalamCast/Api/ApiService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229"
-            landmarkName = "shortTitle(title:category:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "92594166-0E8B-4ACB-98C3-E36D1A904B11"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -1286,8 +1183,8 @@
             filePath = "QalamCast/Controllers/PlayerDetailsView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "254"
-            endingLineNumber = "254"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
             landmarkName = "observePlayerCurrentTime()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1302,8 +1199,8 @@
             filePath = "QalamCast/Controllers/PlayerDetailsView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "264"
-            endingLineNumber = "264"
+            startingLineNumber = "262"
+            endingLineNumber = "262"
             landmarkName = "updateCurrentTimeSlider()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1360,14 +1257,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "94FDD6E1-C703-4096-A913-3733CE4D56EF"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QalamCast/Api/DB.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "333"
-            endingLineNumber = "333"
+            startingLineNumber = "345"
+            endingLineNumber = "345"
             landmarkName = "getEpisode(id:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1478,10 +1375,10 @@
             filePath = "QalamCast/Api/DB.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "409"
-            endingLineNumber = "409"
-            landmarkName = "updatePlayed(title:played:)"
-            landmarkType = "7">
+            startingLineNumber = "423"
+            endingLineNumber = "423"
+            landmarkName = "DB"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1494,8 +1391,8 @@
             filePath = "QalamCast/Api/DB.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "395"
-            endingLineNumber = "395"
+            startingLineNumber = "409"
+            endingLineNumber = "409"
             landmarkName = "getCurrentEpisode()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1510,8 +1407,8 @@
             filePath = "QalamCast/Api/DB.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
+            startingLineNumber = "269"
+            endingLineNumber = "269"
             landmarkName = "getEpisodesForSeries(series:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1594,6 +1491,198 @@
             endingLineNumber = "31"
             landmarkName = "episode"
             landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EDD9E192-0D7E-4836-B1CC-CF65E569E45E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QalamCast/Api/PrefDB.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "updateStats(title:played:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "43C8E362-3308-427B-9F0C-DD6F14E73870"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QalamCast/Api/PrefDB.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "updateStats(title:played:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "51846ADE-6A4F-4CAC-A893-979EDDBDA2B8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QalamCast/Api/DB.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "380"
+            endingLineNumber = "380"
+            landmarkName = "DB"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AC02A4CE-1FC7-46F8-BBDA-D45969A03EF2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QalamCast/Controllers/PlayerDetailsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "484"
+            endingLineNumber = "484"
+            landmarkName = "handleCurrentTimeSliderChange(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A2C11269-382D-496F-A034-6D41BAA4C12F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QalamCast/Api/DB.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "381"
+            endingLineNumber = "381"
+            landmarkName = "updatePlayed(episode:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E95FD356-72B3-488E-B99E-9AB4359BCBFC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QalamCast/Controllers/ViewControllerUtils.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "showActivityIndicator(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DBB649A1-FFBE-4688-AE93-FA1DEAEEF739"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QalamCast/Api/DB.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "fetchEpisodesFromMainUrl()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DA25D723-BCDA-4D40-807B-66013094A6D8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QalamCast/Api/ApiService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "buildCategoriesAndEpisodes(_:categories:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D4CF9F99-361D-4E09-8500-1515766D4E95"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QalamCast/Api/ApiService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "buildCategoriesAndEpisodes(_:categories:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "405C5D1E-2173-49A0-B3C8-B2F329AA028E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QalamCast/Api/ApiService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "buildCategoriesAndEpisodes(_:categories:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F2EF7B75-E1BE-4AF6-8883-E42285832B49"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QalamCast/Api/ApiService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "buildCategoriesAndEpisodes(_:categories:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C35FB5BE-C6ED-4462-987D-EFEE23418D6B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QalamCast/Api/DB.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "fetchEpisodesFromMainUrl()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

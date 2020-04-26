@@ -112,7 +112,7 @@ class PlayerDetailsView: UIView {
             self?.endTimeLabel.text = durationTime?.toDisplayString()
             self?.updateCurrentTimeSlider()
             //self?.episode.played = CMTimeGetSeconds(time)
-            DB.shared.updatePlayed(id: (self?.episodeId)!, played: CMTimeGetSeconds(time))
+            DB.shared.updatePlayed(title: self!.episodeTitle.text!, played: CMTimeGetSeconds(time))
         }
     }
     
@@ -194,8 +194,6 @@ class PlayerDetailsView: UIView {
         }
         
     }
-
-    //var playlistEpisodes = [Episode]()
     
     @objc fileprivate func handlePrevTrack() {
         let seriesEpisodes = try! DB.shared.getEpisodesForSeries(series: episode.category)
@@ -256,7 +254,7 @@ class PlayerDetailsView: UIView {
             self?.endTimeLabel.text = durationTime?.toDisplayString()
             
             self?.updateCurrentTimeSlider()
-            DB.shared.updatePlayed(id: self!.episodeId, played: CMTimeGetSeconds(time))
+            DB.shared.updatePlayed(title: self!.episodeTitle.text!, played: CMTimeGetSeconds(time))
         }
     }
     
@@ -488,7 +486,8 @@ class PlayerDetailsView: UIView {
         let seekTimeInSeconds = Float64(percentage) * durationInSeconds
         let seekTime = CMTimeMakeWithSeconds(seekTimeInSeconds, preferredTimescale: Int32(NSEC_PER_SEC))
         player.seek(to: seekTime)
-        DB.shared.updatePlayed(id: self.episodeId, played: seekTimeInSeconds)
+        print("Saving played \(self.episodeTitle.text!) \(seekTimeInSeconds)")
+        DB.shared.updatePlayed(title: self.episodeTitle.text!, played: seekTimeInSeconds)
     }
     
     @objc func handlePlayPause() {

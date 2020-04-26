@@ -19,7 +19,8 @@ class SettingsController : QuickTableViewController {
         tableContents = [
             Section(title: "Options", rows: [
                 SwitchRow(text: "Sort Latest -> Oldest", switchValue: APIService.shared.getEpisodesSortOrderPref(), action: didToggleSwitch()),
-                SwitchRow(text: "Show Played", switchValue: APIService.shared.getShowPlayedPref(), action: didToggleSwitch())
+                SwitchRow(text: "Show Played", switchValue: APIService.shared.getShowPlayedPref(), action: didToggleSwitch()),
+                SwitchRow(text: "Auto play at application start", switchValue: APIService.shared.getAutoStartPlay(), action: didToggleSwitch())
                 ]),
             
             Section(title: "Reset Data", rows: [
@@ -50,6 +51,8 @@ class SettingsController : QuickTableViewController {
                     UserDefaults.standard.set(row.switchValue, forKey: "sort_preference")
                 } else if row.text.starts(with: "Show") {
                     UserDefaults.standard.set(row.switchValue, forKey: "show_played_preference")
+                } else if row.text.starts(with: "Auto") {
+                    UserDefaults.standard.set(row.switchValue, forKey: "auto_start_play_preference")
                 }
                 print ("Changed \(state)")
             }

@@ -15,6 +15,9 @@
 		BD553636226B75F300D97360 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BD553635226B75F300D97360 /* Settings.bundle */; };
 		BD553638226B79B100D97360 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD553637226B79B100D97360 /* SettingsController.swift */; };
 		BD55363A226B7E0500D97360 /* SettingsBundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD553639226B7E0500D97360 /* SettingsBundleHelper.swift */; };
+		BD7DF45A245492B7004AA103 /* RamadanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7DF459245492B7004AA103 /* RamadanViewController.swift */; };
+		BD7DF45C24549667004AA103 /* ViewControllerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7DF45B24549667004AA103 /* ViewControllerUtils.swift */; };
+		BD8A12E6239BE43A00CE2195 /* PrefDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8A12E5239BE43A00CE2195 /* PrefDB.swift */; };
 		BDBA6C7F2241B58D000486CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBA6C7E2241B58D000486CD /* AppDelegate.swift */; };
 		BDBA6C812241B58D000486CD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBA6C802241B58D000486CD /* ViewController.swift */; };
 		BDBA6C842241B58D000486CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDBA6C822241B58D000486CD /* Main.storyboard */; };
@@ -56,7 +59,10 @@
 		BD553635226B75F300D97360 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		BD553637226B79B100D97360 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		BD553639226B7E0500D97360 /* SettingsBundleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleHelper.swift; sourceTree = "<group>"; };
-		BDBA6C7B2241B58D000486CD /* QalamCast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QalamCast.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD7DF459245492B7004AA103 /* RamadanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RamadanViewController.swift; sourceTree = "<group>"; };
+		BD7DF45B24549667004AA103 /* ViewControllerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerUtils.swift; sourceTree = "<group>"; };
+		BD8A12E5239BE43A00CE2195 /* PrefDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefDB.swift; sourceTree = "<group>"; };
+		BDBA6C7B2241B58D000486CD /* Qalam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Qalam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDBA6C7E2241B58D000486CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BDBA6C802241B58D000486CD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BDBA6C832241B58D000486CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -132,7 +138,7 @@
 		BDBA6C7C2241B58D000486CD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BDBA6C7B2241B58D000486CD /* QalamCast.app */,
+				BDBA6C7B2241B58D000486CD /* Qalam.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -187,6 +193,7 @@
 				BDBA6CA02241B660000486CD /* ApiService.swift */,
 				BDE50D5C224DB099005B2605 /* DB.swift */,
 				BD553639226B7E0500D97360 /* SettingsBundleHelper.swift */,
+				BD8A12E5239BE43A00CE2195 /* PrefDB.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -225,6 +232,8 @@
 				BDE50D4622446EDC005B2605 /* PlayerDetailsView.swift */,
 				BDE50D68225595D7005B2605 /* FavoritesController.swift */,
 				BD553637226B79B100D97360 /* SettingsController.swift */,
+				BD7DF459245492B7004AA103 /* RamadanViewController.swift */,
+				BD7DF45B24549667004AA103 /* ViewControllerUtils.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -248,7 +257,7 @@
 			);
 			name = QalamCast;
 			productName = QalamCast;
-			productReference = BDBA6C7B2241B58D000486CD /* QalamCast.app */;
+			productReference = BDBA6C7B2241B58D000486CD /* Qalam.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -370,11 +379,14 @@
 				BDE50D5B2249B831005B2605 /* EpisodesController.swift in Sources */,
 				BD39566E2266A7A80044277C /* PlayerDetailsView+Gestures.swift in Sources */,
 				BDBA6C9D2241B5FD000486CD /* Podcast.swift in Sources */,
+				BD8A12E6239BE43A00CE2195 /* PrefDB.swift in Sources */,
 				BDBA6C812241B58D000486CD /* ViewController.swift in Sources */,
 				BDBA6C7F2241B58D000486CD /* AppDelegate.swift in Sources */,
 				BDFA9630225EAE99004D2FC8 /* DownloadsController.swift in Sources */,
+				BD7DF45C24549667004AA103 /* ViewControllerUtils.swift in Sources */,
 				BDFA9632225FE76A004D2FC8 /* SearchController.swift in Sources */,
 				BDE50D582249B74D005B2605 /* EpisodeCell2.swift in Sources */,
+				BD7DF45A245492B7004AA103 /* RamadanViewController.swift in Sources */,
 				BDE50D54224816E5005B2605 /* SeriesCell.swift in Sources */,
 				BDBA6CA12241B660000486CD /* ApiService.swift in Sources */,
 				BDBA6C972241B5E8000486CD /* String.swift in Sources */,
@@ -534,14 +546,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = A8CSG8T755;
 				INFOPLIST_FILE = QalamCast/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jannaconsulting.QalamCast;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Qalam;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -553,14 +567,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = A8CSG8T755;
 				INFOPLIST_FILE = QalamCast/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jannaconsulting.QalamCast;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Qalam;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

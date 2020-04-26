@@ -71,6 +71,9 @@ class MainTabBarController: UITabBarController {
             self.playerDetailsView.miniPlayerView.alpha = 0
             self.playerDetailsView.maxPlayerView.alpha = 1
         })
+        if !APIService.shared.getAutoStartPlay() {
+            playerDetailsView.handlePlayPause()
+        }
     }
     
     //MARK:- Setup Functions
@@ -83,7 +86,7 @@ class MainTabBarController: UITabBarController {
         viewControllers = [
             generateNavigationCOntroller(with: seriesController, title: "Home", image: #imageLiteral(resourceName: "home-50")),
             generateNavigationCOntroller(with: SearchController(), title: "Search", image: #imageLiteral(resourceName: "search")),
-            generateNavigationCOntroller(with: FavoritesController(), title: "Favorites", image: #imageLiteral(resourceName: "heart-outline-50")),
+            generateNavigationCOntroller(with: RamadanViewController(), title: "Ramadan", image: #imageLiteral(resourceName: "moon-50")),
             generateNavigationCOntroller(with: DownloadsController(), title: "Downloads", image: #imageLiteral(resourceName: "downloads"))
             ,generateNavigationCOntroller(with: SettingsController(), title: "Settings", image: #imageLiteral(resourceName: "settings"))
 
