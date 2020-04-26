@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class MainTabBarController: UITabBarController {
+class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     let seriesController = SeriesController()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +46,11 @@ class MainTabBarController: UITabBarController {
         }
     }
 
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        print("Selected item")
+        minimizePlayerDetails()
+    }
+    
     @objc func minimizePlayerDetails() {
         maximizedTopAnchorConstraint.isActive = false
         minimizedTopAnchorConstraint.isActive = true
@@ -86,9 +91,10 @@ class MainTabBarController: UITabBarController {
         viewControllers = [
             generateNavigationCOntroller(with: seriesController, title: "Home", image: #imageLiteral(resourceName: "home-50")),
             generateNavigationCOntroller(with: SearchController(), title: "Search", image: #imageLiteral(resourceName: "search")),
+            generateNavigationCOntroller(with: FavoritesController(), title: "Favorites", image: #imageLiteral(resourceName: "heart-outline-50")),
             generateNavigationCOntroller(with: RamadanViewController(), title: "Ramadan", image: #imageLiteral(resourceName: "moon-50")),
-            generateNavigationCOntroller(with: DownloadsController(), title: "Downloads", image: #imageLiteral(resourceName: "downloads"))
-            ,generateNavigationCOntroller(with: SettingsController(), title: "Settings", image: #imageLiteral(resourceName: "settings"))
+            //generateNavigationCOntroller(with: DownloadsController(), title: "Downloads", image: #imageLiteral(resourceName: "downloads")),
+            generateNavigationCOntroller(with: SettingsController(), title: "Settings", image: #imageLiteral(resourceName: "settings"))
 
         ]
     }

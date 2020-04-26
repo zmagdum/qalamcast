@@ -317,7 +317,7 @@ class APIService {
     }
     
     func getAutoStartPlay() -> Bool {
-        return UserDefaults.standard.optionalBool(forKey: "auto_start_play_preference") ?? true
+        return UserDefaults.standard.bool(forKey: "auto_start_play_preference")
     }
     
     func sortFilterWithPreferences(_ episodes: inout [Episode]) {
