@@ -272,7 +272,7 @@ class PlayerDetailsView: UIView {
         setupInterruptionObserver()
         observePlayerCurrentTime()
         observeBoundaryTime()
-        //addBorderToMiniPlayerView()
+        addBorderToMiniPlayerView()
         
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapMaximize)))
         addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePan)))
