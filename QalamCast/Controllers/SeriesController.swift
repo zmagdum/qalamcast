@@ -31,7 +31,15 @@ class SeriesController : UITableViewController {
         setupTableView()
         fetchEpisodes()
         setupObservers()
+        
     }
+    
+    @objc func buttonAction(sender: UIButton!) {
+        if let url = URL(string: "https://www.qalam.institute/support-us"), UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.openURL(url)
+        }
+    }
+    
     
     //MARK:- Setup
     fileprivate func setupObservers() {
@@ -59,6 +67,25 @@ class SeriesController : UITableViewController {
     }
     
     //MARK:- UITableView
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 60))
+        view.backgroundColor = UIColor.white
+        
+        var button = UIButton(type: .custom)
+        button = UIButton(frame: CGRect(x: view.frame.size.width - 100 , y: 2, width: 80, height: 40))
+        button.backgroundColor = UIColor(red: 243/255.0, green: 158/255.0, blue: 53/255.0, alpha: 1.0)
+        button.setTitle("Donate", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        
+        button.addTarget(self, action: #selector(buttonAction(sender:)) ,for: .touchUpInside)
+        
+        view.addSubview(button)
+        return view
+        
+    }
+    
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let activityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
         activityIndicatorView.color = .darkGray

@@ -17,6 +17,7 @@ class SettingsController : QuickTableViewController {
         super.viewDidLoad()
         let currentEpisode = DB.shared.getCurrentEpisode()
         tableContents = [
+            
             Section(title: "Options", rows: [
                 SwitchRow(text: "Sort Latest -> Oldest", switchValue: APIService.shared.getEpisodesSortOrderPref(), action: didToggleSwitch()),
                 SwitchRow(text: "Show Played", switchValue: APIService.shared.getShowPlayedPref(), action: didToggleSwitch()),
@@ -32,7 +33,26 @@ class SettingsController : QuickTableViewController {
             Section(title: "Currently Playing", rows: [
                 NavigationRow(text: currentEpisode?.title ?? "", detailText: .subtitle("\(currentEpisode?.played ?? 0)"))
                 ]),
+         
+            
+//            Section(title: "Crashlitics Check", rows: [
+//                TapActionRow(text: "Crashlitics Check", action: { [weak self] in self?.CrashliticsCheck($0) })
+//                ]),
+            
         ]
+    }
+    
+//    // MARK: - Actions
+//    private func DonateBtnClick(_ sender: Row) {
+//        
+//        if let url = URL(string: "https://www.qalam.institute/support-us"), UIApplication.shared.canOpenURL(url) {
+//            UIApplication.shared.openURL(url)
+//        }
+//    }
+    
+    // MARK: - Actions
+    private func CrashliticsCheck(_ sender: Row) {
+       fatalError()
     }
     
     // MARK: - Actions

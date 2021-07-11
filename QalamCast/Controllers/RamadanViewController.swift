@@ -11,7 +11,7 @@ import WebKit
 class RamadanViewController : UIViewController, WKNavigationDelegate {
     var webView: WKWebView!
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
-    static let homeUrl = "https://www.qalam.institute/ramadan-resources"
+    static let homeUrl = "https://www.qalamcampus.com"
     let urlRequest = URLRequest(url: URL(string: homeUrl)!)
     override func loadView() {
         webView = WKWebView()

@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		185883B726957557003A50C1 /* DonateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185883B626957557003A50C1 /* DonateViewController.swift */; };
+		1861C28B2695954200B3DA23 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1861C28A2695954200B3DA23 /* GoogleService-Info.plist */; };
 		BD041B2722F397B200957DDE /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD041B2622F397B200957DDE /* SettingsView.xib */; };
 		BD041B2922F3982800957DDE /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD041B2822F3982800957DDE /* SettingsView.swift */; };
 		BD041B2B22F7B9D900957DDE /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD041B2A22F7B9D900957DDE /* Bundle.swift */; };
@@ -51,6 +53,8 @@
 
 /* Begin PBXFileReference section */
 		0985D2961478CBDFB3B12987 /* Pods_QalamCast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QalamCast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		185883B626957557003A50C1 /* DonateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonateViewController.swift; sourceTree = "<group>"; };
+		1861C28A2695954200B3DA23 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BD041B2622F397B200957DDE /* SettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
 		BD041B2822F3982800957DDE /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		BD041B2A22F7B9D900957DDE /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
@@ -158,6 +162,7 @@
 				BDBA6C882241B58E000486CD /* Assets.xcassets */,
 				BDBA6C8A2241B58E000486CD /* LaunchScreen.storyboard */,
 				BDBA6C8D2241B58E000486CD /* Info.plist */,
+				1861C28A2695954200B3DA23 /* GoogleService-Info.plist */,
 				BD553635226B75F300D97360 /* Settings.bundle */,
 				BDBA6CA22241B68E000486CD /* MainTabBarController.swift */,
 				BDBA6C852241B58D000486CD /* QalamCast.xcdatamodeld */,
@@ -233,6 +238,7 @@
 				BDE50D68225595D7005B2605 /* FavoritesController.swift */,
 				BD553637226B79B100D97360 /* SettingsController.swift */,
 				BD7DF459245492B7004AA103 /* RamadanViewController.swift */,
+				185883B626957557003A50C1 /* DonateViewController.swift */,
 				BD7DF45B24549667004AA103 /* ViewControllerUtils.swift */,
 			);
 			path = Controllers;
@@ -250,6 +256,7 @@
 				BDBA6C782241B58D000486CD /* Frameworks */,
 				BDBA6C792241B58D000486CD /* Resources */,
 				E18971DD4CA05BBCF1A9AEBC /* [CP] Embed Pods Frameworks */,
+				18F68098269426A200321A4F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -272,6 +279,7 @@
 				TargetAttributes = {
 					BDBA6C7A2241B58D000486CD = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1250;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -304,6 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDE50D55224816E5005B2605 /* SeriesCell.xib in Resources */,
+				1861C28B2695954200B3DA23 /* GoogleService-Info.plist in Resources */,
 				BD041B2722F397B200957DDE /* SettingsView.xib in Resources */,
 				BDE50D4922446EDC005B2605 /* PlayerDetailsView.xib in Resources */,
 				BDFA9634225FE82E004D2FC8 /* PodcastsSearchingView.xib in Resources */,
@@ -337,28 +346,34 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		18F68098269426A200321A4F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n\n\n\n";
+		};
 		E18971DD4CA05BBCF1A9AEBC /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-QalamCast/Pods-QalamCast-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/FeedKit/FeedKit.framework",
-				"${BUILT_PRODUCTS_DIR}/QuickTableViewController/QuickTableViewController.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
-				"${BUILT_PRODUCTS_DIR}/Squeal/Squeal.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QalamCast/Pods-QalamCast-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FeedKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QuickTableViewController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Squeal.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QalamCast/Pods-QalamCast-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -391,6 +406,7 @@
 				BDBA6CA12241B660000486CD /* ApiService.swift in Sources */,
 				BDBA6C972241B5E8000486CD /* String.swift in Sources */,
 				BD3956702266A8380044277C /* UIApplication.swift in Sources */,
+				185883B726957557003A50C1 /* DonateViewController.swift in Sources */,
 				BD041B2922F3982800957DDE /* SettingsView.swift in Sources */,
 				BDE50D69225595D7005B2605 /* FavoritesController.swift in Sources */,
 				BD55363A226B7E0500D97360 /* SettingsBundleHelper.swift in Sources */,
@@ -545,17 +561,22 @@
 			baseConfigurationReference = F2BA30E6DCDB8F09FEA49E32 /* Pods-QalamCast.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = A8CSG8T755;
 				INFOPLIST_FILE = QalamCast/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jannaconsulting.QalamCast;
 				PRODUCT_NAME = Qalam;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -566,17 +587,20 @@
 			baseConfigurationReference = F042BA492FBFDAE2D74A076B /* Pods-QalamCast.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = A8CSG8T755;
 				INFOPLIST_FILE = QalamCast/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jannaconsulting.QalamCast;
 				PRODUCT_NAME = Qalam;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

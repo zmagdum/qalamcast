@@ -18,7 +18,6 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         view.backgroundColor = .green
         setupViewControllers()
         setupPlayerDetailsView()
-
         do {
             //try DB.shared.resetDatabase()
             try DB.shared.createDatabase()
@@ -58,6 +57,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.view.layoutIfNeeded()
             self.tabBar.transform = .identity
+            
             self.playerDetailsView.miniPlayerView.alpha = 1
             self.playerDetailsView.maxPlayerView.alpha = 0
         })
@@ -89,13 +89,13 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
 
     fileprivate func setupViewControllers() {
         viewControllers = [
-            generateNavigationCOntroller(with: UIViewController(), title: "yyy", image: #imageLiteral(resourceName: "rights_companionship"))
             generateNavigationCOntroller(with: seriesController, title: "Home", image: #imageLiteral(resourceName: "home-50")),
             generateNavigationCOntroller(with: SearchController(), title: "Search", image: #imageLiteral(resourceName: "search")),
             generateNavigationCOntroller(with: FavoritesController(), title: "Favorites", image: #imageLiteral(resourceName: "heart-outline-50")),
-            generateNavigationCOntroller(with: RamadanViewController(), title: "Ramadan", image: #imageLiteral(resourceName: "moon-50")),
+            generateNavigationCOntroller(with: RamadanViewController(), title: "Campus", image: #imageLiteral(resourceName: "moon-50")),
+            generateNavigationCOntroller(with: SettingsController(), title: "Settings", image: #imageLiteral(resourceName: "settings")),
+//            generateNavigationCOntroller(with: DonateViewController(), title: "Donate", image: #imageLiteral(resourceName: "settings"))
             //generateNavigationCOntroller(with: DownloadsController(), title: "Downloads", image: #imageLiteral(resourceName: "downloads")),
-            generateNavigationCOntroller(with: SettingsController(), title: "Settings", image: #imageLiteral(resourceName: "settings"))
 
         ]
     }
@@ -117,14 +117,18 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         playerDetailsView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
 
     }
+    
+    
     //MARK:- Helper Functions
     
-    fileprivate func generateNavigationCOntroller(with rootViewController : UIViewController, title: String, image: UIImage) -> UIViewController {
+    fileprivate func  generateNavigationCOntroller(with rootViewController : UIViewController, title: String, image: UIImage) -> UIViewController {
         let navController = UINavigationController(rootViewController: rootViewController)
         navController.navigationBar.prefersLargeTitles = true
         rootViewController.navigationItem.title = title
         navController.tabBarItem.title = title
         navController.tabBarItem.image = image
+//        let barButton = UIBarButtonItem(customView: createCustomDonateBtn())
+//        navController.navigationItem.rightBarButtonItem = barButton
         return navController;
     }
 }

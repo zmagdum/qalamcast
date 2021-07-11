@@ -12,4 +12,9 @@ target 'QalamCast' do
   pod 'SQLite.swift', '~> 0.11.5'
   pod 'Squeal'
   pod 'QuickTableViewController'
+  pod 'Firebase'
+  pod 'Firebase/Crashlytics'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Messaging'
+
 end
