@@ -98,6 +98,9 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
             //generateNavigationCOntroller(with: DownloadsController(), title: "Downloads", image: #imageLiteral(resourceName: "downloads")),
 
         ]
+        
+        viewControllers?.first?.navigationController?.navigationItem.rightBarButtonItem = UIBarButtonItem(customView:createDonateButton())
+        
     }
 
     fileprivate func setupPlayerDetailsView() {
@@ -118,6 +121,26 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
 
     }
     
+    func createDonateButton() -> UIButton {
+        
+        var button = UIButton(type: .custom)
+        button = UIButton(frame: CGRect(x: 0 , y: 0, width: 80, height: 40))
+        button.backgroundColor = UIColor(red: 243/255.0, green: 158/255.0, blue: 53/255.0, alpha: 1.0)
+        button.setTitle("Donate", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        
+        button.addTarget(self, action: #selector(buttonAction(sender:)) ,for: .touchUpInside)        
+                
+        //self.navigationController!.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
+        
+        return button
+    }
+    
+    @objc func buttonAction(sender: UIButton!) {
+        if let url = URL(string: "https://www.qalam.institute/support-us"), UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.openURL(url)
+        }
+    }
     
     //MARK:- Helper Functions
     
@@ -127,8 +150,8 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         rootViewController.navigationItem.title = title
         navController.tabBarItem.title = title
         navController.tabBarItem.image = image
-//        let barButton = UIBarButtonItem(customView: createCustomDonateBtn())
-//        navController.navigationItem.rightBarButtonItem = barButton
+        let barButton = UIBarButtonItem(customView: createDonateButton())
+        navController.navigationItem.rightBarButtonItem = barButton
         return navController;
     }
 }
