@@ -22,10 +22,14 @@ class PrefDB {
     
     convenience init() {
         //Use the default container for production environment
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            fatalError("Can not get shared app delegate")
+        var newAppDelegate = AppDelegate()
+        DispatchQueue.main.async {
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                fatalError("Can not get shared app delegate")
+            }
+            newAppDelegate = appDelegate
         }
-        self.init(container: appDelegate.persistentContainer)
+        self.init(container: newAppDelegate.persistentContainer)
     }
     
     lazy var backgroundContext: NSManagedObjectContext = {

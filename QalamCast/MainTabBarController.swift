@@ -144,7 +144,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     //MARK:- Helper Functions
     
-    fileprivate func  generateNavigationCOntroller(with rootViewController : UIViewController, title: String, image: UIImage) -> UIViewController {
+    fileprivate func generateNavigationCOntroller(with rootViewController : UIViewController, title: String, image: UIImage) -> UIViewController {
         let navController = UINavigationController(rootViewController: rootViewController)
         navController.navigationBar.prefersLargeTitles = true
         rootViewController.navigationItem.title = title

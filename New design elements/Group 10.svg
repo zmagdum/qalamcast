@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="42px" height="42px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>0465889E-1296-463A-AE0A-ABF88900C877</title>
+    <defs>
+        <circle id="path-1" cx="17" cy="17" r="17"></circle>
+        <filter x="-17.6%" y="-17.6%" width="135.3%" height="135.3%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Qalam-Mobile-App" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Series-1" transform="translate(-317.000000, -342.000000)">
+            <g id="Group-10" transform="translate(321.000000, 346.000000)">
+                <g id="Oval">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+                <path d="M20.4782609,10 C19.1340735,10.0035602 17.860443,10.6183518 17,11.6789844 C15.7829969,10.1742703 13.7784091,9.61410137 11.9868638,10.2780962 C10.1953184,10.942091 9.00097016,12.6878716 9,14.6439993 C9,19.6452293 16.3043478,24.6464592 16.6521739,24.8822315 C16.8843356,25.0392562 17.1852296,25.0392562 17.4173913,24.8822315 C17.6956522,24.6464592 25,19.6452293 25,14.6439993 C24.9961693,12.0808207 22.97396,10.0039343 20.4782609,10 Z M17,24 C14.7157895,22.3027085 10,18.0401041 10,14.4827671 C10.0023059,12.8444346 11.0884901,11.4286541 12.6104744,11.0801591 C14.1324587,10.7316642 15.6798855,11.544416 16.3294737,13.0334816 C16.449176,13.3098216 16.7112883,13.4871713 17,13.4871713 C17.2887117,13.4871713 17.550824,13.3098216 17.6705263,13.0334816 C18.3201145,11.544416 19.8675413,10.7316642 21.3895256,11.0801591 C22.9115099,11.4286541 23.9976941,12.8444346 24,14.4827671 C24,18.4198634 18.5473684,22.8297214 17,24 Z" id="Shape-Copy" fill="#126088" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>
