@@ -23,9 +23,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         // Override point for customization after application launch.
         window = UIWindow()
         window?.makeKeyAndVisible()
-        window?.rootViewController = MainTabBarController()
+        
+        let storyboard = UIStoryboard.init(name: "NewDesign", bundle: nil)
+                
+                // controller identifier sets up in storyboard utilities
+                // panel (on the right), it is called 'Storyboard ID'
+                let viewController = storyboard.instantiateViewController(withIdentifier: "MainTab") as! MainTabVC
+
+                self.window?.rootViewController = viewController
+        
+        //window?.rootViewController = MainTabBarController()
         SettingsBundleHelper.checkAndExecuteSettings()
         SettingsBundleHelper.setVersionAndBuildNumber()
+        
+        do {
+            //try DB.shared.resetDatabase()
+            try DB.shared.createDatabase()
+            DB.shared.fetchEpisodesFromSeries()
+            //DB.shared.fetchEpisodesFromMainUrl()
+            print("Found Categories After ", try DB.shared.getCategories().count)
+        } catch {
+            print("Error creating database \(error)")
+        }
+        
         FirebaseApp.configure()
         
         if #available(iOS 10.0, *) {

@@ -19,7 +19,7 @@ class SeriesCell : UITableViewCell {
 //            let unplayed = try! DB.shared.getUnplayedCount(series: series.title ?? "")
             var desc = "Episodes \(series.episodeCount ?? 0)"
             if series.lastUpdated != nil {
-                desc += " " + dateFormatter.string(from: series.lastUpdated!)
+                desc += " " + dateFormatter.string(from: series.lastUpdated!)   
             }
             descriptionLabel.text = desc
             speakerNameLabel.text = series.speakers

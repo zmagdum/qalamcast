@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="27px" height="27px" viewBox="0 0 27 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>174CAF2E-99C4-4EF2-AFFD-2C30D3A17D81</title>
+    <defs>
+        <filter color-interpolation-filters="auto" id="filter-1">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Qalam-Mobile-App" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Series-1" transform="translate(-101.000000, -476.000000)">
+            <g id="noun_play-button_893616" transform="translate(98.000000, 473.000000)" filter="url(#filter-1)">
+                <g transform="translate(3.000000, 3.000000)">
+                    <path d="M13.5,0 C6.05274725,0 0,6.05274725 0,13.5 C0,20.9472527 6.05274725,27 13.5,27 C20.9472527,27 27,20.9472527 27,13.5 C27,6.05274725 20.9472527,0 13.5,0 Z M18.7813187,14.0043956 L11.0076923,18.4846154 C10.9186813,18.543956 10.8,18.5736264 10.710989,18.5736264 C10.621978,18.5736264 10.5032967,18.543956 10.4142857,18.4846154 C10.2362637,18.3659341 10.1175824,18.1879121 10.1175824,17.9802198 L10.1175824,9.01978022 C10.1175824,8.81208791 10.2362637,8.6043956 10.4142857,8.51538462 C10.5923077,8.3967033 10.8296703,8.3967033 11.0076923,8.51538462 L18.7813187,12.9956044 C18.9593407,13.1142857 19.078022,13.2923077 19.078022,13.5 C19.078022,13.7076923 18.9593407,13.9153846 18.7813187,14.0043956 Z" id="Shape" fill="#000000" fill-rule="nonzero"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
