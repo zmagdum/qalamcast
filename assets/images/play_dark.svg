@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>B6CBC42F-E4F6-4375-881B-E34FA761D1CE</title>
+    <defs>
+        <circle id="path-1" cx="12" cy="12" r="12"></circle>
+        <filter x="-25.0%" y="-25.0%" width="150.0%" height="150.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Qalam-Mobile-App" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Series" transform="translate(-91.000000, -429.000000)">
+            <g id="Group-12" transform="translate(20.000000, 357.000000)">
+                <g id="Group-16" transform="translate(75.000000, 76.000000)">
+                    <g id="Oval">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use fill="#126088" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                    <path d="M9.47928108,16.952249 L16.8442336,12.28843 C17.0519221,12.1527553 17.0519221,11.8305278 16.8442336,11.694853 L9.47928108,7.0479934 C9.27159261,6.91231866 9,7.08191208 9,7.33630221 L9,16.6469808 C9,16.9183303 9.27159261,17.0879237 9.47928108,16.952249 Z" id="Path" fill="#ffffff" fill-rule="nonzero"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

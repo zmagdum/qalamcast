@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>121806051896-9iemb2o0pqlu9luhfmbrhchs5cgtroah.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.121806051896-9iemb2o0pqlu9luhfmbrhchs5cgtroah</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCtE825NGCWknlysOMhzpxbMbBWNVl7uQE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>121806051896</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.app.qalam</string>
+	<key>PROJECT_ID</key>
+	<string>qalam-399f8</string>
+	<key>STORAGE_BUCKET</key>
+	<string>qalam-399f8.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:121806051896:ios:bc9ad3510ded655fb0e4cd</string>
+	<key>DATABASE_URL</key>
+	<string>https://qalam-399f8-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>
