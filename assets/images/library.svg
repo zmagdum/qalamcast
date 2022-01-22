@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>BC7A759B-AFB6-4ABD-BD53-892853C20EA7</title>
+    <defs>
+        <filter id="filter-1">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.584314 0 0 0 0 0.584314 0 0 0 0 0.584314 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-187.000000, -427.000000)" id="noun_Library_2629874" filter="url(#filter-1)">
+            <g transform="translate(187.000000, 427.000000)">
+                <rect id="Rectangle" fill="#000000" fill-rule="nonzero" x="0" y="0" width="3" height="25" rx="1.5"></rect>
+                <rect id="Rectangle" fill="#000000" fill-rule="nonzero" x="7" y="0" width="3" height="25" rx="1.5"></rect>
+                <path d="M18.9627733,1.05974223 C19.747155,1.0568194 20.3853915,1.69031706 20.3883144,2.47469883 C20.3883303,2.47896913 20.3883269,2.48323947 20.3883043,2.48750974 L20.2697136,24.8887282 C20.2655125,25.6822942 19.6225805,26.3242191 18.8290089,26.3271761 C18.0446272,26.330099 17.4063907,25.6966013 17.4034678,24.9122195 C17.4034519,24.9079492 17.4034553,24.9036789 17.4034779,24.8994086 L17.5220686,2.49819012 C17.5262697,1.70462415 18.1692017,1.06269929 18.9627733,1.05974223 Z" id="Rectangle" fill="#000000" fill-rule="nonzero" transform="translate(18.895891, 13.693459) rotate(-25.103860) translate(-18.895891, -13.693459) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

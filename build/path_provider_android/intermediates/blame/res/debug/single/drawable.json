@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/vikashkumar/Documents/Projects/DotPitchTechnologies/Qalam/podcast_app/build/path_provider_android/intermediates/res/merged/debug/drawable/notification_bg.xml",
+        "source": "/Users/vikashkumar/.gradle/caches/transforms-3/1b204ef0e4d0527f0087d4a719b0c29f/transformed/core-1.6.0/res/drawable/notification_bg.xml"
+    },
+    {
+        "merged": "/Users/vikashkumar/Documents/Projects/DotPitchTechnologies/Qalam/podcast_app/build/path_provider_android/intermediates/res/merged/debug/drawable/notification_tile_bg.xml",
+        "source": "/Users/vikashkumar/.gradle/caches/transforms-3/1b204ef0e4d0527f0087d4a719b0c29f/transformed/core-1.6.0/res/drawable/notification_tile_bg.xml"
+    },
+    {
+        "merged": "/Users/vikashkumar/Documents/Projects/DotPitchTechnologies/Qalam/podcast_app/build/path_provider_android/intermediates/res/merged/debug/drawable/notification_bg_low.xml",
+        "source": "/Users/vikashkumar/.gradle/caches/transforms-3/1b204ef0e4d0527f0087d4a719b0c29f/transformed/core-1.6.0/res/drawable/notification_bg_low.xml"
+    },
+    {
+        "merged": "/Users/vikashkumar/Documents/Projects/DotPitchTechnologies/Qalam/podcast_app/build/path_provider_android/intermediates/res/merged/debug/drawable/notification_icon_background.xml",
+        "source": "/Users/vikashkumar/.gradle/caches/transforms-3/1b204ef0e4d0527f0087d4a719b0c29f/transformed/core-1.6.0/res/drawable/notification_icon_background.xml"
+    }
+]

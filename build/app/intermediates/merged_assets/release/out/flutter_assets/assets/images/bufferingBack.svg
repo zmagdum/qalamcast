@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="28px" viewBox="0 0 26 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>7951C104-F61A-418D-A91E-6AD17D985531</title>
+    <defs>
+        <filter id="filter-1">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.070588 0 0 0 0 0.376471 0 0 0 0 0.533333 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Qalam-Mobile-App" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-2" transform="translate(-42.000000, -617.000000)" filter="url(#filter-1)">
+            <g transform="translate(42.000000, 617.000000)">
+                <text id="15" font-family="ProximaNova-Semibold, Proxima Nova" font-size="12" font-weight="500" line-spacing="20" fill="#000000">
+                    <tspan x="7" y="17">15</tspan>
+                </text>
+                <g id="noun_Reverse_1199247" transform="translate(13.210665, 14.092796) rotate(98.000000) translate(-13.210665, -14.092796) translate(1.210665, 3.092796)" fill="#000000" fill-rule="nonzero">
+                    <path d="M12.7565805,-2.03241665e-13 C6.70226611,-2.03241665e-13 1.77698124,4.81173118 1.77698124,10.726518 L3.04060349e-14,10.726518 L3.15356541,14.5823166 L6.30763195,10.726518 L4.03203358,10.726518 C4.03203358,6.02665904 7.94580219,2.20317362 12.7565805,2.20317362 C17.5671083,2.20317362 21.4806263,6.02690383 21.4806263,10.726518 C21.4806263,15.4261321 17.5671083,19.2498623 12.7565805,19.2498623 C10.4085699,19.2498623 8.20588489,18.3517019 6.55418434,16.720619 L4.95109269,18.2701844 C7.02974982,20.3225631 9.80171026,21.4527911 12.7565805,21.4527911 C18.8103938,21.4527911 23.7356787,16.6408151 23.7356787,10.7262732 C23.7356787,4.81173118 18.8103938,-2.03241665e-13 12.7565805,-2.03241665e-13 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,308 @@
+io/grpc/android/R.java
+ io.grpc.android.R
+io/flutter/plugins/pathprovider/R.java
+ io.flutter.plugins.pathprovider.R
+ io.flutter.plugins.pathprovider.R$attr
+ io.flutter.plugins.pathprovider.R$color
+ io.flutter.plugins.pathprovider.R$dimen
+ io.flutter.plugins.pathprovider.R$drawable
+ io.flutter.plugins.pathprovider.R$id
+ io.flutter.plugins.pathprovider.R$integer
+ io.flutter.plugins.pathprovider.R$layout
+ io.flutter.plugins.pathprovider.R$string
+ io.flutter.plugins.pathprovider.R$style
+ io.flutter.plugins.pathprovider.R$styleable
+androidx/lifecycle/livedata/core/R.java
+ androidx.lifecycle.livedata.core.R
+androidx/lifecycle/livedata/R.java
+ androidx.lifecycle.livedata.R
+firebase/com/protolitewrapper/R.java
+ firebase.com.protolitewrapper.R
+androidx/lifecycle/R.java
+ androidx.lifecycle.R
+com/example/podcast_app/R.java
+ com.example.podcast_app.R
+ com.example.podcast_app.R$attr
+ com.example.podcast_app.R$color
+ com.example.podcast_app.R$dimen
+ com.example.podcast_app.R$drawable
+ com.example.podcast_app.R$id
+ com.example.podcast_app.R$integer
+ com.example.podcast_app.R$layout
+ com.example.podcast_app.R$mipmap
+ com.example.podcast_app.R$string
+ com.example.podcast_app.R$style
+ com.example.podcast_app.R$styleable
+androidx/arch/core/R.java
+ androidx.arch.core.R
+com/google/firebase/database/collection/R.java
+ com.google.firebase.database.collection.R
+ com.google.firebase.database.collection.R$attr
+ com.google.firebase.database.collection.R$color
+ com.google.firebase.database.collection.R$dimen
+ com.google.firebase.database.collection.R$drawable
+ com.google.firebase.database.collection.R$id
+ com.google.firebase.database.collection.R$integer
+ com.google.firebase.database.collection.R$layout
+ com.google.firebase.database.collection.R$string
+ com.google.firebase.database.collection.R$style
+ com.google.firebase.database.collection.R$styleable
+androidx/fragment/R.java
+ androidx.fragment.R
+ androidx.fragment.R$attr
+ androidx.fragment.R$color
+ androidx.fragment.R$dimen
+ androidx.fragment.R$drawable
+ androidx.fragment.R$id
+ androidx.fragment.R$integer
+ androidx.fragment.R$layout
+ androidx.fragment.R$string
+ androidx.fragment.R$style
+ androidx.fragment.R$styleable
+io/flutter/plugins/firebase/firestore/R.java
+ io.flutter.plugins.firebase.firestore.R
+ io.flutter.plugins.firebase.firestore.R$attr
+ io.flutter.plugins.firebase.firestore.R$color
+ io.flutter.plugins.firebase.firestore.R$dimen
+ io.flutter.plugins.firebase.firestore.R$drawable
+ io.flutter.plugins.firebase.firestore.R$id
+ io.flutter.plugins.firebase.firestore.R$integer
+ io.flutter.plugins.firebase.firestore.R$layout
+ io.flutter.plugins.firebase.firestore.R$string
+ io.flutter.plugins.firebase.firestore.R$style
+ io.flutter.plugins.firebase.firestore.R$styleable
+androidx/savedstate/R.java
+ androidx.savedstate.R
+androidx/customview/R.java
+ androidx.customview.R
+ androidx.customview.R$attr
+ androidx.customview.R$color
+ androidx.customview.R$dimen
+ androidx.customview.R$drawable
+ androidx.customview.R$id
+ androidx.customview.R$integer
+ androidx.customview.R$layout
+ androidx.customview.R$string
+ androidx.customview.R$style
+ androidx.customview.R$styleable
+androidx/media2/common/R.java
+ androidx.media2.common.R
+ androidx.media2.common.R$attr
+ androidx.media2.common.R$color
+ androidx.media2.common.R$dimen
+ androidx.media2.common.R$drawable
+ androidx.media2.common.R$id
+ androidx.media2.common.R$integer
+ androidx.media2.common.R$layout
+ androidx.media2.common.R$string
+ androidx.media2.common.R$style
+ androidx.media2.common.R$styleable
+com/google/firebase/firestore/R.java
+ com.google.firebase.firestore.R
+ com.google.firebase.firestore.R$attr
+ com.google.firebase.firestore.R$color
+ com.google.firebase.firestore.R$dimen
+ com.google.firebase.firestore.R$drawable
+ com.google.firebase.firestore.R$id
+ com.google.firebase.firestore.R$integer
+ com.google.firebase.firestore.R$layout
+ com.google.firebase.firestore.R$string
+ com.google.firebase.firestore.R$style
+ com.google.firebase.firestore.R$styleable
+com/google/firebase/R.java
+ com.google.firebase.R
+ com.google.firebase.R$attr
+ com.google.firebase.R$color
+ com.google.firebase.R$dimen
+ com.google.firebase.R$drawable
+ com.google.firebase.R$id
+ com.google.firebase.R$integer
+ com.google.firebase.R$layout
+ com.google.firebase.R$string
+ com.google.firebase.R$style
+ com.google.firebase.R$styleable
+androidx/media2/session/R.java
+ androidx.media2.session.R
+ androidx.media2.session.R$attr
+ androidx.media2.session.R$color
+ androidx.media2.session.R$dimen
+ androidx.media2.session.R$drawable
+ androidx.media2.session.R$id
+ androidx.media2.session.R$integer
+ androidx.media2.session.R$layout
+ androidx.media2.session.R$string
+ androidx.media2.session.R$style
+ androidx.media2.session.R$styleable
+androidx/loader/R.java
+ androidx.loader.R
+ androidx.loader.R$attr
+ androidx.loader.R$color
+ androidx.loader.R$dimen
+ androidx.loader.R$drawable
+ androidx.loader.R$id
+ androidx.loader.R$integer
+ androidx.loader.R$layout
+ androidx.loader.R$string
+ androidx.loader.R$style
+ androidx.loader.R$styleable
+xyz/luan/audioplayers/R.java
+ xyz.luan.audioplayers.R
+ xyz.luan.audioplayers.R$attr
+ xyz.luan.audioplayers.R$color
+ xyz.luan.audioplayers.R$dimen
+ xyz.luan.audioplayers.R$drawable
+ xyz.luan.audioplayers.R$id
+ xyz.luan.audioplayers.R$integer
+ xyz.luan.audioplayers.R$layout
+ xyz.luan.audioplayers.R$string
+ xyz.luan.audioplayers.R$style
+ xyz.luan.audioplayers.R$styleable
+com/google/firebase/appcheck/interop/R.java
+ com.google.firebase.appcheck.interop.R
+ com.google.firebase.appcheck.interop.R$attr
+ com.google.firebase.appcheck.interop.R$color
+ com.google.firebase.appcheck.interop.R$dimen
+ com.google.firebase.appcheck.interop.R$drawable
+ com.google.firebase.appcheck.interop.R$id
+ com.google.firebase.appcheck.interop.R$integer
+ com.google.firebase.appcheck.interop.R$layout
+ com.google.firebase.appcheck.interop.R$string
+ com.google.firebase.appcheck.interop.R$style
+ com.google.firebase.appcheck.interop.R$styleable
+androidx/annotation/experimental/R.java
+ androidx.annotation.experimental.R
+com/google/firebase/components/R.java
+ com.google.firebase.components.R
+com/ggichure/github/hexcolor/R.java
+ com.ggichure.github.hexcolor.R
+ com.ggichure.github.hexcolor.R$attr
+ com.ggichure.github.hexcolor.R$color
+ com.ggichure.github.hexcolor.R$dimen
+ com.ggichure.github.hexcolor.R$drawable
+ com.ggichure.github.hexcolor.R$id
+ com.ggichure.github.hexcolor.R$integer
+ com.ggichure.github.hexcolor.R$layout
+ com.ggichure.github.hexcolor.R$string
+ com.ggichure.github.hexcolor.R$style
+ com.ggichure.github.hexcolor.R$styleable
+androidx/core/R.java
+ androidx.core.R
+ androidx.core.R$attr
+ androidx.core.R$color
+ androidx.core.R$dimen
+ androidx.core.R$drawable
+ androidx.core.R$id
+ androidx.core.R$integer
+ androidx.core.R$layout
+ androidx.core.R$string
+ androidx.core.R$style
+ androidx.core.R$styleable
+androidx/tracing/R.java
+ androidx.tracing.R
+io/flutter/plugins/GeneratedPluginRegistrant.java
+ io.flutter.plugins.GeneratedPluginRegistrant
+com/ryanheise/audioservice/R.java
+ com.ryanheise.audioservice.R
+ com.ryanheise.audioservice.R$attr
+ com.ryanheise.audioservice.R$color
+ com.ryanheise.audioservice.R$dimen
+ com.ryanheise.audioservice.R$drawable
+ com.ryanheise.audioservice.R$id
+ com.ryanheise.audioservice.R$integer
+ com.ryanheise.audioservice.R$layout
+ com.ryanheise.audioservice.R$string
+ com.ryanheise.audioservice.R$style
+ com.ryanheise.audioservice.R$styleable
+com/google/android/gms/common/R.java
+ com.google.android.gms.common.R
+ com.google.android.gms.common.R$integer
+ com.google.android.gms.common.R$string
+androidx/activity/R.java
+ androidx.activity.R
+ androidx.activity.R$attr
+ androidx.activity.R$color
+ androidx.activity.R$dimen
+ androidx.activity.R$drawable
+ androidx.activity.R$id
+ androidx.activity.R$integer
+ androidx.activity.R$layout
+ androidx.activity.R$string
+ androidx.activity.R$style
+ androidx.activity.R$styleable
+com/google/android/gms/base/R.java
+ com.google.android.gms.base.R
+ com.google.android.gms.base.R$attr
+ com.google.android.gms.base.R$color
+ com.google.android.gms.base.R$drawable
+ com.google.android.gms.base.R$id
+ com.google.android.gms.base.R$string
+ com.google.android.gms.base.R$styleable
+com/example/podcast_app/BuildConfig.java
+ com.example.podcast_app.BuildConfig
+io/flutter/plugins/firebase/core/R.java
+ io.flutter.plugins.firebase.core.R
+ io.flutter.plugins.firebase.core.R$attr
+ io.flutter.plugins.firebase.core.R$color
+ io.flutter.plugins.firebase.core.R$dimen
+ io.flutter.plugins.firebase.core.R$drawable
+ io.flutter.plugins.firebase.core.R$id
+ io.flutter.plugins.firebase.core.R$integer
+ io.flutter.plugins.firebase.core.R$layout
+ io.flutter.plugins.firebase.core.R$string
+ io.flutter.plugins.firebase.core.R$style
+ io.flutter.plugins.firebase.core.R$styleable
+androidx/viewpager/R.java
+ androidx.viewpager.R
+ androidx.viewpager.R$attr
+ androidx.viewpager.R$color
+ androidx.viewpager.R$dimen
+ androidx.viewpager.R$drawable
+ androidx.viewpager.R$id
+ androidx.viewpager.R$integer
+ androidx.viewpager.R$layout
+ androidx.viewpager.R$string
+ androidx.viewpager.R$style
+ androidx.viewpager.R$styleable
+androidx/versionedparcelable/R.java
+ androidx.versionedparcelable.R
+androidx/multidex/R.java
+ androidx.multidex.R
+com/ryanheise/audio_session/R.java
+ com.ryanheise.audio_session.R
+ com.ryanheise.audio_session.R$attr
+ com.ryanheise.audio_session.R$color
+ com.ryanheise.audio_session.R$dimen
+ com.ryanheise.audio_session.R$drawable
+ com.ryanheise.audio_session.R$id
+ com.ryanheise.audio_session.R$integer
+ com.ryanheise.audio_session.R$layout
+ com.ryanheise.audio_session.R$string
+ com.ryanheise.audio_session.R$style
+ com.ryanheise.audio_session.R$styleable
+com/google/android/gms/tasks/R.java
+ com.google.android.gms.tasks.R
+androidx/media/R.java
+ androidx.media.R
+ androidx.media.R$color
+ androidx.media.R$id
+ androidx.media.R$integer
+ androidx.media.R$layout
+ androidx.media.R$style
+com/google/firebase/auth/internal/R.java
+ com.google.firebase.auth.internal.R
+androidx/core/ktx/R.java
+ androidx.core.ktx.R
+androidx/lifecycle/viewmodel/R.java
+ androidx.lifecycle.viewmodel.R
+com/tekartik/sqflite/R.java
+ com.tekartik.sqflite.R
+ com.tekartik.sqflite.R$attr
+ com.tekartik.sqflite.R$color
+ com.tekartik.sqflite.R$dimen
+ com.tekartik.sqflite.R$drawable
+ com.tekartik.sqflite.R$id
+ com.tekartik.sqflite.R$integer
+ com.tekartik.sqflite.R$layout
+ com.tekartik.sqflite.R$string
+ com.tekartik.sqflite.R$style
+ com.tekartik.sqflite.R$styleable

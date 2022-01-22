@@ -1,6 +1,0 @@
-framework module Squeal {
-  umbrella header "Squeal-umbrella.h"
-
-  export *
-  module * { export * }
-}

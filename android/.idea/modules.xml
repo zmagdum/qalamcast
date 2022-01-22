@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/android.iml" filepath="$PROJECT_DIR$/.idea/modules/android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/android.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/android.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/105176314/android.audio_service.iml" filepath="$PROJECT_DIR$/.idea/modules/105176314/android.audio_service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/468512114/android.audio_session.iml" filepath="$PROJECT_DIR$/.idea/modules/468512114/android.audio_session.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1522334977/android.audioplayers.iml" filepath="$PROJECT_DIR$/.idea/modules/1522334977/android.audioplayers.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1265824258/android.cloud_firestore.iml" filepath="$PROJECT_DIR$/.idea/modules/1265824258/android.cloud_firestore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1271257431/android.firebase_core.iml" filepath="$PROJECT_DIR$/.idea/modules/-1271257431/android.firebase_core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/280367045/android.hexcolor.iml" filepath="$PROJECT_DIR$/.idea/modules/280367045/android.hexcolor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1235904997/android.path_provider_android.iml" filepath="$PROJECT_DIR$/.idea/modules/-1235904997/android.path_provider_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/574107793/android.sqflite.iml" filepath="$PROJECT_DIR$/.idea/modules/574107793/android.sqflite.iml" />
+    </modules>
+  </component>
+</project>

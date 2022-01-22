@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="testRunner" value="GRADLE" />
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/audio_service-0.18.3/android" />
+            <option value="$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/audio_session-0.1.6+1/android" />
+            <option value="$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/audioplayers-0.20.1/android" />
+            <option value="$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/cloud_firestore-3.1.5/android" />
+            <option value="$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/firebase_core-1.10.6/android" />
+            <option value="$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/hexcolor-2.0.5/android" />
+            <option value="$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/path_provider_android-2.0.11/android" />
+            <option value="$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/sqflite-2.0.1/android" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

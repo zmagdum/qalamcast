@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "121806051896",
+    "firebase_url": "https://qalam-399f8-default-rtdb.firebaseio.com",
+    "project_id": "qalam-399f8",
+    "storage_bucket": "qalam-399f8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:121806051896:android:7041fc51d8f052e8b0e4cd",
+        "android_client_info": {
+          "package_name": "com.app.qalam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "121806051896-a5d0cg34qvtn9iurj42u6kvroalnus8m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCU_ZiwNDmxTOXdG0VWsUm0Z8fup9WjGgg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "121806051896-a5d0cg34qvtn9iurj42u6kvroalnus8m.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "121806051896-9iemb2o0pqlu9luhfmbrhchs5cgtroah.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.app.qalam"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

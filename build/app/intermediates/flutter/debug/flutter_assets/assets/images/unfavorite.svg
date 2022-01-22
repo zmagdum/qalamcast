@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="35px" height="35px" viewBox="0 0 35 35" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>1FB6C979-DC80-4D39-AE37-73D3129A4165</title>
+    <defs>
+        <circle id="path-1" cx="13.5" cy="13.5" r="13.5"></circle>
+        <filter x="-22.2%" y="-22.2%" width="144.4%" height="144.4%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Qalam-Mobile-App" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Series" transform="translate(-324.000000, -368.000000)">
+            <g id="Group-12" transform="translate(20.000000, 357.000000)">
+                <g id="Group-7" transform="translate(106.000000, 0.000000)">
+                    <g id="Group-14" transform="translate(202.000000, 15.000000)">
+                        <g id="Oval">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                        </g>
+                        <path d="M16.326087,8 C15.2339348,8.00284814 14.1991099,8.49468148 13.5,9.34318748 C12.511185,8.13941625 10.8824574,7.6912811 9.42682681,8.22247696 C7.97119622,8.75367282 7.00078826,10.1502973 7,11.7151994 C7,15.7161834 12.9347826,19.7171674 13.2173913,19.9057852 C13.4060227,20.0314049 13.650499,20.0314049 13.8391304,19.9057852 C14.0652174,19.7171674 20,15.7161834 20,11.7151994 C19.9968876,9.66465656 18.3538425,8.00314742 16.326087,8 Z M13.5,19 C11.7052632,17.6943911 8,14.4154647 8,11.6790516 C8.0018118,10.4187959 8.85524219,9.32973393 10.051087,9.06166088 C11.2469318,8.79358783 12.4627672,9.41878156 12.9731579,10.5642166 C13.0672097,10.7767859 13.2731551,10.9132087 13.5,10.9132087 C13.7268449,10.9132087 13.9327903,10.7767859 14.0268421,10.5642166 C14.5372328,9.41878156 15.7530682,8.79358783 16.948913,9.06166088 C18.1447578,9.32973393 18.9981882,10.4187959 19,11.6790516 C19,14.7075873 14.7157895,18.0997857 13.5,19 Z" id="Shape-Copy" fill="#126088" fill-rule="nonzero"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
